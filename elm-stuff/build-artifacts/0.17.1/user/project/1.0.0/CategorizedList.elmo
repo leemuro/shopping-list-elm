@@ -1,29 +1,3 @@
-var _user$project$CategorizedList$completedStyle = function (item) {
-	return item.completed ? _elm_lang$core$Native_List.fromArray(
-		[
-			{ctor: '_Tuple2', _0: 'text-decoration', _1: 'line-through'}
-		]) : _elm_lang$core$Native_List.fromArray(
-		[
-			{ctor: '_Tuple2', _0: 'text-decoration', _1: 'none'}
-		]);
-};
-var _user$project$CategorizedList$listItemStyle = _elm_lang$core$Native_List.fromArray(
-	[
-		{ctor: '_Tuple2', _0: 'padding', _1: '1em'},
-		{ctor: '_Tuple2', _0: 'border-top', _1: '1px solid #ccc'}
-	]);
-var _user$project$CategorizedList$listStyle = _elm_lang$core$Native_List.fromArray(
-	[
-		{ctor: '_Tuple2', _0: 'margin', _1: '0'},
-		{ctor: '_Tuple2', _0: 'padding', _1: '0'},
-		{ctor: '_Tuple2', _0: 'list-style-type', _1: 'none'},
-		{ctor: '_Tuple2', _0: 'border-bottom', _1: '1px solid #ccc'}
-	]);
-var _user$project$CategorizedList$headerStyle = _elm_lang$core$Native_List.fromArray(
-	[
-		{ctor: '_Tuple2', _0: 'font-size', _1: '1.3em'},
-		{ctor: '_Tuple2', _0: 'margin', _1: '0.5em'}
-	]);
 var _user$project$CategorizedList$itemMatches = F2(
 	function (item, matchers) {
 		return A2(
@@ -60,14 +34,23 @@ var _user$project$CategorizedList$itemsInCategory = F3(
 			},
 			items) : A2(_user$project$CategorizedList$itemsInNoCategory, items, categories);
 	});
+var _user$project$CategorizedList$_p0 = _rtfeldman$elm_css_helpers$Html_CssHelpers$withNamespace('sl');
+var _user$project$CategorizedList$id = _user$project$CategorizedList$_p0.id;
+var _user$project$CategorizedList$class = _user$project$CategorizedList$_p0.$class;
+var _user$project$CategorizedList$classList = _user$project$CategorizedList$_p0.classList;
+var _user$project$CategorizedList$itemClass = function (item) {
+	return item.completed ? _user$project$CategorizedList$class(
+		_elm_lang$core$Native_List.fromArray(
+			[_user$project$AppCss$ShoppingItem, _user$project$AppCss$ShoppingItemCompleted])) : _user$project$CategorizedList$class(
+		_elm_lang$core$Native_List.fromArray(
+			[_user$project$AppCss$ShoppingItem]));
+};
 var _user$project$CategorizedList$listItem = function (item) {
 	return A2(
 		_elm_lang$html$Html$li,
 		_elm_lang$core$Native_List.fromArray(
 			[
-				_elm_lang$html$Html_Attributes$style(_user$project$CategorizedList$listItemStyle),
-				_elm_lang$html$Html_Attributes$style(
-				_user$project$CategorizedList$completedStyle(item)),
+				_user$project$CategorizedList$itemClass(item),
 				_elm_lang$html$Html_Events$onClick(
 				_user$project$AppMessages$ToggleItem(item.id))
 			]),
@@ -88,7 +71,9 @@ var _user$project$CategorizedList$listCategory = F2(
 					_elm_lang$html$Html$h1,
 					_elm_lang$core$Native_List.fromArray(
 						[
-							_elm_lang$html$Html_Attributes$style(_user$project$CategorizedList$headerStyle)
+							_user$project$CategorizedList$class(
+							_elm_lang$core$Native_List.fromArray(
+								[_user$project$AppCss$ListCategoryHeader]))
 						]),
 					_elm_lang$core$Native_List.fromArray(
 						[
@@ -97,9 +82,7 @@ var _user$project$CategorizedList$listCategory = F2(
 					A2(
 					_elm_lang$html$Html$ul,
 					_elm_lang$core$Native_List.fromArray(
-						[
-							_elm_lang$html$Html_Attributes$style(_user$project$CategorizedList$listStyle)
-						]),
+						[]),
 					A2(_elm_lang$core$List$map, _user$project$CategorizedList$listItem, items))
 				]));
 	});
@@ -120,8 +103,6 @@ var _user$project$CategorizedList$categorizedList = F2(
 		return A2(
 			_elm_lang$html$Html$ul,
 			_elm_lang$core$Native_List.fromArray(
-				[
-					_elm_lang$html$Html_Attributes$style(_user$project$CategorizedList$listStyle)
-				]),
+				[]),
 			A2(_user$project$CategorizedList$listCategories, categories, addedItems));
 	});

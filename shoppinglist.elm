@@ -3,7 +3,6 @@ import Html.Attributes exposing (style, name, content)
 import Html.App as App
 import String
 import List
-import AppStyles 
 import AppMessages
 import HeaderBar exposing (headerBar)
 import AddPanel exposing (addPanel)
@@ -94,10 +93,8 @@ toggleItemIfId item id =
 view : Model -> Html AppMessages.Msg
 
 view model = 
-  div [ style AppStyles.baseBox ]
-    [ 
-      Html.node "meta" [ name "viewport", content "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" ] []
-    , headerBar
+  div []
+    [ headerBar
     , addPanel model.newItems model.addPanelVisible
     , categorizedList model.categories model.addedItems
     ]

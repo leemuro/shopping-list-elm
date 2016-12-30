@@ -2,51 +2,39 @@ module AddPanel exposing (addPanel)
 
 import List
 import Html exposing (Html, div, textarea, button, text)
-import Html.Attributes exposing (style, value, placeholder)
+import Html.Attributes exposing (value, placeholder)
 import Html.Events exposing (onClick, onInput)
-import AppStyles
 import AppMessages
+
+import AppCss
+import Html.CssHelpers
+{ id, class, classList } = Html.CssHelpers.withNamespace "sl"
 
 addPanel newItems visible =
   div 
-    [ style panelStyle , (displayStyle visible) ] 
-    [ addBox newItems, addButton ]
+    [ (addPanelClass visible) ] 
+    [ addBox newItems, panelActions ]
 
 addBox newItems =
   textarea 
-    [ style addBoxStyle
+    [ class [ AppCss.AddBox ]
     , onInput AppMessages.NewItems
     , value newItems
     , placeholder "Type to add new items" 
     ] 
     []
 
-addButton =
-  button 
-    [ style addButtonStyle
-    , onClick AppMessages.AddItems 
-    ] 
-    [ text "Add" ] 
-
-displayStyle visible =
-  if visible then
-    style [ ("display", "inherit") ]
-  else
-    style [ ("display", "none") ]
-
-panelStyle =
-  [ ("background-color", "#eee"),
-    ("padding", "0.5em")
-  ]
-
-addBoxStyle =
-  List.concat
-    [ AppStyles.baseBox
-    , [ ("width", "100%")
-      , ("height", "10em")
-      , ("padding", "0.5em")
-      ]
+panelActions =
+  div [ class [ AppCss.AddPanelActions ] ]
+    [ button 
+      [ class [ AppCss.AddPanelButton ]
+      , onClick AppMessages.AddItems 
+      ] 
+      [ text "Add" ] 
     ]
 
-addButtonStyle =
-  AppStyles.baseBox
+addPanelClass visible =
+  if visible then
+    class [ AppCss.AddPanel, AppCss.Show ]
+  else
+    class [ AppCss.AddPanel, AppCss.Hide ]

@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Droid Sans, Arial, sans-serif;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.slHeaderBar {
+    display: flex;
+    align-items: center;
+    background-color: #F95759;
+    color: #fff;
+}
+
+.slHeaderBar > div {
+    flex-grow: 1;
+}
+
+.slHeaderBarCenter {
+    text-align: center;
+}
+
+.slHeaderBarRight {
+    text-align: right;
+}
+
+.slHeaderBarAdd {
+    background-color: transparent;
+    color: #fff;
+    font-size: 2em;
+    border: 0;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    cursor: pointer;
+}
+
+.slAddPanel {
+    background-color: #ddd;
+    padding: 0.75em;
+}
+
+.slAddBox {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Droid Sans, Arial, sans-serif;
+    font-size: 1em;
+    padding: 0.5em;
+    width: 100%;
+    height: 10em;
+    border: 0;
+}
+
+.slAddPanelActions {
+    text-align: right;
+    padding-top: 0.5em;
+}
+
+.slAddPanelButton {
+    font-family: Droid Sans, Arial, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: transparent;
+    color: #F95759;
+    border: 0;
+    cursor: pointer;
+}
+
+.slShow {
+    display: inherit;
+}
+
+.slHide {
+    display: none;
+}
+
+.slListCategoryHeader {
+    padding: 1em;
+    border-bottom: 1px solid #eee;
+}
+
+.slShoppingItem {
+    padding: 1em;
+    padding-left: 2em;
+    border-bottom: 1px solid #eee;
+}
+
+.slShoppingItemCompleted {
+    text-decoration: line-through;
+    color: #ccc;
+}
