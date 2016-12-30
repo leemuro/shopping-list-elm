@@ -9,6 +9,7 @@ var _user$project$AppCss$reset = _rtfeldman$elm_css$Css$mixin(
 			_rtfeldman$elm_css$Css$padding(_rtfeldman$elm_css$Css$zero),
 			_rtfeldman$elm_css$Css$boxSizing(_rtfeldman$elm_css$Css$borderBox)
 		]));
+var _user$project$AppCss$NoItems = {ctor: 'NoItems'};
 var _user$project$AppCss$ShoppingItemCompleted = {ctor: 'ShoppingItemCompleted'};
 var _user$project$AppCss$ShoppingItem = {ctor: 'ShoppingItem'};
 var _user$project$AppCss$ListCategoryHeader = {ctor: 'ListCategoryHeader'};
@@ -246,5 +247,15 @@ var _user$project$AppCss$css = function (_p0) {
 					_rtfeldman$elm_css$Css$textDecoration(_rtfeldman$elm_css$Css$lineThrough),
 					_rtfeldman$elm_css$Css$color(
 					_rtfeldman$elm_css$Css$hex('ccc'))
+				])),
+			A2(
+			F2(
+				function (x, y) {
+					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
+				}),
+			_user$project$AppCss$NoItems,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$center)
 				]))
 		]));

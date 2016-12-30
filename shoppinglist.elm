@@ -32,17 +32,14 @@ type alias Model = ShoppingList
 model: Model
 model = {
   newItems = ""
-  , addedItems = [
-    { id = 0, desc = "potato chips", completed = False }
-    , { id = 1, desc = "grapes", completed = False }
-    ] 
+  , addedItems = []
   , categories = [
       { name = "Produce", matchers = ["banana", "apple", "grape", "potato"] }
     , { name = "Meat", matchers = ["chicken", "beef", "pork", "turkey", "meat"] }
     , { name = "Snacks", matchers = ["chips", "chocolate", "crackers"] }
     , { name = "Other", matchers = [] }
     ]
-  , currentItemId = 2
+  , currentItemId = 0
   , addPanelVisible = False
   }
 

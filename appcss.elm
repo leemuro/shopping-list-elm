@@ -18,6 +18,7 @@ type CssClasses =
   | ListCategoryHeader
   | ShoppingItem 
   | ShoppingItemCompleted
+  | NoItems
 
 reset = 
   mixin
@@ -116,4 +117,7 @@ css =
       [ textDecoration lineThrough
       , color (hex "ccc")
       ]
+
+  , (.) NoItems
+      [ textAlign center ]
   ]

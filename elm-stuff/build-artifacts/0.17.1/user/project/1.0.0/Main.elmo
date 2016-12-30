@@ -95,10 +95,7 @@ var _user$project$Main$update = F2(
 var _user$project$Main$model = {
 	newItems: '',
 	addedItems: _elm_lang$core$Native_List.fromArray(
-		[
-			{id: 0, desc: 'potato chips', completed: false},
-			{id: 1, desc: 'grapes', completed: false}
-		]),
+		[]),
 	categories: _elm_lang$core$Native_List.fromArray(
 		[
 			{
@@ -122,7 +119,7 @@ var _user$project$Main$model = {
 				[])
 		}
 		]),
-	currentItemId: 2,
+	currentItemId: 0,
 	addPanelVisible: false
 };
 var _user$project$Main$main = {

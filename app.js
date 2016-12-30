@@ -12293,6 +12293,7 @@ var _user$project$AppCss$reset = _rtfeldman$elm_css$Css$mixin(
 			_rtfeldman$elm_css$Css$padding(_rtfeldman$elm_css$Css$zero),
 			_rtfeldman$elm_css$Css$boxSizing(_rtfeldman$elm_css$Css$borderBox)
 		]));
+var _user$project$AppCss$NoItems = {ctor: 'NoItems'};
 var _user$project$AppCss$ShoppingItemCompleted = {ctor: 'ShoppingItemCompleted'};
 var _user$project$AppCss$ShoppingItem = {ctor: 'ShoppingItem'};
 var _user$project$AppCss$ListCategoryHeader = {ctor: 'ListCategoryHeader'};
@@ -12530,6 +12531,16 @@ var _user$project$AppCss$css = function (_p0) {
 					_rtfeldman$elm_css$Css$textDecoration(_rtfeldman$elm_css$Css$lineThrough),
 					_rtfeldman$elm_css$Css$color(
 					_rtfeldman$elm_css$Css$hex('ccc'))
+				])),
+			A2(
+			F2(
+				function (x, y) {
+					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
+				}),
+			_user$project$AppCss$NoItems,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$center)
 				]))
 		]));
 
@@ -12603,7 +12614,10 @@ var _user$project$CategorizedList$itemMatches = F2(
 		return A2(
 			_elm_lang$core$List$any,
 			function (matcher) {
-				return A2(_elm_lang$core$String$contains, matcher, item.desc);
+				return A2(
+					_elm_lang$core$String$contains,
+					_elm_lang$core$String$toLower(matcher),
+					_elm_lang$core$String$toLower(item.desc));
 			},
 			matchers);
 	});
@@ -12634,6 +12648,26 @@ var _user$project$CategorizedList$itemsInCategory = F3(
 			},
 			items) : A2(_user$project$CategorizedList$itemsInNoCategory, items, categories);
 	});
+var _user$project$CategorizedList$categoryLists = F2(
+	function (categories, items) {
+		var x = A2(
+			_elm_lang$core$List$map,
+			function (c) {
+				return {
+					name: c.name,
+					items: A3(_user$project$CategorizedList$itemsInCategory, items, c, categories)
+				};
+			},
+			categories);
+		return A2(
+			_elm_lang$core$List$filter,
+			function (i) {
+				return _elm_lang$core$Native_Utils.cmp(
+					_elm_lang$core$List$length(i.items),
+					0) > 0;
+			},
+			x);
+	});
 var _user$project$CategorizedList$_p0 = _rtfeldman$elm_css_helpers$Html_CssHelpers$withNamespace('sl');
 var _user$project$CategorizedList$id = _user$project$CategorizedList$_p0.id;
 var _user$project$CategorizedList$class = _user$project$CategorizedList$_p0.$class;
@@ -12659,48 +12693,59 @@ var _user$project$CategorizedList$listItem = function (item) {
 				_elm_lang$html$Html$text(item.desc)
 			]));
 };
-var _user$project$CategorizedList$listCategory = F2(
-	function (categoryName, items) {
-		return A2(
-			_elm_lang$html$Html$li,
-			_elm_lang$core$Native_List.fromArray(
-				[]),
-			_elm_lang$core$Native_List.fromArray(
-				[
-					A2(
-					_elm_lang$html$Html$h1,
-					_elm_lang$core$Native_List.fromArray(
-						[
-							_user$project$CategorizedList$class(
-							_elm_lang$core$Native_List.fromArray(
-								[_user$project$AppCss$ListCategoryHeader]))
-						]),
-					_elm_lang$core$Native_List.fromArray(
-						[
-							_elm_lang$html$Html$text(categoryName)
-						])),
-					A2(
-					_elm_lang$html$Html$ul,
-					_elm_lang$core$Native_List.fromArray(
-						[]),
-					A2(_elm_lang$core$List$map, _user$project$CategorizedList$listItem, items))
-				]));
-	});
+var _user$project$CategorizedList$listCategory = function (categoryList) {
+	return A2(
+		_elm_lang$html$Html$li,
+		_elm_lang$core$Native_List.fromArray(
+			[]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$h1,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_user$project$CategorizedList$class(
+						_elm_lang$core$Native_List.fromArray(
+							[_user$project$AppCss$ListCategoryHeader]))
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text(categoryList.name)
+					])),
+				A2(
+				_elm_lang$html$Html$ul,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				A2(_elm_lang$core$List$map, _user$project$CategorizedList$listItem, categoryList.items))
+			]));
+};
 var _user$project$CategorizedList$listCategories = F2(
 	function (categories, items) {
+		var x = A2(_user$project$CategorizedList$categoryLists, categories, items);
 		return A2(
 			_elm_lang$core$List$map,
 			function (c) {
-				return A2(
-					_user$project$CategorizedList$listCategory,
-					c.name,
-					A3(_user$project$CategorizedList$itemsInCategory, items, c, categories));
+				return _user$project$CategorizedList$listCategory(c);
 			},
-			categories);
+			x);
 	});
+var _user$project$CategorizedList$noItems = A2(
+	_elm_lang$html$Html$p,
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_user$project$CategorizedList$class(
+			_elm_lang$core$Native_List.fromArray(
+				[_user$project$AppCss$NoItems]))
+		]),
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_elm_lang$html$Html$text('Click + to add some items to the list.')
+		]));
 var _user$project$CategorizedList$categorizedList = F2(
 	function (categories, addedItems) {
-		return A2(
+		return _elm_lang$core$Native_Utils.eq(
+			_elm_lang$core$List$length(addedItems),
+			0) ? _user$project$CategorizedList$noItems : A2(
 			_elm_lang$html$Html$ul,
 			_elm_lang$core$Native_List.fromArray(
 				[]),
@@ -12861,10 +12906,7 @@ var _user$project$Main$update = F2(
 var _user$project$Main$model = {
 	newItems: '',
 	addedItems: _elm_lang$core$Native_List.fromArray(
-		[
-			{id: 0, desc: 'potato chips', completed: false},
-			{id: 1, desc: 'grapes', completed: false}
-		]),
+		[]),
 	categories: _elm_lang$core$Native_List.fromArray(
 		[
 			{
@@ -12888,7 +12930,7 @@ var _user$project$Main$model = {
 				[])
 		}
 		]),
-	currentItemId: 2,
+	currentItemId: 0,
 	addPanelVisible: false
 };
 var _user$project$Main$main = {
