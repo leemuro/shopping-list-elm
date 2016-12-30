@@ -61,7 +61,10 @@ model = {
       }  
     , { name = "Dairy", 
         matchers = 
-          [ "eggs", "milk", "cream", "cheese", "yogurt", "cheddar", "swiss", "butter" ] 
+          [ "egg", "milk", "cream", "cheese", "yogurt", "cheddar", "swiss", "butter", "jack", "colby" ] 
+      }  
+    , { name = "Canned/Jarred Goods"
+      , matchers = [ "can", "jar" ]
       }  
     , { name = "Spices/Herbs", matchers = 
         [ "allspice", "all spice", "spice", "anise", "basil", "bay leaf", "caraway", "cardamom", "cayenne", "pepper"

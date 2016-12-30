@@ -111,7 +111,12 @@ var _user$project$Main$model = {
 			{
 			name: 'Dairy',
 			matchers: _elm_lang$core$Native_List.fromArray(
-				['eggs', 'milk', 'cream', 'cheese', 'yogurt', 'cheddar', 'swiss', 'butter'])
+				['egg', 'milk', 'cream', 'cheese', 'yogurt', 'cheddar', 'swiss', 'butter', 'jack', 'colby'])
+		},
+			{
+			name: 'Canned/Jarred Goods',
+			matchers: _elm_lang$core$Native_List.fromArray(
+				['can', 'jar'])
 		},
 			{
 			name: 'Spices/Herbs',
