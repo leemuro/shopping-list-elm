@@ -1,0 +1,72 @@
+var _user$project$HeaderBar$rightStyle = _elm_lang$core$Native_List.fromArray(
+	[
+		{ctor: '_Tuple2', _0: 'flex-grow', _1: '1'}
+	]);
+var _user$project$HeaderBar$centerStyle = _elm_lang$core$Native_List.fromArray(
+	[
+		{ctor: '_Tuple2', _0: 'flex-grow', _1: '1'},
+		{ctor: '_Tuple2', _0: 'text-align', _1: 'center'}
+	]);
+var _user$project$HeaderBar$leftStyle = _elm_lang$core$Native_List.fromArray(
+	[
+		{ctor: '_Tuple2', _0: 'flex-grow', _1: '1'}
+	]);
+var _user$project$HeaderBar$barStyle = _elm_lang$core$List$concat(
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_user$project$AppStyles$baseBox,
+			_elm_lang$core$Native_List.fromArray(
+			[
+				{ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+				{ctor: '_Tuple2', _0: 'padding', _1: '0.5em'},
+				{ctor: '_Tuple2', _0: 'background-color', _1: '#49E6AA'},
+				{ctor: '_Tuple2', _0: 'color', _1: 'white'},
+				{ctor: '_Tuple2', _0: 'text-transform', _1: 'uppercase'},
+				{ctor: '_Tuple2', _0: 'text-align', _1: 'right'}
+			])
+		]));
+var _user$project$HeaderBar$addButton = A2(
+	_elm_lang$html$Html$button,
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$ToggleAddPanel)
+		]),
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_elm_lang$html$Html$text('+')
+		]));
+var _user$project$HeaderBar$headerBar = A2(
+	_elm_lang$html$Html$div,
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_elm_lang$html$Html_Attributes$style(_user$project$HeaderBar$barStyle)
+		]),
+	_elm_lang$core$Native_List.fromArray(
+		[
+			A2(
+			_elm_lang$html$Html$div,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Attributes$style(_user$project$HeaderBar$leftStyle)
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[])),
+			A2(
+			_elm_lang$html$Html$div,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Attributes$style(_user$project$HeaderBar$centerStyle)
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html$text('Shopping List')
+				])),
+			A2(
+			_elm_lang$html$Html$div,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Attributes$style(_user$project$HeaderBar$rightStyle)
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[_user$project$HeaderBar$addButton]))
+		]));

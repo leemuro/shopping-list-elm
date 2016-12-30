@@ -1,75 +1,17 @@
-var _user$project$Main$completedStyle = function (item) {
-	return item.completed ? _elm_lang$html$Html_Attributes$style(
+var _user$project$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
 		_elm_lang$core$Native_List.fromArray(
 			[
-				{ctor: '_Tuple2', _0: 'text-decoration', _1: 'line-through'}
-			])) : _elm_lang$html$Html_Attributes$style(
+				_elm_lang$html$Html_Attributes$style(_user$project$AppStyles$baseBox)
+			]),
 		_elm_lang$core$Native_List.fromArray(
 			[
-				{ctor: '_Tuple2', _0: 'text-decoration', _1: 'none'}
+				_user$project$HeaderBar$headerBar,
+				A2(_user$project$AddPanel$addPanel, model.newItems, model.addPanelVisible),
+				A2(_user$project$CategorizedList$categorizedList, model.categories, model.addedItems)
 			]));
 };
-var _user$project$Main$textStyle = _elm_lang$html$Html_Attributes$style(
-	_elm_lang$core$Native_List.fromArray(
-		[
-			{ctor: '_Tuple2', _0: 'font-family', _1: 'Calibri, Tahoma, sans-serif'},
-			{ctor: '_Tuple2', _0: 'font-size', _1: '1.1em'}
-		]));
-var _user$project$Main$headerStyle = _elm_lang$html$Html_Attributes$style(
-	_elm_lang$core$Native_List.fromArray(
-		[
-			{ctor: '_Tuple2', _0: 'font-family', _1: 'Calibri, Tahoma, sans-serif'},
-			{ctor: '_Tuple2', _0: 'font-size', _1: '1.3em'}
-		]));
-var _user$project$Main$listStyle = _elm_lang$html$Html_Attributes$style(
-	_elm_lang$core$Native_List.fromArray(
-		[
-			{ctor: '_Tuple2', _0: 'margin', _1: '0'},
-			{ctor: '_Tuple2', _0: 'padding', _1: '0'},
-			{ctor: '_Tuple2', _0: 'list-style-type', _1: 'none'}
-		]));
-var _user$project$Main$checkboxStyle = _elm_lang$html$Html_Attributes$style(
-	_elm_lang$core$Native_List.fromArray(
-		[
-			{ctor: '_Tuple2', _0: 'border', _1: 'solid 1px #ccc'},
-			{ctor: '_Tuple2', _0: 'padding', _1: '1em'}
-		]));
-var _user$project$Main$itemMatches = F2(
-	function (item, matchers) {
-		return A2(
-			_elm_lang$core$List$any,
-			function (matcher) {
-				return A2(_elm_lang$core$String$contains, matcher, item.desc);
-			},
-			matchers);
-	});
-var _user$project$Main$itemsInNoCategory = F2(
-	function (items, categories) {
-		var allMatchers = A2(
-			_elm_lang$core$List$concatMap,
-			function (c) {
-				return c.matchers;
-			},
-			categories);
-		return A2(
-			_elm_lang$core$List$filter,
-			function (item) {
-				return _elm_lang$core$Basics$not(
-					A2(_user$project$Main$itemMatches, item, allMatchers));
-			},
-			items);
-	});
-var _user$project$Main$itemsInCategory = F3(
-	function (items, category, categories) {
-		return (_elm_lang$core$Native_Utils.cmp(
-			_elm_lang$core$List$length(category.matchers),
-			0) > 0) ? A2(
-			_elm_lang$core$List$filter,
-			function (item) {
-				return A2(_user$project$Main$itemMatches, item, category.matchers);
-			},
-			items) : A2(_user$project$Main$itemsInNoCategory, items, categories);
-	});
 var _user$project$Main$toggleItemIfId = F2(
 	function (item, id) {
 		return _elm_lang$core$Native_Utils.eq(item.id, id) ? _elm_lang$core$Native_Utils.update(
@@ -112,6 +54,12 @@ var _user$project$Main$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		switch (_p0.ctor) {
+			case 'ToggleAddPanel':
+				return _elm_lang$core$Native_Utils.update(
+					model,
+					{
+						addPanelVisible: _elm_lang$core$Basics$not(model.addPanelVisible)
+					});
 			case 'NewItems':
 				return _elm_lang$core$Native_Utils.update(
 					model,
@@ -123,7 +71,8 @@ var _user$project$Main$update = F2(
 						addedItems: A3(_user$project$Main$appendTextAsNewItems, model.addedItems, model.newItems, model.currentItemId),
 						currentItemId: model.currentItemId + _elm_lang$core$List$length(
 							A2(_elm_lang$core$String$split, '\n', model.newItems)),
-						newItems: ''
+						newItems: '',
+						addPanelVisible: false
 					});
 			case 'ToggleItem':
 				return _elm_lang$core$Native_Utils.update(
@@ -175,7 +124,12 @@ var _user$project$Main$model = {
 				[])
 		}
 		]),
-	currentItemId: 2
+	currentItemId: 2,
+	addPanelVisible: false
+};
+var _user$project$Main$main = {
+	main: _elm_lang$html$Html_App$beginnerProgram(
+		{model: _user$project$Main$model, view: _user$project$Main$view, update: _user$project$Main$update})
 };
 var _user$project$Main$ShoppingItem = F3(
 	function (a, b, c) {
@@ -185,122 +139,7 @@ var _user$project$Main$Categories = F2(
 	function (a, b) {
 		return {name: a, matchers: b};
 	});
-var _user$project$Main$ShoppingList = F4(
-	function (a, b, c, d) {
-		return {newItems: a, addedItems: b, categories: c, currentItemId: d};
+var _user$project$Main$ShoppingList = F5(
+	function (a, b, c, d, e) {
+		return {newItems: a, addedItems: b, categories: c, currentItemId: d, addPanelVisible: e};
 	});
-var _user$project$Main$ToggleItem = function (a) {
-	return {ctor: 'ToggleItem', _0: a};
-};
-var _user$project$Main$listItem = function (item) {
-	return A2(
-		_elm_lang$html$Html$li,
-		_elm_lang$core$Native_List.fromArray(
-			[
-				_user$project$Main$textStyle,
-				_user$project$Main$completedStyle(item)
-			]),
-		_elm_lang$core$Native_List.fromArray(
-			[
-				A2(
-				_elm_lang$html$Html$input,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html_Attributes$type$('checkbox'),
-						_elm_lang$html$Html_Attributes$checked(item.completed),
-						_elm_lang$html$Html_Events$onClick(
-						_user$project$Main$ToggleItem(item.id)),
-						_user$project$Main$checkboxStyle
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[])),
-				_elm_lang$html$Html$text(item.desc)
-			]));
-};
-var _user$project$Main$listCategory = F2(
-	function (categoryName, items) {
-		return A2(
-			_elm_lang$html$Html$li,
-			_elm_lang$core$Native_List.fromArray(
-				[]),
-			_elm_lang$core$Native_List.fromArray(
-				[
-					A2(
-					_elm_lang$html$Html$h1,
-					_elm_lang$core$Native_List.fromArray(
-						[_user$project$Main$headerStyle]),
-					_elm_lang$core$Native_List.fromArray(
-						[
-							_elm_lang$html$Html$text(categoryName)
-						])),
-					A2(
-					_elm_lang$html$Html$ul,
-					_elm_lang$core$Native_List.fromArray(
-						[_user$project$Main$listStyle]),
-					A2(_elm_lang$core$List$map, _user$project$Main$listItem, items))
-				]));
-	});
-var _user$project$Main$listCategories = F2(
-	function (categories, items) {
-		return A2(
-			_elm_lang$core$List$map,
-			function (c) {
-				return A2(
-					_user$project$Main$listCategory,
-					c.name,
-					A3(_user$project$Main$itemsInCategory, items, c, categories));
-			},
-			categories);
-	});
-var _user$project$Main$Clear = {ctor: 'Clear'};
-var _user$project$Main$AddItems = {ctor: 'AddItems'};
-var _user$project$Main$NewItems = function (a) {
-	return {ctor: 'NewItems', _0: a};
-};
-var _user$project$Main$view = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		_elm_lang$core$Native_List.fromArray(
-			[]),
-		_elm_lang$core$Native_List.fromArray(
-			[
-				A2(
-				_elm_lang$html$Html$textarea,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html_Events$onInput(_user$project$Main$NewItems),
-						_elm_lang$html$Html_Attributes$value(model.newItems)
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[])),
-				A2(
-				_elm_lang$html$Html$button,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html_Events$onClick(_user$project$Main$AddItems)
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html$text('Add')
-					])),
-				A2(
-				_elm_lang$html$Html$button,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html_Events$onClick(_user$project$Main$Clear)
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html$text('Clear')
-					])),
-				A2(
-				_elm_lang$html$Html$ul,
-				_elm_lang$core$Native_List.fromArray(
-					[_user$project$Main$listStyle]),
-				A2(_user$project$Main$listCategories, model.categories, model.addedItems))
-			]));
-};
-var _user$project$Main$main = {
-	main: _elm_lang$html$Html_App$beginnerProgram(
-		{model: _user$project$Main$model, view: _user$project$Main$view, update: _user$project$Main$update})
-};

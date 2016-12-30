@@ -1,0 +1,15 @@
+var _user$project$AppStyles$borderBox = _elm_lang$core$Native_List.fromArray(
+	[
+		{ctor: '_Tuple2', _0: 'box-sizing', _1: 'border-box'}
+	]);
+var _user$project$AppStyles$baseFontSize = _elm_lang$core$Native_List.fromArray(
+	[
+		{ctor: '_Tuple2', _0: 'font-size', _1: '1.1em'}
+	]);
+var _user$project$AppStyles$fontStyle = _elm_lang$core$Native_List.fromArray(
+	[
+		{ctor: '_Tuple2', _0: 'font-family', _1: 'Calibri, Tahoma, sans-serif'}
+	]);
+var _user$project$AppStyles$baseBox = _elm_lang$core$List$concat(
+	_elm_lang$core$Native_List.fromArray(
+		[_user$project$AppStyles$fontStyle, _user$project$AppStyles$baseFontSize, _user$project$AppStyles$borderBox]));
