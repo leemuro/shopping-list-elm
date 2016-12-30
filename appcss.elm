@@ -72,7 +72,7 @@ css =
       ]
 
   , (.) AddPanel
-      [ backgroundColor (hex "ddd")
+      [ backgroundColor (hex "eee")
       , padding (em 0.75)
       ]
 

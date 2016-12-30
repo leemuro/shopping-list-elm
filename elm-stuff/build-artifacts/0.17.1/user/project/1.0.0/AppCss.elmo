@@ -146,7 +146,7 @@ var _user$project$AppCss$css = function (_p0) {
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_rtfeldman$elm_css$Css$backgroundColor(
-					_rtfeldman$elm_css$Css$hex('ddd')),
+					_rtfeldman$elm_css$Css$hex('eee')),
 					_rtfeldman$elm_css$Css$padding(
 					_rtfeldman$elm_css$Css$em(0.75))
 				])),
