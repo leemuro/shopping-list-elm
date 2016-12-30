@@ -92,6 +92,7 @@ css =
       , color accentColor
       , border zero
       , cursor pointer
+      , paddingRight zero
       ]
 
   , (.) Show
