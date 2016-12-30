@@ -12941,12 +12941,22 @@ var _user$project$Main$model = {
 			{
 			name: 'Produce',
 			matchers: _elm_lang$core$Native_List.fromArray(
-				['banana', 'apple', 'grape', 'potato'])
+				['Asparagus', 'Arugula', 'Cabbage', 'Beans', 'Garlic', 'Beet', 'Onion', 'Bok Choy', 'Lettuce', 'Broccoli', 'Peas', 'Radish', 'Rhubarb', 'Carrot', 'Spinach', 'Cauliflower', 'Cucumber', 'Chard', 'Spinach', 'Eggplant', 'Greens', 'Turnips', 'Watercress', 'Endive', 'Escarole', 'Herbs', 'Leeks', 'Kale', 'Chive', 'Okra', 'Cilantro', 'Pepper', 'Dill', 'Potato', 'Mizuna', 'Corn', 'Tomato', 'Watermelon', 'Melon', 'Thyme', 'Zucchini', 'Squash', 'Rutabaga', 'Apple', 'Apricot', 'Avocado', 'Banana', 'Bilberry', 'Blackberry', 'Blackcurrant', 'Blueberry', 'Boysenberry', 'Currant', 'Cherry', 'Cherimoya', 'Cloudberry', 'Coconut', 'Cranberry', 'Cucumber', 'Damson', 'Date', 'Dragonfruit', 'Durian', 'Elderberry', 'Feijoa', 'Fig', 'Goji', 'Berry', 'Gooseberry', 'Grape', 'Raisin', 'Grapefruit', 'Guava', 'Honeyberry', 'Huckleberry', 'Jabuticaba', 'Jackfruit', 'Jambul', 'Jujube', 'Kiwifruit', 'Kumquat', 'Lemon', 'Lime', 'Loquat', 'Longan', 'Lychee', 'Mango', 'Marionberry', 'Melon', 'Cantaloupe', 'Honeydew', 'Watermelon', 'Fruit', 'Mulberry', 'Nectarine', 'Nance', 'Olive', 'Orange', 'Clementine', 'Mandarine', 'Tangerine', 'Papaya', 'Passionfruit', 'Peach', 'Pear', 'Persimmon', 'Physalis', 'Plantain', 'Plum', 'Prune', 'Pineapple', 'Plumcot', 'Pomegranate', 'Pomelo', 'Quince', 'Raspberry', 'Salmonberry', 'Rambutan', 'Redcurrant', 'Salak', 'Satsuma', 'Strawberry', 'Tamarillo', 'Tamarind', 'Yuzu'])
 		},
 			{
 			name: 'Meat',
 			matchers: _elm_lang$core$Native_List.fromArray(
-				['chicken', 'beef', 'pork', 'turkey', 'meat'])
+				['chicken', 'beef', 'pork', 'turkey', 'meat', 'duck', 'goose', 'quail', 'carp', 'catfish', 'salmon', 'tilapia', 'herring', 'fish', 'lobster', 'shrimp', 'mussels', 'prawns', 'oysters'])
+		},
+			{
+			name: 'Dairy',
+			matchers: _elm_lang$core$Native_List.fromArray(
+				['eggs', 'milk', 'cream', 'cheese', 'yogurt', 'cheddar', 'swiss', 'butter'])
+		},
+			{
+			name: 'Spices/Herbs',
+			matchers: _elm_lang$core$Native_List.fromArray(
+				['allspice', 'all spice', 'spice', 'anise', 'basil', 'bay leaf', 'caraway', 'cardamom', 'cayenne', 'pepper', 'celery seed', 'chicory', 'chili powder', 'garlic', 'chives', 'cilantro', 'cinnamon', 'clove', 'coriander', 'cumin', 'curry', 'dill', 'fennel', 'fenugreek', 'ginger', 'lavender', 'marjoram', 'mint', 'mustard', 'nutmeg', 'oregano', 'paprika', 'parsley', 'rosemary', 'saffron', 'sage', 'safflower', 'tarragon', 'thyme', 'turmeric', 'vanilla', 'salt', 'powder'])
 		},
 			{
 			name: 'Snacks',
