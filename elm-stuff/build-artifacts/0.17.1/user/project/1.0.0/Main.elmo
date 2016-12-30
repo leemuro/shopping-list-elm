@@ -7,6 +7,16 @@ var _user$project$Main$view = function (model) {
 			]),
 		_elm_lang$core$Native_List.fromArray(
 			[
+				A3(
+				_elm_lang$html$Html$node,
+				'meta',
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$name('viewport'),
+						_elm_lang$html$Html_Attributes$content('width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[])),
 				_user$project$HeaderBar$headerBar,
 				A2(_user$project$AddPanel$addPanel, model.newItems, model.addPanelVisible),
 				A2(_user$project$CategorizedList$categorizedList, model.categories, model.addedItems)
