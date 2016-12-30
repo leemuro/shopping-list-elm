@@ -1,12 +1,13 @@
 module AppCss exposing (..)
 
 import Css exposing (..)
-import Css.Elements exposing (body, div, h1, button, ul, li)
+import Css.Elements exposing (body, div, span, h1, button, ul, li)
 import Css.Namespace exposing (namespace)
 
 type CssClasses = 
   HeaderBar
   | HeaderBarAdd
+  | HeaderBarItem
   | HeaderBarCenter
   | HeaderBarRight
   | AddPanel
@@ -43,15 +44,20 @@ css =
 
   , (.) HeaderBar
       [ displayFlex
-      , alignItems center
       , backgroundColor accentColor
       , color (hex "fff")
-      , children [ div [ flexGrow (int 1) ] ]
       ]
 
-  , (.) HeaderBarCenter [ textAlign center ]
+  , (.) HeaderBarItem
+      [ flex (int 1)
+      , displayFlex
+      ]
 
-  , (.) HeaderBarRight [ textAlign right ]
+  , (.) HeaderBarCenter
+      [ children [ span [ margin auto ] ] ]
+
+  , (.) HeaderBarRight
+      [ children [ button [ marginLeft auto ] ] ]
 
   , (.) HeaderBarAdd
       [ backgroundColor transparent

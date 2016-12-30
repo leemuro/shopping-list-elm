@@ -12305,6 +12305,7 @@ var _user$project$AppCss$AddBox = {ctor: 'AddBox'};
 var _user$project$AppCss$AddPanel = {ctor: 'AddPanel'};
 var _user$project$AppCss$HeaderBarRight = {ctor: 'HeaderBarRight'};
 var _user$project$AppCss$HeaderBarCenter = {ctor: 'HeaderBarCenter'};
+var _user$project$AppCss$HeaderBarItem = {ctor: 'HeaderBarItem'};
 var _user$project$AppCss$HeaderBarAdd = {ctor: 'HeaderBarAdd'};
 var _user$project$AppCss$HeaderBar = {ctor: 'HeaderBar'};
 var _user$project$AppCss$css = function (_p0) {
@@ -12344,20 +12345,21 @@ var _user$project$AppCss$css = function (_p0) {
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_rtfeldman$elm_css$Css$displayFlex,
-					_rtfeldman$elm_css$Css$alignItems(_rtfeldman$elm_css$Css$center),
 					_rtfeldman$elm_css$Css$backgroundColor(_user$project$AppCss$accentColor),
 					_rtfeldman$elm_css$Css$color(
-					_rtfeldman$elm_css$Css$hex('fff')),
-					_rtfeldman$elm_css$Css$children(
-					_elm_lang$core$Native_List.fromArray(
-						[
-							_rtfeldman$elm_css$Css_Elements$div(
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_rtfeldman$elm_css$Css$flexGrow(
-									_rtfeldman$elm_css$Css$int(1))
-								]))
-						]))
+					_rtfeldman$elm_css$Css$hex('fff'))
+				])),
+			A2(
+			F2(
+				function (x, y) {
+					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
+				}),
+			_user$project$AppCss$HeaderBarItem,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_rtfeldman$elm_css$Css$flex(
+					_rtfeldman$elm_css$Css$int(1)),
+					_rtfeldman$elm_css$Css$displayFlex
 				])),
 			A2(
 			F2(
@@ -12367,7 +12369,15 @@ var _user$project$AppCss$css = function (_p0) {
 			_user$project$AppCss$HeaderBarCenter,
 			_elm_lang$core$Native_List.fromArray(
 				[
-					_rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$center)
+					_rtfeldman$elm_css$Css$children(
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_rtfeldman$elm_css$Css_Elements$span(
+							_elm_lang$core$Native_List.fromArray(
+								[
+									_rtfeldman$elm_css$Css$margin(_rtfeldman$elm_css$Css$auto)
+								]))
+						]))
 				])),
 			A2(
 			F2(
@@ -12377,7 +12387,15 @@ var _user$project$AppCss$css = function (_p0) {
 			_user$project$AppCss$HeaderBarRight,
 			_elm_lang$core$Native_List.fromArray(
 				[
-					_rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$right)
+					_rtfeldman$elm_css$Css$children(
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_rtfeldman$elm_css$Css_Elements$button(
+							_elm_lang$core$Native_List.fromArray(
+								[
+									_rtfeldman$elm_css$Css$marginLeft(_rtfeldman$elm_css$Css$auto)
+								]))
+						]))
 				])),
 			A2(
 			F2(
@@ -12782,7 +12800,11 @@ var _user$project$HeaderBar$headerBar = A2(
 			A2(
 			_elm_lang$html$Html$div,
 			_elm_lang$core$Native_List.fromArray(
-				[]),
+				[
+					_user$project$HeaderBar$class(
+					_elm_lang$core$Native_List.fromArray(
+						[_user$project$AppCss$HeaderBarItem]))
+				]),
 			_elm_lang$core$Native_List.fromArray(
 				[])),
 			A2(
@@ -12791,11 +12813,18 @@ var _user$project$HeaderBar$headerBar = A2(
 				[
 					_user$project$HeaderBar$class(
 					_elm_lang$core$Native_List.fromArray(
-						[_user$project$AppCss$HeaderBarCenter]))
+						[_user$project$AppCss$HeaderBarItem, _user$project$AppCss$HeaderBarCenter]))
 				]),
 			_elm_lang$core$Native_List.fromArray(
 				[
-					_elm_lang$html$Html$text('Shopping List')
+					A2(
+					_elm_lang$html$Html$span,
+					_elm_lang$core$Native_List.fromArray(
+						[]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html$text('Shopping List')
+						]))
 				])),
 			A2(
 			_elm_lang$html$Html$div,
@@ -12803,7 +12832,7 @@ var _user$project$HeaderBar$headerBar = A2(
 				[
 					_user$project$HeaderBar$class(
 					_elm_lang$core$Native_List.fromArray(
-						[_user$project$AppCss$HeaderBarRight]))
+						[_user$project$AppCss$HeaderBarItem, _user$project$AppCss$HeaderBarRight]))
 				]),
 			_elm_lang$core$Native_List.fromArray(
 				[_user$project$HeaderBar$addButton]))

@@ -33,21 +33,21 @@ h1 {
 
 .slHeaderBar {
     display: flex;
-    align-items: center;
     background-color: #F95759;
     color: #fff;
 }
 
-.slHeaderBar > div {
-    flex-grow: 1;
+.slHeaderBarItem {
+    flex: 1;
+    display: flex;
 }
 
-.slHeaderBarCenter {
-    text-align: center;
+.slHeaderBarCenter > span {
+    margin: auto;
 }
 
-.slHeaderBarRight {
-    text-align: right;
+.slHeaderBarRight > button {
+    margin-left: auto;
 }
 
 .slHeaderBarAdd {

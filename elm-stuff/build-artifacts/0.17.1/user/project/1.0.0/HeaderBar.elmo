@@ -28,7 +28,11 @@ var _user$project$HeaderBar$headerBar = A2(
 			A2(
 			_elm_lang$html$Html$div,
 			_elm_lang$core$Native_List.fromArray(
-				[]),
+				[
+					_user$project$HeaderBar$class(
+					_elm_lang$core$Native_List.fromArray(
+						[_user$project$AppCss$HeaderBarItem]))
+				]),
 			_elm_lang$core$Native_List.fromArray(
 				[])),
 			A2(
@@ -37,11 +41,18 @@ var _user$project$HeaderBar$headerBar = A2(
 				[
 					_user$project$HeaderBar$class(
 					_elm_lang$core$Native_List.fromArray(
-						[_user$project$AppCss$HeaderBarCenter]))
+						[_user$project$AppCss$HeaderBarItem, _user$project$AppCss$HeaderBarCenter]))
 				]),
 			_elm_lang$core$Native_List.fromArray(
 				[
-					_elm_lang$html$Html$text('Shopping List')
+					A2(
+					_elm_lang$html$Html$span,
+					_elm_lang$core$Native_List.fromArray(
+						[]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html$text('Shopping List')
+						]))
 				])),
 			A2(
 			_elm_lang$html$Html$div,
@@ -49,7 +60,7 @@ var _user$project$HeaderBar$headerBar = A2(
 				[
 					_user$project$HeaderBar$class(
 					_elm_lang$core$Native_List.fromArray(
-						[_user$project$AppCss$HeaderBarRight]))
+						[_user$project$AppCss$HeaderBarItem, _user$project$AppCss$HeaderBarRight]))
 				]),
 			_elm_lang$core$Native_List.fromArray(
 				[_user$project$HeaderBar$addButton]))

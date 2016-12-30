@@ -1,7 +1,7 @@
 module HeaderBar exposing (headerBar)
 
 import List
-import Html exposing (Html, div, button, text)
+import Html exposing (Html, div, span, button, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import AppMessages
@@ -12,9 +12,9 @@ import Html.CssHelpers
 
 headerBar =
   div [ class [ AppCss.HeaderBar ] ]
-    [ div [ ] []
-    , div [ class [ AppCss.HeaderBarCenter ] ] [ text "Shopping List" ]
-    , div [ class [ AppCss.HeaderBarRight ] ] [ addButton ]
+    [ div [ class [ AppCss.HeaderBarItem ] ] []
+    , div [ class [ AppCss.HeaderBarItem, AppCss.HeaderBarCenter ] ] [ span [] [ text "Shopping List" ] ]
+    , div [ class [ AppCss.HeaderBarItem, AppCss.HeaderBarRight ] ] [ addButton ]
     ]
 
 addButton =
