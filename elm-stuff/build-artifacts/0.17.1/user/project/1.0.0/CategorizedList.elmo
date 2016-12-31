@@ -143,8 +143,39 @@ var _user$project$CategorizedList$categorizedList = F2(
 		return _elm_lang$core$Native_Utils.eq(
 			_elm_lang$core$List$length(addedItems),
 			0) ? _user$project$CategorizedList$noItems : A2(
-			_elm_lang$html$Html$ul,
+			_elm_lang$html$Html$div,
 			_elm_lang$core$Native_List.fromArray(
 				[]),
-			A2(_user$project$CategorizedList$listCategories, categories, addedItems));
+			_elm_lang$core$Native_List.fromArray(
+				[
+					A2(
+					_elm_lang$html$Html$ul,
+					_elm_lang$core$Native_List.fromArray(
+						[]),
+					A2(_user$project$CategorizedList$listCategories, categories, addedItems)),
+					A2(
+					_elm_lang$html$Html$div,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_user$project$CategorizedList$class(
+							_elm_lang$core$Native_List.fromArray(
+								[_user$project$AppCss$ListActions, _user$project$AppCss$TextButtonContainer]))
+						]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							A2(
+							_elm_lang$html$Html$button,
+							_elm_lang$core$Native_List.fromArray(
+								[
+									_user$project$CategorizedList$class(
+									_elm_lang$core$Native_List.fromArray(
+										[_user$project$AppCss$TextButton])),
+									_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$Clear)
+								]),
+							_elm_lang$core$Native_List.fromArray(
+								[
+									_elm_lang$html$Html$text('Clear List')
+								]))
+						]))
+				]));
 	});

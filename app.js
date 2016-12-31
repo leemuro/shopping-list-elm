@@ -12294,13 +12294,14 @@ var _user$project$AppCss$reset = _rtfeldman$elm_css$Css$mixin(
 			_rtfeldman$elm_css$Css$boxSizing(_rtfeldman$elm_css$Css$borderBox)
 		]));
 var _user$project$AppCss$NoItems = {ctor: 'NoItems'};
+var _user$project$AppCss$ListActions = {ctor: 'ListActions'};
 var _user$project$AppCss$ShoppingItemCompleted = {ctor: 'ShoppingItemCompleted'};
 var _user$project$AppCss$ShoppingItem = {ctor: 'ShoppingItem'};
 var _user$project$AppCss$ListCategoryHeader = {ctor: 'ListCategoryHeader'};
 var _user$project$AppCss$Hide = {ctor: 'Hide'};
 var _user$project$AppCss$Show = {ctor: 'Show'};
-var _user$project$AppCss$AddPanelButton = {ctor: 'AddPanelButton'};
-var _user$project$AppCss$AddPanelActions = {ctor: 'AddPanelActions'};
+var _user$project$AppCss$TextButton = {ctor: 'TextButton'};
+var _user$project$AppCss$TextButtonContainer = {ctor: 'TextButtonContainer'};
 var _user$project$AppCss$AddBox = {ctor: 'AddBox'};
 var _user$project$AppCss$AddPanel = {ctor: 'AddPanel'};
 var _user$project$AppCss$HeaderBarRight = {ctor: 'HeaderBarRight'};
@@ -12459,7 +12460,7 @@ var _user$project$AppCss$css = function (_p0) {
 				function (x, y) {
 					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
 				}),
-			_user$project$AppCss$AddPanelActions,
+			_user$project$AppCss$TextButtonContainer,
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$right),
@@ -12471,7 +12472,7 @@ var _user$project$AppCss$css = function (_p0) {
 				function (x, y) {
 					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
 				}),
-			_user$project$AppCss$AddPanelButton,
+			_user$project$AppCss$TextButton,
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_user$project$AppCss$baseFontFamilies,
@@ -12555,6 +12556,17 @@ var _user$project$AppCss$css = function (_p0) {
 				function (x, y) {
 					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
 				}),
+			_user$project$AppCss$ListActions,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_rtfeldman$elm_css$Css$padding(
+					_rtfeldman$elm_css$Css$em(0.5))
+				])),
+			A2(
+			F2(
+				function (x, y) {
+					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
+				}),
 			_user$project$AppCss$NoItems,
 			_elm_lang$core$Native_List.fromArray(
 				[
@@ -12587,7 +12599,7 @@ var _user$project$AddPanel$panelActions = A2(
 		[
 			_user$project$AddPanel$class(
 			_elm_lang$core$Native_List.fromArray(
-				[_user$project$AppCss$AddPanelActions]))
+				[_user$project$AppCss$TextButtonContainer]))
 		]),
 	_elm_lang$core$Native_List.fromArray(
 		[
@@ -12597,7 +12609,7 @@ var _user$project$AddPanel$panelActions = A2(
 				[
 					_user$project$AddPanel$class(
 					_elm_lang$core$Native_List.fromArray(
-						[_user$project$AppCss$AddPanelButton])),
+						[_user$project$AppCss$TextButton])),
 					_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$AddItems)
 				]),
 			_elm_lang$core$Native_List.fromArray(
@@ -12832,10 +12844,41 @@ var _user$project$CategorizedList$categorizedList = F2(
 		return _elm_lang$core$Native_Utils.eq(
 			_elm_lang$core$List$length(addedItems),
 			0) ? _user$project$CategorizedList$noItems : A2(
-			_elm_lang$html$Html$ul,
+			_elm_lang$html$Html$div,
 			_elm_lang$core$Native_List.fromArray(
 				[]),
-			A2(_user$project$CategorizedList$listCategories, categories, addedItems));
+			_elm_lang$core$Native_List.fromArray(
+				[
+					A2(
+					_elm_lang$html$Html$ul,
+					_elm_lang$core$Native_List.fromArray(
+						[]),
+					A2(_user$project$CategorizedList$listCategories, categories, addedItems)),
+					A2(
+					_elm_lang$html$Html$div,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_user$project$CategorizedList$class(
+							_elm_lang$core$Native_List.fromArray(
+								[_user$project$AppCss$ListActions, _user$project$AppCss$TextButtonContainer]))
+						]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							A2(
+							_elm_lang$html$Html$button,
+							_elm_lang$core$Native_List.fromArray(
+								[
+									_user$project$CategorizedList$class(
+									_elm_lang$core$Native_List.fromArray(
+										[_user$project$AppCss$TextButton])),
+									_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$Clear)
+								]),
+							_elm_lang$core$Native_List.fromArray(
+								[
+									_elm_lang$html$Html$text('Clear List')
+								]))
+						]))
+				]));
 	});
 
 var _user$project$HeaderBar$_p0 = _rtfeldman$elm_css_helpers$Html_CssHelpers$withNamespace('sl');
@@ -12956,22 +12999,80 @@ var _user$project$Main$appendTextAsNewItems = F3(
 			items,
 			A2(_user$project$Main$textToNewItems, text, currentItemId));
 	});
+var _user$project$Main$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$batch(
+		_elm_lang$core$Native_List.fromArray(
+			[]));
+};
+var _user$project$Main$defaultModel = {
+	newItems: '',
+	addedItems: _elm_lang$core$Native_List.fromArray(
+		[]),
+	categories: _user$project$Categories$defaultCategories,
+	currentItemId: 0,
+	addPanelVisible: false
+};
+var _user$project$Main$init = function (model) {
+	var _p0 = model;
+	if (_p0.ctor === 'Just') {
+		return {ctor: '_Tuple2', _0: _p0._0, _1: _elm_lang$core$Platform_Cmd$none};
+	} else {
+		return {ctor: '_Tuple2', _0: _user$project$Main$defaultModel, _1: _elm_lang$core$Platform_Cmd$none};
+	}
+};
+var _user$project$Main$setStorage = _elm_lang$core$Native_Platform.outgoingPort(
+	'setStorage',
+	function (v) {
+		return {
+			newItems: v.newItems,
+			addedItems: _elm_lang$core$Native_List.toArray(v.addedItems).map(
+				function (v) {
+					return {id: v.id, desc: v.desc, completed: v.completed};
+				}),
+			categories: _elm_lang$core$Native_List.toArray(v.categories).map(
+				function (v) {
+					return {
+						name: v.name,
+						matchers: _elm_lang$core$Native_List.toArray(v.matchers).map(
+							function (v) {
+								return v;
+							}),
+						exclusions: _elm_lang$core$Native_List.toArray(v.exclusions).map(
+							function (v) {
+								return v;
+							})
+					};
+				}),
+			currentItemId: v.currentItemId,
+			addPanelVisible: v.addPanelVisible
+		};
+	});
 var _user$project$Main$update = F2(
 	function (msg, model) {
-		var _p0 = msg;
-		switch (_p0.ctor) {
+		var _p1 = msg;
+		switch (_p1.ctor) {
 			case 'ToggleAddPanel':
-				return _elm_lang$core$Native_Utils.update(
+				var newModel = _elm_lang$core$Native_Utils.update(
 					model,
 					{
 						addPanelVisible: _elm_lang$core$Basics$not(model.addPanelVisible)
 					});
+				return {
+					ctor: '_Tuple2',
+					_0: newModel,
+					_1: _user$project$Main$setStorage(newModel)
+				};
 			case 'NewItems':
-				return _elm_lang$core$Native_Utils.update(
+				var newModel = _elm_lang$core$Native_Utils.update(
 					model,
-					{newItems: _p0._0});
+					{newItems: _p1._0});
+				return {
+					ctor: '_Tuple2',
+					_0: newModel,
+					_1: _user$project$Main$setStorage(newModel)
+				};
 			case 'AddItems':
-				return _elm_lang$core$Native_Utils.update(
+				var newModel = _elm_lang$core$Native_Utils.update(
 					model,
 					{
 						addedItems: A3(_user$project$Main$appendTextAsNewItems, model.addedItems, model.newItems, model.currentItemId),
@@ -12980,37 +13081,125 @@ var _user$project$Main$update = F2(
 						newItems: '',
 						addPanelVisible: false
 					});
+				return {
+					ctor: '_Tuple2',
+					_0: newModel,
+					_1: _user$project$Main$setStorage(newModel)
+				};
 			case 'ToggleItem':
-				return _elm_lang$core$Native_Utils.update(
+				var newModel = _elm_lang$core$Native_Utils.update(
 					model,
 					{
 						addedItems: A2(
 							_elm_lang$core$List$map,
 							function (i) {
-								return A2(_user$project$Main$toggleItemIfId, i, _p0._0);
+								return A2(_user$project$Main$toggleItemIfId, i, _p1._0);
 							},
 							model.addedItems)
 					});
+				return {
+					ctor: '_Tuple2',
+					_0: newModel,
+					_1: _user$project$Main$setStorage(newModel)
+				};
 			default:
-				return _elm_lang$core$Native_Utils.update(
+				var newModel = _elm_lang$core$Native_Utils.update(
 					model,
 					{
 						addedItems: _elm_lang$core$Native_List.fromArray(
 							[])
 					});
+				return {
+					ctor: '_Tuple2',
+					_0: newModel,
+					_1: _user$project$Main$setStorage(newModel)
+				};
 		}
 	});
-var _user$project$Main$model = {
-	newItems: '',
-	addedItems: _elm_lang$core$Native_List.fromArray(
-		[]),
-	categories: _user$project$Categories$defaultCategories,
-	currentItemId: 0,
-	addPanelVisible: false
-};
 var _user$project$Main$main = {
-	main: _elm_lang$html$Html_App$beginnerProgram(
-		{model: _user$project$Main$model, view: _user$project$Main$view, update: _user$project$Main$update})
+	main: _elm_lang$html$Html_App$programWithFlags(
+		{init: _user$project$Main$init, update: _user$project$Main$update, subscriptions: _user$project$Main$subscriptions, view: _user$project$Main$view}),
+	flags: _elm_lang$core$Json_Decode$oneOf(
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$core$Json_Decode$null(_elm_lang$core$Maybe$Nothing),
+				A2(
+				_elm_lang$core$Json_Decode$map,
+				_elm_lang$core$Maybe$Just,
+				A2(
+					_elm_lang$core$Json_Decode$andThen,
+					A2(_elm_lang$core$Json_Decode_ops[':='], 'addPanelVisible', _elm_lang$core$Json_Decode$bool),
+					function (addPanelVisible) {
+						return A2(
+							_elm_lang$core$Json_Decode$andThen,
+							A2(
+								_elm_lang$core$Json_Decode_ops[':='],
+								'addedItems',
+								_elm_lang$core$Json_Decode$list(
+									A2(
+										_elm_lang$core$Json_Decode$andThen,
+										A2(_elm_lang$core$Json_Decode_ops[':='], 'completed', _elm_lang$core$Json_Decode$bool),
+										function (completed) {
+											return A2(
+												_elm_lang$core$Json_Decode$andThen,
+												A2(_elm_lang$core$Json_Decode_ops[':='], 'desc', _elm_lang$core$Json_Decode$string),
+												function (desc) {
+													return A2(
+														_elm_lang$core$Json_Decode$andThen,
+														A2(_elm_lang$core$Json_Decode_ops[':='], 'id', _elm_lang$core$Json_Decode$int),
+														function (id) {
+															return _elm_lang$core$Json_Decode$succeed(
+																{completed: completed, desc: desc, id: id});
+														});
+												});
+										}))),
+							function (addedItems) {
+								return A2(
+									_elm_lang$core$Json_Decode$andThen,
+									A2(
+										_elm_lang$core$Json_Decode_ops[':='],
+										'categories',
+										_elm_lang$core$Json_Decode$list(
+											A2(
+												_elm_lang$core$Json_Decode$andThen,
+												A2(
+													_elm_lang$core$Json_Decode_ops[':='],
+													'exclusions',
+													_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$string)),
+												function (exclusions) {
+													return A2(
+														_elm_lang$core$Json_Decode$andThen,
+														A2(
+															_elm_lang$core$Json_Decode_ops[':='],
+															'matchers',
+															_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$string)),
+														function (matchers) {
+															return A2(
+																_elm_lang$core$Json_Decode$andThen,
+																A2(_elm_lang$core$Json_Decode_ops[':='], 'name', _elm_lang$core$Json_Decode$string),
+																function (name) {
+																	return _elm_lang$core$Json_Decode$succeed(
+																		{exclusions: exclusions, matchers: matchers, name: name});
+																});
+														});
+												}))),
+									function (categories) {
+										return A2(
+											_elm_lang$core$Json_Decode$andThen,
+											A2(_elm_lang$core$Json_Decode_ops[':='], 'currentItemId', _elm_lang$core$Json_Decode$int),
+											function (currentItemId) {
+												return A2(
+													_elm_lang$core$Json_Decode$andThen,
+													A2(_elm_lang$core$Json_Decode_ops[':='], 'newItems', _elm_lang$core$Json_Decode$string),
+													function (newItems) {
+														return _elm_lang$core$Json_Decode$succeed(
+															{addPanelVisible: addPanelVisible, addedItems: addedItems, categories: categories, currentItemId: currentItemId, newItems: newItems});
+													});
+											});
+									});
+							});
+					}))
+			]))
 };
 var _user$project$Main$ShoppingItem = F3(
 	function (a, b, c) {

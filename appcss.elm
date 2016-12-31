@@ -12,13 +12,14 @@ type CssClasses =
   | HeaderBarRight
   | AddPanel
   | AddBox
-  | AddPanelActions
-  | AddPanelButton
+  | TextButtonContainer
+  | TextButton
   | Show
   | Hide 
   | ListCategoryHeader
   | ShoppingItem 
   | ShoppingItemCompleted
+  | ListActions
   | NoItems
 
 reset = 
@@ -86,12 +87,12 @@ css =
       , border zero
       ]
 
-  , (.) AddPanelActions
+  , (.) TextButtonContainer
       [ textAlign right
       , paddingTop (em 0.5)
       ]
 
-  , (.) AddPanelButton
+  , (.) TextButton
       [ baseFontFamilies
       , fontSize (em 1)
       , fontWeight bold
@@ -123,6 +124,9 @@ css =
       [ textDecoration lineThrough
       , color (hex "ccc")
       ]
+
+  , (.) ListActions
+      [ padding (em 0.5) ]
 
   , (.) NoItems
       [ textAlign center ]

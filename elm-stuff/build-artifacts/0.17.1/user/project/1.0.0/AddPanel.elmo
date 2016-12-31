@@ -23,7 +23,7 @@ var _user$project$AddPanel$panelActions = A2(
 		[
 			_user$project$AddPanel$class(
 			_elm_lang$core$Native_List.fromArray(
-				[_user$project$AppCss$AddPanelActions]))
+				[_user$project$AppCss$TextButtonContainer]))
 		]),
 	_elm_lang$core$Native_List.fromArray(
 		[
@@ -33,7 +33,7 @@ var _user$project$AddPanel$panelActions = A2(
 				[
 					_user$project$AddPanel$class(
 					_elm_lang$core$Native_List.fromArray(
-						[_user$project$AppCss$AddPanelButton])),
+						[_user$project$AppCss$TextButton])),
 					_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$AddItems)
 				]),
 			_elm_lang$core$Native_List.fromArray(

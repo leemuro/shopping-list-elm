@@ -10,13 +10,14 @@ var _user$project$AppCss$reset = _rtfeldman$elm_css$Css$mixin(
 			_rtfeldman$elm_css$Css$boxSizing(_rtfeldman$elm_css$Css$borderBox)
 		]));
 var _user$project$AppCss$NoItems = {ctor: 'NoItems'};
+var _user$project$AppCss$ListActions = {ctor: 'ListActions'};
 var _user$project$AppCss$ShoppingItemCompleted = {ctor: 'ShoppingItemCompleted'};
 var _user$project$AppCss$ShoppingItem = {ctor: 'ShoppingItem'};
 var _user$project$AppCss$ListCategoryHeader = {ctor: 'ListCategoryHeader'};
 var _user$project$AppCss$Hide = {ctor: 'Hide'};
 var _user$project$AppCss$Show = {ctor: 'Show'};
-var _user$project$AppCss$AddPanelButton = {ctor: 'AddPanelButton'};
-var _user$project$AppCss$AddPanelActions = {ctor: 'AddPanelActions'};
+var _user$project$AppCss$TextButton = {ctor: 'TextButton'};
+var _user$project$AppCss$TextButtonContainer = {ctor: 'TextButtonContainer'};
 var _user$project$AppCss$AddBox = {ctor: 'AddBox'};
 var _user$project$AppCss$AddPanel = {ctor: 'AddPanel'};
 var _user$project$AppCss$HeaderBarRight = {ctor: 'HeaderBarRight'};
@@ -175,7 +176,7 @@ var _user$project$AppCss$css = function (_p0) {
 				function (x, y) {
 					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
 				}),
-			_user$project$AppCss$AddPanelActions,
+			_user$project$AppCss$TextButtonContainer,
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$right),
@@ -187,7 +188,7 @@ var _user$project$AppCss$css = function (_p0) {
 				function (x, y) {
 					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
 				}),
-			_user$project$AppCss$AddPanelButton,
+			_user$project$AppCss$TextButton,
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_user$project$AppCss$baseFontFamilies,
@@ -265,6 +266,17 @@ var _user$project$AppCss$css = function (_p0) {
 					_rtfeldman$elm_css$Css$textDecoration(_rtfeldman$elm_css$Css$lineThrough),
 					_rtfeldman$elm_css$Css$color(
 					_rtfeldman$elm_css$Css$hex('ccc'))
+				])),
+			A2(
+			F2(
+				function (x, y) {
+					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
+				}),
+			_user$project$AppCss$ListActions,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_rtfeldman$elm_css$Css$padding(
+					_rtfeldman$elm_css$Css$em(0.5))
 				])),
 			A2(
 			F2(

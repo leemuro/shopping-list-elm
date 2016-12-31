@@ -2,7 +2,7 @@ module CategorizedList exposing (categorizedList)
 
 import List
 import String
-import Html exposing (Html, h1, ul, li, p, text)
+import Html exposing (Html, div, h1, ul, li, p, button, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import AppMessages
@@ -15,7 +15,11 @@ categorizedList categories addedItems =
   if List.length addedItems == 0 then
     noItems
   else
-    ul [ ] (listCategories categories addedItems)
+    div [] 
+      [ ul [] (listCategories categories addedItems)
+      , div [ class [ AppCss.ListActions, AppCss.TextButtonContainer ] ]
+          [ button [ class [ AppCss.TextButton ], onClick AppMessages.Clear ] [ text "Clear List" ] ]
+      ]
 
 listCategories categories items =
   let x = 

@@ -25,9 +25,9 @@ addBox newItems =
     []
 
 panelActions =
-  div [ class [ AppCss.AddPanelActions ] ]
+  div [ class [ AppCss.TextButtonContainer ] ]
     [ button 
-      [ class [ AppCss.AddPanelButton ]
+      [ class [ AppCss.TextButton ]
       , onClick AppMessages.AddItems 
       ] 
       [ text "Add" ] 

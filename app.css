@@ -79,12 +79,12 @@ h1 {
     border: 0;
 }
 
-.slAddPanelActions {
+.slTextButtonContainer {
     text-align: right;
     padding-top: 0.5em;
 }
 
-.slAddPanelButton {
+.slTextButton {
     font-family: Droid Sans, Arial, sans-serif;
     font-size: 1em;
     font-weight: bold;
@@ -117,6 +117,10 @@ h1 {
 .slShoppingItemCompleted {
     text-decoration: line-through;
     color: #ccc;
+}
+
+.slListActions {
+    padding: 0.5em;
 }
 
 .slNoItems {

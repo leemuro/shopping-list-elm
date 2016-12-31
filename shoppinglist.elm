@@ -1,3 +1,5 @@
+port module Main exposing (..)
+
 import Html exposing (Html, div)
 import Html.Attributes exposing (style, name, content)
 import Html.App as App
@@ -31,8 +33,10 @@ type alias ShoppingList =
 
 type alias Model = ShoppingList
 
-model: Model
-model = {
+port setStorage : Model -> Cmd msg
+
+defaultModel : Model
+defaultModel = {
   newItems = ""
   , addedItems = []
   , categories = defaultCategories
@@ -40,31 +44,64 @@ model = {
   , addPanelVisible = False
   }
 
-main = 
-  App.beginnerProgram { model = model, view = view, update = update }
+main : Program (Maybe Model)
+main =
+  App.programWithFlags
+    { init = init
+    , update = update
+    , subscriptions = subscriptions
+    , view = view
+    }
 
+subscriptions : Model -> Sub AppMessages.Msg
+subscriptions model =
+  Sub.batch []
 
+init : Maybe Model -> ( Model, Cmd msg )
+init model =
+  case model of
+    Just model ->
+      ( model, Cmd.none )
+    Nothing ->
+      ( defaultModel, Cmd.none )
+
+update : AppMessages.Msg -> Model -> ( Model, Cmd AppMessages.Msg )
 update msg model =
   case msg of 
     AppMessages.ToggleAddPanel ->
-      { model | addPanelVisible = not model.addPanelVisible }
+      let newModel =
+        { model | addPanelVisible = not model.addPanelVisible }
+      in
+        ( newModel, setStorage newModel )
 
     AppMessages.NewItems newItems ->
-      { model | newItems = newItems }
+      let newModel =
+        { model | newItems = newItems }
+      in
+        ( newModel, setStorage newModel )
 
     AppMessages.AddItems ->
-      { model | 
-        addedItems = appendTextAsNewItems model.addedItems model.newItems model.currentItemId
-        , currentItemId = model.currentItemId + List.length (String.split "\n" model.newItems)
-        , newItems = ""
-        , addPanelVisible = False
-      }
+      let newModel =
+        { model | 
+          addedItems = appendTextAsNewItems model.addedItems model.newItems model.currentItemId
+          , currentItemId = model.currentItemId + List.length (String.split "\n" model.newItems)
+          , newItems = ""
+          , addPanelVisible = False
+        }
+      in
+        ( newModel, setStorage newModel )
 
     AppMessages.ToggleItem itemId ->
-      { model | addedItems = List.map (\i -> toggleItemIfId i itemId) model.addedItems }
+      let newModel =
+        { model | addedItems = List.map (\i -> toggleItemIfId i itemId) model.addedItems }
+      in
+        ( newModel, setStorage newModel )
 
     AppMessages.Clear ->
-      { model | addedItems = [] }
+      let newModel =
+        { model | addedItems = [] }
+      in
+        ( newModel, setStorage newModel )
 
 appendTextAsNewItems items text currentItemId =
   List.append items (textToNewItems text currentItemId)
