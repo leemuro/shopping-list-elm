@@ -22,7 +22,7 @@ defaultCategories = [
         ]
     , exclusions = 
         [ "can", "dried", "dry", "powder", "tsp", "tbsp", "teaspoon", "tablespoon", "frozen"
-        , "juice", "jam", "jelly", "sauce", "with green chilis", "ground"
+        , "juice", "jam", "jelly", "sauce", "with green chilis", "ground", "dr pepper", "dr. pepper"
         ]
     }
   , { name = "Meat"
@@ -46,7 +46,7 @@ defaultCategories = [
     }
   , { name = "Spices/Herbs"
     , matchers = 
-        [ "allspice", "all spice", "spice", "anise", "basil", "bay leaf", "caraway", "cardamom", "cayenne", "pepper"
+        [ "allspice", "all spice", "spice", "anise", "basil", "bay leaf", "caraway", "cardamom", "cayenne", "black pepper"
         , "celery seed", "chicory", "chili powder", "garlic", "chives", "cilantro", "cinnamon", "clove", "coriander"
         , "cumin", "curry", "dill", "fennel", "fenugreek", "ginger", "lavender", "marjoram", "mint", "mustard"
         , "nutmeg", "oregano", "paprika", "parsley", "rosemary", "saffron", "sage", "safflower", "tarragon"
@@ -63,7 +63,7 @@ defaultCategories = [
     , exclusions = []
     }  
   , { name = "Beverages"
-    , matchers = [ "pop", "soda", "water", "juice", "tea", "coke", "sprite", "dr pepper" ]
+    , matchers = [ "pop", "soda", "water", "juice", "tea", "coke", "sprite", "dr pepper", "drink" ]
     , exclusions = []
     }
   , { name = "Alcohol"
@@ -72,10 +72,6 @@ defaultCategories = [
         , "merlot", "vodka", "rum", "margarita", "tequila", "whisky", "bourbon"
         ]
     , exclusions = []
-    }
-  , { name = "Snacks"
-    , matchers = [ "chips", "chocolate", "crackers" ]
-    , exclusions = [] 
     }
   , { name = "Other"
     , matchers = []
