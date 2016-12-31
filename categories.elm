@@ -3,8 +3,8 @@ module Categories exposing (defaultCategories)
 defaultCategories = [
     { name = "Produce"
     , matchers = 
-        [ "asparagus", "arugula", "cabbage", "beans", "garlic", "beet", "onion", "bok choy"
-        , "lettuce", "broccoli", "peas", "radish", "rhubarb", "carrot", "spinach", "cauliflower"
+        [ "asparagus", "arugula", "cabbage", "beans", "garlic", "beet", "onion", "bok choy", "dill"
+        , "basil", "rosemary", "lettuce", "broccoli", "peas", "radish", "rhubarb", "carrot", "spinach", "cauliflower"
         , "cucumber", "chard", "spinach", "eggplant", "greens", "turnips", "watercress"
         , "endive", "escarole", "herbs", "leeks", "kale", "chive", "okra", "cilantro", "pepper"
         , "potato", "mizuna", "corn", "tomato", "watermelon", "melon", "thyme", "zucchini"
@@ -18,16 +18,16 @@ defaultCategories = [
         , "nance", "orange", "clementine", "mandarine", "tangerine", "papaya", "passionfruit", "peach"
         , "pear", "persimmon", "physalis", "plantain", "plum", "prune", "pineapple", "plumcot", "pomegranate"
         , "pomelo", "quince", "raspberry", "salmonberry", "rambutan", "redcurrant", "salak", "satsuma"
-        , "strawberry", "tamarillo", "tamarind", "yuzu"
+        , "strawberry", "tamarillo", "tamarind", "yuzu", "romaine"
         ]
     , exclusions = 
         [ "can", "dried", "dry", "powder", "tsp", "tbsp", "teaspoon", "tablespoon", "frozen"
-        , "juice", "jam", "jelly", "sauce", "with green chilis" 
+        , "juice", "jam", "jelly", "sauce", "with green chilis", "ground"
         ]
     }
   , { name = "Meat"
     , matchers = 
-        [ "chicken", "beef", "pork", "turkey", "meat", "duck", "goose", "quail", "carp", "catfish"
+        [ "chicken", "beef", "pork", "turkey", "meat", "roast", "duck", "goose", "quail", "carp", "catfish"
         , "salmon", "tilapia", "herring", "fish", "lobster", "shrimp", "mussels", "prawns", "oysters"
         ] 
     , exclusions = [ "can", "broth", "stock", "bouillon" ]
@@ -47,12 +47,12 @@ defaultCategories = [
   , { name = "Spices/Herbs"
     , matchers = 
         [ "allspice", "all spice", "spice", "anise", "basil", "bay leaf", "caraway", "cardamom", "cayenne", "pepper"
-        , "celery seed", "chicory", "chili powder", "dill", "garlic", "chives", "cilantro", "cinnamon", "clove", "coriander"
+        , "celery seed", "chicory", "chili powder", "garlic", "chives", "cilantro", "cinnamon", "clove", "coriander"
         , "cumin", "curry", "dill", "fennel", "fenugreek", "ginger", "lavender", "marjoram", "mint", "mustard"
         , "nutmeg", "oregano", "paprika", "parsley", "rosemary", "saffron", "sage", "safflower", "tarragon"
         , "thyme", "turmeric", "vanilla", "salt", "powder", "dried onion", "dried minced onion"
         ] 
-    , exclusions = [ "fresh" ]
+    , exclusions = []
     }
   , { name = "Frozen Goods"
     , matchers = [ "frozen", "freezer" ]
@@ -63,7 +63,14 @@ defaultCategories = [
     , exclusions = []
     }  
   , { name = "Beverages"
-    , matchers = [ "pop", "soda", "water", "juice", "tea", "coke", "sprite", "dr", "dr pepper" ]
+    , matchers = [ "pop", "soda", "water", "juice", "tea", "coke", "sprite", "dr pepper" ]
+    , exclusions = []
+    }
+  , { name = "Alcohol"
+    , matchers = 
+        [ "beer", "wine", "vodka", "moscato", "chardonay", "pino grigio"
+        , "merlot", "vodka", "rum", "margarita", "tequila", "whisky", "bourbon"
+        ]
     , exclusions = []
     }
   , { name = "Snacks"
