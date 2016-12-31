@@ -3,6 +3,7 @@ import Html.Attributes exposing (style, name, content)
 import Html.App as App
 import String
 import List
+import Categories exposing (defaultCategories)
 import AppMessages
 import HeaderBar exposing (headerBar)
 import AddPanel exposing (addPanel)
@@ -17,6 +18,7 @@ type alias ShoppingItem =
 type alias Categories = 
   { name: String
   , matchers: List String
+  , exclusions: List String
   }
 
 type alias ShoppingList =
@@ -33,50 +35,7 @@ model: Model
 model = {
   newItems = ""
   , addedItems = []
-  , categories = [
-      { name = "Produce", 
-        matchers = 
-          [ "Asparagus", "Arugula", "Cabbage", "Beans", "Garlic"
-          , "Beet", "Onion", "Bok Choy", "Lettuce", "Broccoli", "Peas", "Radish", "Rhubarb", "Carrot"
-          , "Spinach" ,"Cauliflower" ,"Cucumber" ,"Chard" ,"Spinach" ,"Eggplant" ,"Greens" ,"Turnips"
-          , "Watercress" ,"Endive" ,"Escarole" ,"Herbs" ,"Leeks", "Kale" ,"Chive"
-          , "Okra" ,"Cilantro" ,"Pepper" ,"Dill" ,"Potato" ,"Mizuna", "Corn", "Tomato"
-          , "Watermelon" ,"Melon" ,"Thyme" ,"Zucchini" ,"Squash" ,"Rutabaga" ,"Apple" ,"Apricot" ,"Avocado"
-          , "Banana" ,"Bilberry" ,"Blackberry" ,"Blackcurrant" ,"Blueberry" ,"Boysenberry" ,"Currant"
-          , "Cherry" ,"Cherimoya" ,"Cloudberry" ,"Coconut" ,"Cranberry" ,"Cucumber" ,"Damson" ,"Date"
-          , "Dragonfruit" ,"Durian" ,"Elderberry" ,"Feijoa" ,"Fig" ,"Goji" ,"Berry" ,"Gooseberry" ,"Grape"
-          , "Raisin" ,"Grapefruit" ,"Guava" ,"Honeyberry" ,"Huckleberry" ,"Jabuticaba" ,"Jackfruit" ,"Jambul"
-          , "Jujube" ,"Kiwifruit" ,"Kumquat" ,"Lemon" ,"Lime" ,"Loquat" ,"Longan" ,"Lychee" ,"Mango"
-          , "Marionberry" ,"Melon" ,"Cantaloupe" ,"Honeydew" ,"Watermelon" ,"Fruit" ,"Mulberry" ,"Nectarine"
-          , "Nance" ,"Olive" ,"Orange" ,"Clementine" ,"Mandarine" ,"Tangerine" ,"Papaya" ,"Passionfruit" ,"Peach"
-          , "Pear" ,"Persimmon" ,"Physalis" ,"Plantain" ,"Plum" ,"Prune" ,"Pineapple" ,"Plumcot" ,"Pomegranate"
-          , "Pomelo" ,"Quince" ,"Raspberry" ,"Salmonberry" ,"Rambutan" ,"Redcurrant" ,"Salak" ,"Satsuma"
-          , "Strawberry" ,"Tamarillo" ,"Tamarind" ,"Yuzu"
-          ]
-      }
-    , { name = "Meat", 
-        matchers = 
-          [ "chicken", "beef", "pork", "turkey", "meat", "duck", "goose", "quail", "carp", "catfish"
-          , "salmon", "tilapia", "herring", "fish", "lobster", "shrimp", "mussels", "prawns", "oysters"] 
-      }  
-    , { name = "Dairy", 
-        matchers = 
-          [ "egg", "milk", "cream", "cheese", "yogurt", "cheddar", "swiss", "butter", "jack", "colby" ] 
-      }  
-    , { name = "Canned/Jarred Goods"
-      , matchers = [ "can", "jar" ]
-      }  
-    , { name = "Spices/Herbs", matchers = 
-        [ "allspice", "all spice", "spice", "anise", "basil", "bay leaf", "caraway", "cardamom", "cayenne", "pepper"
-        , "celery seed", "chicory", "chili powder", "garlic", "chives", "cilantro", "cinnamon", "clove", "coriander"
-        , "cumin", "curry", "dill", "fennel", "fenugreek", "ginger", "lavender", "marjoram", "mint", "mustard"
-        , "nutmeg", "oregano", "paprika", "parsley", "rosemary", "saffron", "sage", "safflower", "tarragon"
-        , "thyme", "turmeric", "vanilla", "salt", "powder"
-        ] 
-      }
-    , { name = "Snacks", matchers = ["chips", "chocolate", "crackers"] }
-    , { name = "Other", matchers = [] }
-    ]
+  , categories = defaultCategories
   , currentItemId = 0
   , addPanelVisible = False
   }

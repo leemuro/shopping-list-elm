@@ -12627,8 +12627,68 @@ var _user$project$AddPanel$addPanel = F2(
 				]));
 	});
 
-var _user$project$CategorizedList$itemMatches = F2(
-	function (item, matchers) {
+var _user$project$Categories$defaultCategories = _elm_lang$core$Native_List.fromArray(
+	[
+		{
+		name: 'Produce',
+		matchers: _elm_lang$core$Native_List.fromArray(
+			['asparagus', 'arugula', 'cabbage', 'beans', 'garlic', 'beet', 'onion', 'bok choy', 'lettuce', 'broccoli', 'peas', 'radish', 'rhubarb', 'carrot', 'spinach', 'cauliflower', 'cucumber', 'chard', 'spinach', 'eggplant', 'greens', 'turnips', 'watercress', 'endive', 'escarole', 'herbs', 'leeks', 'kale', 'chive', 'okra', 'cilantro', 'pepper', 'potato', 'mizuna', 'corn', 'tomato', 'watermelon', 'melon', 'thyme', 'zucchini', 'squash', 'rutabaga', 'apple', 'apricot', 'avocado', 'banana', 'bilberry', 'blackberry', 'blackcurrant', 'blueberry', 'boysenberry', 'currant', 'cherry', 'cherimoya', 'cloudberry', 'coconut', 'cranberry', 'cucumber', 'damson', 'date', 'dragonfruit', 'durian', 'elderberry', 'feijoa', 'fig', 'goji', 'berry', 'gooseberry', 'grape', 'raisin', 'grapefruit', 'guava', 'honeyberry', 'huckleberry', 'jabuticaba', 'jackfruit', 'jambul', 'jujube', 'kiwifruit', 'kumquat', 'lemon', 'lime', 'loquat', 'longan', 'lychee', 'mango', 'marionberry', 'melon', 'cantaloupe', 'honeydew', 'watermelon', 'fruit', 'mulberry', 'nectarine', 'nance', 'orange', 'clementine', 'mandarine', 'tangerine', 'papaya', 'passionfruit', 'peach', 'pear', 'persimmon', 'physalis', 'plantain', 'plum', 'prune', 'pineapple', 'plumcot', 'pomegranate', 'pomelo', 'quince', 'raspberry', 'salmonberry', 'rambutan', 'redcurrant', 'salak', 'satsuma', 'strawberry', 'tamarillo', 'tamarind', 'yuzu']),
+		exclusions: _elm_lang$core$Native_List.fromArray(
+			['can', 'powder', 'tsp', 'tbsp', 'frozen', 'juice', 'jam', 'jelly', 'sauce', 'with green chilis'])
+	},
+		{
+		name: 'Meat',
+		matchers: _elm_lang$core$Native_List.fromArray(
+			['chicken', 'beef', 'pork', 'turkey', 'meat', 'duck', 'goose', 'quail', 'carp', 'catfish', 'salmon', 'tilapia', 'herring', 'fish', 'lobster', 'shrimp', 'mussels', 'prawns', 'oysters']),
+		exclusions: _elm_lang$core$Native_List.fromArray(
+			['can', 'broth', 'stock', 'bouillon'])
+	},
+		{
+		name: 'Canned/Jarred Goods',
+		matchers: _elm_lang$core$Native_List.fromArray(
+			['can', 'jar', 'diced tomato', 'crushed tomato', 'tomato sauce', 'broth', 'soup', 'stock', 'olive']),
+		exclusions: _elm_lang$core$Native_List.fromArray(
+			[])
+	},
+		{
+		name: 'Spices/Herbs',
+		matchers: _elm_lang$core$Native_List.fromArray(
+			['allspice', 'all spice', 'spice', 'anise', 'basil', 'bay leaf', 'caraway', 'cardamom', 'cayenne', 'pepper', 'celery seed', 'chicory', 'chili powder', 'dill', 'garlic', 'chives', 'cilantro', 'cinnamon', 'clove', 'coriander', 'cumin', 'curry', 'dill', 'fennel', 'fenugreek', 'ginger', 'lavender', 'marjoram', 'mint', 'mustard', 'nutmeg', 'oregano', 'paprika', 'parsley', 'rosemary', 'saffron', 'sage', 'safflower', 'tarragon', 'thyme', 'turmeric', 'vanilla', 'salt', 'powder']),
+		exclusions: _elm_lang$core$Native_List.fromArray(
+			['fresh'])
+	},
+		{
+		name: 'Frozen Goods',
+		matchers: _elm_lang$core$Native_List.fromArray(
+			['frozen', 'freezer']),
+		exclusions: _elm_lang$core$Native_List.fromArray(
+			[])
+	},
+		{
+		name: 'Dairy',
+		matchers: _elm_lang$core$Native_List.fromArray(
+			['egg', 'milk', 'cream', 'cheese', 'yogurt', 'cheddar', 'swiss', 'butter', 'jack', 'colby']),
+		exclusions: _elm_lang$core$Native_List.fromArray(
+			[])
+	},
+		{
+		name: 'Snacks',
+		matchers: _elm_lang$core$Native_List.fromArray(
+			['chips', 'chocolate', 'crackers']),
+		exclusions: _elm_lang$core$Native_List.fromArray(
+			[])
+	},
+		{
+		name: 'Other',
+		matchers: _elm_lang$core$Native_List.fromArray(
+			[]),
+		exclusions: _elm_lang$core$Native_List.fromArray(
+			[])
+	}
+	]);
+
+var _user$project$CategorizedList$itemMatches = F3(
+	function (item, matchers, exclusions) {
 		return A2(
 			_elm_lang$core$List$any,
 			function (matcher) {
@@ -12637,21 +12697,29 @@ var _user$project$CategorizedList$itemMatches = F2(
 					_elm_lang$core$String$toLower(matcher),
 					_elm_lang$core$String$toLower(item.desc));
 			},
-			matchers);
+			matchers) && _elm_lang$core$Basics$not(
+			A2(
+				_elm_lang$core$List$any,
+				function (exclusion) {
+					return A2(
+						_elm_lang$core$String$contains,
+						_elm_lang$core$String$toLower(exclusion),
+						_elm_lang$core$String$toLower(item.desc));
+				},
+				exclusions));
 	});
 var _user$project$CategorizedList$itemsInNoCategory = F2(
 	function (items, categories) {
-		var allMatchers = A2(
-			_elm_lang$core$List$concatMap,
-			function (c) {
-				return c.matchers;
-			},
-			categories);
 		return A2(
 			_elm_lang$core$List$filter,
 			function (item) {
 				return _elm_lang$core$Basics$not(
-					A2(_user$project$CategorizedList$itemMatches, item, allMatchers));
+					A2(
+						_elm_lang$core$List$any,
+						function (category) {
+							return A3(_user$project$CategorizedList$itemMatches, item, category.matchers, category.exclusions);
+						},
+						categories));
 			},
 			items);
 	});
@@ -12662,7 +12730,7 @@ var _user$project$CategorizedList$itemsInCategory = F3(
 			0) > 0) ? A2(
 			_elm_lang$core$List$filter,
 			function (item) {
-				return A2(_user$project$CategorizedList$itemMatches, item, category.matchers);
+				return A3(_user$project$CategorizedList$itemMatches, item, category.matchers, category.exclusions);
 			},
 			items) : A2(_user$project$CategorizedList$itemsInNoCategory, items, categories);
 	});
@@ -12936,44 +13004,7 @@ var _user$project$Main$model = {
 	newItems: '',
 	addedItems: _elm_lang$core$Native_List.fromArray(
 		[]),
-	categories: _elm_lang$core$Native_List.fromArray(
-		[
-			{
-			name: 'Produce',
-			matchers: _elm_lang$core$Native_List.fromArray(
-				['Asparagus', 'Arugula', 'Cabbage', 'Beans', 'Garlic', 'Beet', 'Onion', 'Bok Choy', 'Lettuce', 'Broccoli', 'Peas', 'Radish', 'Rhubarb', 'Carrot', 'Spinach', 'Cauliflower', 'Cucumber', 'Chard', 'Spinach', 'Eggplant', 'Greens', 'Turnips', 'Watercress', 'Endive', 'Escarole', 'Herbs', 'Leeks', 'Kale', 'Chive', 'Okra', 'Cilantro', 'Pepper', 'Dill', 'Potato', 'Mizuna', 'Corn', 'Tomato', 'Watermelon', 'Melon', 'Thyme', 'Zucchini', 'Squash', 'Rutabaga', 'Apple', 'Apricot', 'Avocado', 'Banana', 'Bilberry', 'Blackberry', 'Blackcurrant', 'Blueberry', 'Boysenberry', 'Currant', 'Cherry', 'Cherimoya', 'Cloudberry', 'Coconut', 'Cranberry', 'Cucumber', 'Damson', 'Date', 'Dragonfruit', 'Durian', 'Elderberry', 'Feijoa', 'Fig', 'Goji', 'Berry', 'Gooseberry', 'Grape', 'Raisin', 'Grapefruit', 'Guava', 'Honeyberry', 'Huckleberry', 'Jabuticaba', 'Jackfruit', 'Jambul', 'Jujube', 'Kiwifruit', 'Kumquat', 'Lemon', 'Lime', 'Loquat', 'Longan', 'Lychee', 'Mango', 'Marionberry', 'Melon', 'Cantaloupe', 'Honeydew', 'Watermelon', 'Fruit', 'Mulberry', 'Nectarine', 'Nance', 'Olive', 'Orange', 'Clementine', 'Mandarine', 'Tangerine', 'Papaya', 'Passionfruit', 'Peach', 'Pear', 'Persimmon', 'Physalis', 'Plantain', 'Plum', 'Prune', 'Pineapple', 'Plumcot', 'Pomegranate', 'Pomelo', 'Quince', 'Raspberry', 'Salmonberry', 'Rambutan', 'Redcurrant', 'Salak', 'Satsuma', 'Strawberry', 'Tamarillo', 'Tamarind', 'Yuzu'])
-		},
-			{
-			name: 'Meat',
-			matchers: _elm_lang$core$Native_List.fromArray(
-				['chicken', 'beef', 'pork', 'turkey', 'meat', 'duck', 'goose', 'quail', 'carp', 'catfish', 'salmon', 'tilapia', 'herring', 'fish', 'lobster', 'shrimp', 'mussels', 'prawns', 'oysters'])
-		},
-			{
-			name: 'Dairy',
-			matchers: _elm_lang$core$Native_List.fromArray(
-				['egg', 'milk', 'cream', 'cheese', 'yogurt', 'cheddar', 'swiss', 'butter', 'jack', 'colby'])
-		},
-			{
-			name: 'Canned/Jarred Goods',
-			matchers: _elm_lang$core$Native_List.fromArray(
-				['can', 'jar'])
-		},
-			{
-			name: 'Spices/Herbs',
-			matchers: _elm_lang$core$Native_List.fromArray(
-				['allspice', 'all spice', 'spice', 'anise', 'basil', 'bay leaf', 'caraway', 'cardamom', 'cayenne', 'pepper', 'celery seed', 'chicory', 'chili powder', 'garlic', 'chives', 'cilantro', 'cinnamon', 'clove', 'coriander', 'cumin', 'curry', 'dill', 'fennel', 'fenugreek', 'ginger', 'lavender', 'marjoram', 'mint', 'mustard', 'nutmeg', 'oregano', 'paprika', 'parsley', 'rosemary', 'saffron', 'sage', 'safflower', 'tarragon', 'thyme', 'turmeric', 'vanilla', 'salt', 'powder'])
-		},
-			{
-			name: 'Snacks',
-			matchers: _elm_lang$core$Native_List.fromArray(
-				['chips', 'chocolate', 'crackers'])
-		},
-			{
-			name: 'Other',
-			matchers: _elm_lang$core$Native_List.fromArray(
-				[])
-		}
-		]),
+	categories: _user$project$Categories$defaultCategories,
 	currentItemId: 0,
 	addPanelVisible: false
 };
@@ -12985,9 +13016,9 @@ var _user$project$Main$ShoppingItem = F3(
 	function (a, b, c) {
 		return {id: a, desc: b, completed: c};
 	});
-var _user$project$Main$Categories = F2(
-	function (a, b) {
-		return {name: a, matchers: b};
+var _user$project$Main$Categories = F3(
+	function (a, b, c) {
+		return {name: a, matchers: b, exclusions: c};
 	});
 var _user$project$Main$ShoppingList = F5(
 	function (a, b, c, d, e) {

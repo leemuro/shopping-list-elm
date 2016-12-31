@@ -40,18 +40,18 @@ categoryLists categories items =
 
 itemsInCategory items category categories =
   if List.length category.matchers > 0 then
-    List.filter (\item -> itemMatches item category.matchers) items
+    List.filter (\item -> itemMatches item category.matchers category.exclusions) items
   else
     itemsInNoCategory items categories
 
-itemMatches item matchers =
+itemMatches item matchers exclusions =
   List.any (\matcher -> String.contains (String.toLower matcher) (String.toLower item.desc)) matchers
+  && not (List.any (\exclusion -> String.contains (String.toLower exclusion) (String.toLower item.desc)) exclusions)
 
 itemsInNoCategory items categories =
-  let
-    allMatchers = List.concatMap (\c -> c.matchers) categories
-  in
-    List.filter (\item -> not (itemMatches item allMatchers)) items
+  List.filter (\item -> 
+    (not (List.any (\category -> 
+      itemMatches item category.matchers category.exclusions) categories ))) items
 
 itemClass item =
   if item.completed then

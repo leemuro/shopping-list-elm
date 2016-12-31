@@ -1,5 +1,5 @@
-var _user$project$CategorizedList$itemMatches = F2(
-	function (item, matchers) {
+var _user$project$CategorizedList$itemMatches = F3(
+	function (item, matchers, exclusions) {
 		return A2(
 			_elm_lang$core$List$any,
 			function (matcher) {
@@ -8,21 +8,29 @@ var _user$project$CategorizedList$itemMatches = F2(
 					_elm_lang$core$String$toLower(matcher),
 					_elm_lang$core$String$toLower(item.desc));
 			},
-			matchers);
+			matchers) && _elm_lang$core$Basics$not(
+			A2(
+				_elm_lang$core$List$any,
+				function (exclusion) {
+					return A2(
+						_elm_lang$core$String$contains,
+						_elm_lang$core$String$toLower(exclusion),
+						_elm_lang$core$String$toLower(item.desc));
+				},
+				exclusions));
 	});
 var _user$project$CategorizedList$itemsInNoCategory = F2(
 	function (items, categories) {
-		var allMatchers = A2(
-			_elm_lang$core$List$concatMap,
-			function (c) {
-				return c.matchers;
-			},
-			categories);
 		return A2(
 			_elm_lang$core$List$filter,
 			function (item) {
 				return _elm_lang$core$Basics$not(
-					A2(_user$project$CategorizedList$itemMatches, item, allMatchers));
+					A2(
+						_elm_lang$core$List$any,
+						function (category) {
+							return A3(_user$project$CategorizedList$itemMatches, item, category.matchers, category.exclusions);
+						},
+						categories));
 			},
 			items);
 	});
@@ -33,7 +41,7 @@ var _user$project$CategorizedList$itemsInCategory = F3(
 			0) > 0) ? A2(
 			_elm_lang$core$List$filter,
 			function (item) {
-				return A2(_user$project$CategorizedList$itemMatches, item, category.matchers);
+				return A3(_user$project$CategorizedList$itemMatches, item, category.matchers, category.exclusions);
 			},
 			items) : A2(_user$project$CategorizedList$itemsInNoCategory, items, categories);
 	});
