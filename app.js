@@ -12559,7 +12559,13 @@ var _user$project$AppCss$css = function (_p0) {
 			_user$project$AppCss$ListActions,
 			_elm_lang$core$Native_List.fromArray(
 				[
-					_rtfeldman$elm_css$Css$padding(
+					_rtfeldman$elm_css$Css$paddingTop(
+					_rtfeldman$elm_css$Css$em(1)),
+					_rtfeldman$elm_css$Css$paddingBottom(
+					_rtfeldman$elm_css$Css$em(1)),
+					_rtfeldman$elm_css$Css$paddingLeft(
+					_rtfeldman$elm_css$Css$em(0.5)),
+					_rtfeldman$elm_css$Css$paddingRight(
 					_rtfeldman$elm_css$Css$em(0.5))
 				])),
 			A2(
