@@ -13049,7 +13049,13 @@ var _user$project$Main$defaultModel = {
 var _user$project$Main$init = function (model) {
 	var _p0 = model;
 	if (_p0.ctor === 'Just') {
-		return {ctor: '_Tuple2', _0: _p0._0, _1: _elm_lang$core$Platform_Cmd$none};
+		return {
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$Native_Utils.update(
+				_p0._0,
+				{categories: _user$project$Categories$defaultCategories}),
+			_1: _elm_lang$core$Platform_Cmd$none
+		};
 	} else {
 		return {ctor: '_Tuple2', _0: _user$project$Main$defaultModel, _1: _elm_lang$core$Platform_Cmd$none};
 	}

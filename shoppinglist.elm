@@ -61,7 +61,7 @@ init : Maybe Model -> ( Model, Cmd msg )
 init model =
   case model of
     Just model ->
-      ( model, Cmd.none )
+      ( { model | categories = defaultCategories }, Cmd.none )
     Nothing ->
       ( defaultModel, Cmd.none )
 
