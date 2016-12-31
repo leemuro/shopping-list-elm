@@ -12282,6 +12282,7 @@ var _user$project$AppMessages$NewItems = function (a) {
 };
 var _user$project$AppMessages$ToggleAddPanel = {ctor: 'ToggleAddPanel'};
 
+var _user$project$AppCss$lightGrayColor = _rtfeldman$elm_css$Css$hex('eee');
 var _user$project$AppCss$accentColor = _rtfeldman$elm_css$Css$hex('F95759');
 var _user$project$AppCss$baseFontFamilies = _rtfeldman$elm_css$Css$fontFamilies(
 	_elm_lang$core$Native_List.fromArray(
@@ -12430,8 +12431,7 @@ var _user$project$AppCss$css = function (_p0) {
 			_user$project$AppCss$AddPanel,
 			_elm_lang$core$Native_List.fromArray(
 				[
-					_rtfeldman$elm_css$Css$backgroundColor(
-					_rtfeldman$elm_css$Css$hex('eee')),
+					_rtfeldman$elm_css$Css$backgroundColor(_user$project$AppCss$lightGrayColor),
 					_rtfeldman$elm_css$Css$padding(
 					_rtfeldman$elm_css$Css$em(0.75))
 				])),
@@ -12519,7 +12519,7 @@ var _user$project$AppCss$css = function (_p0) {
 					_rtfeldman$elm_css$Css$borderBottom3,
 					_rtfeldman$elm_css$Css$px(1),
 					_rtfeldman$elm_css$Css$solid,
-					_rtfeldman$elm_css$Css$hex('eee'))
+					_user$project$AppCss$lightGrayColor)
 				])),
 			A2(
 			F2(
@@ -12537,7 +12537,7 @@ var _user$project$AppCss$css = function (_p0) {
 					_rtfeldman$elm_css$Css$borderBottom3,
 					_rtfeldman$elm_css$Css$px(1),
 					_rtfeldman$elm_css$Css$solid,
-					_rtfeldman$elm_css$Css$hex('eee'))
+					_user$project$AppCss$lightGrayColor)
 				])),
 			A2(
 			F2(
@@ -12566,7 +12566,8 @@ var _user$project$AppCss$css = function (_p0) {
 					_rtfeldman$elm_css$Css$paddingLeft(
 					_rtfeldman$elm_css$Css$em(0.5)),
 					_rtfeldman$elm_css$Css$paddingRight(
-					_rtfeldman$elm_css$Css$em(0.5))
+					_rtfeldman$elm_css$Css$em(0.5)),
+					_rtfeldman$elm_css$Css$backgroundColor(_user$project$AppCss$lightGrayColor)
 				])),
 			A2(
 			F2(

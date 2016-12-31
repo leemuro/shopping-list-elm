@@ -33,6 +33,7 @@ baseFontFamilies =
   fontFamilies ["Droid Sans", "Arial", "sans-serif"] 
 
 accentColor = hex "F95759"
+lightGrayColor = hex "eee"
 
 css =
   (stylesheet << namespace "sl")
@@ -73,7 +74,7 @@ css =
       ]
 
   , (.) AddPanel
-      [ backgroundColor (hex "eee")
+      [ backgroundColor lightGrayColor
       , padding (em 0.75)
       ]
 
@@ -111,13 +112,13 @@ css =
 
   , (.) ListCategoryHeader
       [ padding (em 1)
-      , borderBottom3 (px 1) solid (hex "eee")
+      , borderBottom3 (px 1) solid lightGrayColor
       ]
 
   , (.) ShoppingItem
       [ padding (em 1) 
       , paddingLeft (em 2)
-      , borderBottom3 (px 1) solid (hex "eee")
+      , borderBottom3 (px 1) solid lightGrayColor
       ]
 
   , (.) ShoppingItemCompleted
@@ -130,6 +131,7 @@ css =
       , paddingBottom (em 1)
       , paddingLeft (em 0.5)
       , paddingRight (em 0.5)
+      , backgroundColor lightGrayColor
       ]
 
   , (.) NoItems
