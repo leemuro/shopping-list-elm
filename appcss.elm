@@ -131,7 +131,6 @@ css =
       , paddingBottom (em 1)
       , paddingLeft (em 0.5)
       , paddingRight (em 0.5)
-      , backgroundColor lightGrayColor
       ]
 
   , (.) NoItems

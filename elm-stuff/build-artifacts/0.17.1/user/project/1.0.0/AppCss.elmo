@@ -282,8 +282,7 @@ var _user$project$AppCss$css = function (_p0) {
 					_rtfeldman$elm_css$Css$paddingLeft(
 					_rtfeldman$elm_css$Css$em(0.5)),
 					_rtfeldman$elm_css$Css$paddingRight(
-					_rtfeldman$elm_css$Css$em(0.5)),
-					_rtfeldman$elm_css$Css$backgroundColor(_user$project$AppCss$lightGrayColor)
+					_rtfeldman$elm_css$Css$em(0.5))
 				])),
 			A2(
 			F2(
