@@ -110,7 +110,8 @@ textToNewItems text currentItemId =
   let 
     lines = List.indexedMap (,) (String.split "\n" text)
   in
-    List.map (\line -> newItem (currentItemId + (fst line)) (snd line)) lines
+    List.filter (\item -> not (item.desc == ""))
+      (List.map (\line -> newItem (currentItemId + (fst line)) (String.trim (snd line))) lines)
 
 newItem id desc =
   { id = id, desc = desc, completed = False }

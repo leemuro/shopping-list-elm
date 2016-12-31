@@ -12989,14 +12989,21 @@ var _user$project$Main$textToNewItems = F2(
 				}),
 			A2(_elm_lang$core$String$split, '\n', text));
 		return A2(
-			_elm_lang$core$List$map,
-			function (line) {
-				return A2(
-					_user$project$Main$newItem,
-					currentItemId + _elm_lang$core$Basics$fst(line),
-					_elm_lang$core$Basics$snd(line));
+			_elm_lang$core$List$filter,
+			function (item) {
+				return _elm_lang$core$Basics$not(
+					_elm_lang$core$Native_Utils.eq(item.desc, ''));
 			},
-			lines);
+			A2(
+				_elm_lang$core$List$map,
+				function (line) {
+					return A2(
+						_user$project$Main$newItem,
+						currentItemId + _elm_lang$core$Basics$fst(line),
+						_elm_lang$core$String$trim(
+							_elm_lang$core$Basics$snd(line)));
+				},
+				lines));
 	});
 var _user$project$Main$appendTextAsNewItems = F3(
 	function (items, text, currentItemId) {
