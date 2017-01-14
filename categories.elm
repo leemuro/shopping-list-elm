@@ -18,11 +18,12 @@ defaultCategories = [
         , "nance", "orange", "clementine", "mandarine", "tangerine", "papaya", "passionfruit", "peach"
         , "pear", "persimmon", "physalis", "plantain", "plum", "prune", "pineapple", "plumcot", "pomegranate"
         , "pomelo", "quince", "raspberry", "salmonberry", "rambutan", "redcurrant", "salak", "satsuma"
-        , "strawberry", "tamarillo", "tamarind", "yuzu", "romaine"
+        , "strawberry", "tamarillo", "tamarind", "yuzu", "romaine", "celery"
         ]
     , exclusions = 
         [ "can", "dried", "dry", "powder", "tsp", "tbsp", "teaspoon", "tablespoon", "frozen"
         , "juice", "jam", "jelly", "sauce", "with green chilis", "ground", "dr pepper", "dr. pepper"
+        , "thawed", "oil", "pop"
         ]
     }
   , { name = "Meat"
@@ -50,21 +51,21 @@ defaultCategories = [
         , "celery seed", "chicory", "chili powder", "garlic", "chives", "cilantro", "cinnamon", "clove", "coriander"
         , "cumin", "curry", "dill", "fennel", "fenugreek", "ginger", "lavender", "marjoram", "mint", "mustard"
         , "nutmeg", "oregano", "paprika", "parsley", "rosemary", "saffron", "sage", "safflower", "tarragon"
-        , "thyme", "turmeric", "vanilla", "salt", "powder", "dried onion", "dried minced onion"
+        , "thyme", "turmeric", "vanilla", "salt", "powder", "dried onion", "dried minced onion", "pepper"
         ] 
     , exclusions = []
     }
   , { name = "Frozen Goods"
-    , matchers = [ "frozen", "freezer" ]
+    , matchers = [ "frozen", "freezer", "thawed" ]
     , exclusions = []
     }
   , { name = "Dairy"
     , matchers = [ "egg", "milk", "cream", "cheese", "yogurt", "cheddar", "swiss", "butter", "jack", "colby" ] 
-    , exclusions = []
+    , exclusions = [ "shaving", "chips" ]
     }  
   , { name = "Beverages"
     , matchers = [ "pop", "soda", "water", "juice", "tea", "coke", "sprite", "dr pepper", "drink" ]
-    , exclusions = []
+    , exclusions = [ "poppyseed" ]
     }
   , { name = "Alcohol"
     , matchers = 
