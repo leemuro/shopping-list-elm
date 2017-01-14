@@ -12650,9 +12650,9 @@ var _user$project$Categories$defaultCategories = _elm_lang$core$Native_List.from
 		{
 		name: 'Produce',
 		matchers: _elm_lang$core$Native_List.fromArray(
-			['asparagus', 'arugula', 'cabbage', 'beans', 'garlic', 'beet', 'onion', 'bok choy', 'dill', 'basil', 'rosemary', 'lettuce', 'broccoli', 'peas', 'radish', 'rhubarb', 'carrot', 'spinach', 'cauliflower', 'cucumber', 'chard', 'spinach', 'eggplant', 'greens', 'turnips', 'watercress', 'endive', 'escarole', 'herbs', 'leeks', 'kale', 'chive', 'okra', 'cilantro', 'pepper', 'potato', 'mizuna', 'corn', 'tomato', 'watermelon', 'melon', 'thyme', 'zucchini', 'squash', 'rutabaga', 'apple', 'apricot', 'avocado', 'banana', 'bilberry', 'blackberry', 'blackcurrant', 'blueberry', 'boysenberry', 'currant', 'cherry', 'cherimoya', 'cloudberry', 'coconut', 'cranberry', 'cucumber', 'damson', 'date', 'dragonfruit', 'durian', 'elderberry', 'feijoa', 'fig', 'goji', 'berry', 'gooseberry', 'grape', 'raisin', 'grapefruit', 'guava', 'honeyberry', 'huckleberry', 'jabuticaba', 'jackfruit', 'jambul', 'jujube', 'kiwifruit', 'kumquat', 'lemon', 'lime', 'loquat', 'longan', 'lychee', 'mango', 'marionberry', 'melon', 'cantaloupe', 'honeydew', 'watermelon', 'fruit', 'mulberry', 'nectarine', 'nance', 'orange', 'clementine', 'mandarine', 'tangerine', 'papaya', 'passionfruit', 'peach', 'pear', 'persimmon', 'physalis', 'plantain', 'plum', 'prune', 'pineapple', 'plumcot', 'pomegranate', 'pomelo', 'quince', 'raspberry', 'salmonberry', 'rambutan', 'redcurrant', 'salak', 'satsuma', 'strawberry', 'tamarillo', 'tamarind', 'yuzu', 'romaine']),
+			['asparagus', 'arugula', 'cabbage', 'beans', 'garlic', 'beet', 'onion', 'bok choy', 'dill', 'basil', 'rosemary', 'lettuce', 'broccoli', 'peas', 'radish', 'rhubarb', 'carrot', 'spinach', 'cauliflower', 'cucumber', 'chard', 'spinach', 'eggplant', 'greens', 'turnips', 'watercress', 'endive', 'escarole', 'herbs', 'leeks', 'kale', 'chive', 'okra', 'cilantro', 'pepper', 'potato', 'mizuna', 'corn', 'tomato', 'watermelon', 'melon', 'thyme', 'zucchini', 'squash', 'rutabaga', 'apple', 'apricot', 'avocado', 'banana', 'bilberry', 'blackberry', 'blackcurrant', 'blueberry', 'boysenberry', 'currant', 'cherry', 'cherimoya', 'cloudberry', 'coconut', 'cranberry', 'cucumber', 'damson', 'date', 'dragonfruit', 'durian', 'elderberry', 'feijoa', 'fig', 'goji', 'berry', 'gooseberry', 'grape', 'raisin', 'grapefruit', 'guava', 'honeyberry', 'huckleberry', 'jabuticaba', 'jackfruit', 'jambul', 'jujube', 'kiwifruit', 'kumquat', 'lemon', 'lime', 'loquat', 'longan', 'lychee', 'mango', 'marionberry', 'melon', 'cantaloupe', 'honeydew', 'watermelon', 'fruit', 'mulberry', 'nectarine', 'nance', 'orange', 'clementine', 'mandarine', 'tangerine', 'papaya', 'passionfruit', 'peach', 'pear', 'persimmon', 'physalis', 'plantain', 'plum', 'prune', 'pineapple', 'plumcot', 'pomegranate', 'pomelo', 'quince', 'raspberry', 'salmonberry', 'rambutan', 'redcurrant', 'salak', 'satsuma', 'strawberry', 'tamarillo', 'tamarind', 'yuzu', 'romaine', 'celery']),
 		exclusions: _elm_lang$core$Native_List.fromArray(
-			['can', 'dried', 'dry', 'powder', 'tsp', 'tbsp', 'teaspoon', 'tablespoon', 'frozen', 'juice', 'jam', 'jelly', 'sauce', 'with green chilis', 'ground', 'dr pepper', 'dr. pepper'])
+			['can', 'dried', 'dry', 'powder', 'tsp', 'tbsp', 'teaspoon', 'tablespoon', 'frozen', 'juice', 'jam', 'jelly', 'sauce', 'with green chilis', 'ground', 'dr pepper', 'dr. pepper', 'thawed', 'oil', 'pop'])
 	},
 		{
 		name: 'Meat',
@@ -12685,14 +12685,14 @@ var _user$project$Categories$defaultCategories = _elm_lang$core$Native_List.from
 		{
 		name: 'Spices/Herbs',
 		matchers: _elm_lang$core$Native_List.fromArray(
-			['allspice', 'all spice', 'spice', 'anise', 'basil', 'bay leaf', 'caraway', 'cardamom', 'cayenne', 'black pepper', 'celery seed', 'chicory', 'chili powder', 'garlic', 'chives', 'cilantro', 'cinnamon', 'clove', 'coriander', 'cumin', 'curry', 'dill', 'fennel', 'fenugreek', 'ginger', 'lavender', 'marjoram', 'mint', 'mustard', 'nutmeg', 'oregano', 'paprika', 'parsley', 'rosemary', 'saffron', 'sage', 'safflower', 'tarragon', 'thyme', 'turmeric', 'vanilla', 'salt', 'powder', 'dried onion', 'dried minced onion']),
+			['allspice', 'all spice', 'spice', 'anise', 'basil', 'bay leaf', 'caraway', 'cardamom', 'cayenne', 'black pepper', 'celery seed', 'chicory', 'chili powder', 'garlic', 'chives', 'cilantro', 'cinnamon', 'clove', 'coriander', 'cumin', 'curry', 'dill', 'fennel', 'fenugreek', 'ginger', 'lavender', 'marjoram', 'mint', 'mustard', 'nutmeg', 'oregano', 'paprika', 'parsley', 'rosemary', 'saffron', 'sage', 'safflower', 'tarragon', 'thyme', 'turmeric', 'vanilla', 'salt', 'powder', 'dried onion', 'dried minced onion', 'pepper']),
 		exclusions: _elm_lang$core$Native_List.fromArray(
 			[])
 	},
 		{
 		name: 'Frozen Goods',
 		matchers: _elm_lang$core$Native_List.fromArray(
-			['frozen', 'freezer']),
+			['frozen', 'freezer', 'thawed']),
 		exclusions: _elm_lang$core$Native_List.fromArray(
 			[])
 	},
@@ -12701,14 +12701,14 @@ var _user$project$Categories$defaultCategories = _elm_lang$core$Native_List.from
 		matchers: _elm_lang$core$Native_List.fromArray(
 			['egg', 'milk', 'cream', 'cheese', 'yogurt', 'cheddar', 'swiss', 'butter', 'jack', 'colby']),
 		exclusions: _elm_lang$core$Native_List.fromArray(
-			[])
+			['shaving', 'chips'])
 	},
 		{
 		name: 'Beverages',
 		matchers: _elm_lang$core$Native_List.fromArray(
 			['pop', 'soda', 'water', 'juice', 'tea', 'coke', 'sprite', 'dr pepper', 'drink']),
 		exclusions: _elm_lang$core$Native_List.fromArray(
-			[])
+			['poppyseed'])
 	},
 		{
 		name: 'Alcohol',
@@ -12732,8 +12732,15 @@ var _user$project$CategorizedList$itemMatches = F3(
 			_elm_lang$core$List$any,
 			function (matcher) {
 				return A2(
-					_elm_lang$core$String$contains,
-					_elm_lang$core$String$toLower(matcher),
+					_elm_lang$core$Regex$contains,
+					_elm_lang$core$Regex$regex(
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							'(\\W|^)',
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								_elm_lang$core$String$toLower(matcher),
+								'(\\W|$)'))),
 					_elm_lang$core$String$toLower(item.desc));
 			},
 			matchers) && _elm_lang$core$Basics$not(
@@ -12741,8 +12748,15 @@ var _user$project$CategorizedList$itemMatches = F3(
 				_elm_lang$core$List$any,
 				function (exclusion) {
 					return A2(
-						_elm_lang$core$String$contains,
-						_elm_lang$core$String$toLower(exclusion),
+						_elm_lang$core$Regex$contains,
+						_elm_lang$core$Regex$regex(
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								'(\\W|^)',
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									_elm_lang$core$String$toLower(exclusion),
+									'(\\W|$)'))),
 						_elm_lang$core$String$toLower(item.desc));
 				},
 				exclusions));

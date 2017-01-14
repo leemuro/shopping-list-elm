@@ -1,9 +1,0 @@
-var _user$project$AppMessages$ToggleItem = function (a) {
-	return {ctor: 'ToggleItem', _0: a};
-};
-var _user$project$AppMessages$Clear = {ctor: 'Clear'};
-var _user$project$AppMessages$AddItems = {ctor: 'AddItems'};
-var _user$project$AppMessages$NewItems = function (a) {
-	return {ctor: 'NewItems', _0: a};
-};
-var _user$project$AppMessages$ToggleAddPanel = {ctor: 'ToggleAddPanel'};

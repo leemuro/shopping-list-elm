@@ -2,6 +2,7 @@ module CategorizedList exposing (categorizedList)
 
 import List
 import String
+import Regex
 import Html exposing (Html, div, h1, ul, li, p, button, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
@@ -49,8 +50,8 @@ itemsInCategory items category categories =
     itemsInNoCategory items categories
 
 itemMatches item matchers exclusions =
-  List.any (\matcher -> String.contains (String.toLower matcher) (String.toLower item.desc)) matchers
-  && not (List.any (\exclusion -> String.contains (String.toLower exclusion) (String.toLower item.desc)) exclusions)
+  List.any (\matcher -> Regex.contains (Regex.regex ("(\\W|^)" ++ (String.toLower matcher) ++ "(\\W|$)")) (String.toLower item.desc)) matchers
+  && not (List.any (\exclusion -> Regex.contains (Regex.regex ("(\\W|^)" ++ (String.toLower exclusion) ++ "(\\W|$)")) (String.toLower item.desc)) exclusions)
 
 itemsInNoCategory items categories =
   List.filter (\item -> 
