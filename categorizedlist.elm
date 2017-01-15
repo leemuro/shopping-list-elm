@@ -12,9 +12,9 @@ import Html.CssHelpers
 
 categorizedList categorizedItems =
   if List.length categorizedItems == 0 then
-    noItems
+    div [ class [ AppCss.ListContainer ] ] [ noItems ]
   else
-    div [] 
+    div [ class [ AppCss.ListContainer ] ] 
       [ ul [] (List.map (\c -> listCategory c) categorizedItems)
       , div [ class [ AppCss.ListActions, AppCss.TextButtonContainer ] ]
           [ button [ class [ AppCss.TextButton ], onClick AppMessages.Clear ] [ text "Clear List" ] ]

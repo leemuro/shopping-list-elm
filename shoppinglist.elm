@@ -12,6 +12,10 @@ import HeaderBar exposing (headerBar)
 import AddPanel exposing (addPanel)
 import CategorizedList exposing (categorizedList)
 
+import AppCss
+import Html.CssHelpers
+{ id, class, classList } = Html.CssHelpers.withNamespace "sl"
+
 type alias ShoppingItem =
   { id: Int
   , desc: String
@@ -103,13 +107,19 @@ update msg model =
         ( newModel, setStorage newModel )
 
     AppMessages.ToggleItem itemId ->
-      let newModel =
-        { model | 
-          addedItems = List.map (\i -> toggleItemIfId i itemId) model.addedItems 
-        , categorizedItems = List.map (\c -> {c | items = List.map (\i -> toggleItemIfId i itemId) c.items}) model.categorizedItems 
-        }
-      in
-        ( newModel, setStorage newModel )
+      if model.addPanelVisible then
+        let newModel =
+          { model | addPanelVisible = not model.addPanelVisible }
+        in
+          ( newModel, setStorage newModel )
+      else
+        let newModel =
+          { model | 
+            addedItems = List.map (\i -> toggleItemIfId i itemId) model.addedItems 
+          , categorizedItems = List.map (\c -> {c | items = List.map (\i -> toggleItemIfId i itemId) c.items}) model.categorizedItems 
+          }
+        in
+          ( newModel, setStorage newModel )
 
     AppMessages.Clear ->
       let newModel =
@@ -161,7 +171,7 @@ view : Model -> Html AppMessages.Msg
 
 view model = 
   div []
-    [ headerBar
-    , addPanel model.newItems model.addPanelVisible
+    [ div [ class [ AppCss.HeaderContainer ] ]
+        [ headerBar, addPanel model.newItems model.addPanelVisible ]
     , categorizedList model.categorizedItems
     ]

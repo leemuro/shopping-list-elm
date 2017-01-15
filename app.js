@@ -12299,6 +12299,7 @@ var _user$project$AppCss$ListActions = {ctor: 'ListActions'};
 var _user$project$AppCss$ShoppingItemCompleted = {ctor: 'ShoppingItemCompleted'};
 var _user$project$AppCss$ShoppingItem = {ctor: 'ShoppingItem'};
 var _user$project$AppCss$ListCategoryHeader = {ctor: 'ListCategoryHeader'};
+var _user$project$AppCss$ListContainer = {ctor: 'ListContainer'};
 var _user$project$AppCss$Hide = {ctor: 'Hide'};
 var _user$project$AppCss$Show = {ctor: 'Show'};
 var _user$project$AppCss$TextButton = {ctor: 'TextButton'};
@@ -12310,6 +12311,7 @@ var _user$project$AppCss$HeaderBarCenter = {ctor: 'HeaderBarCenter'};
 var _user$project$AppCss$HeaderBarItem = {ctor: 'HeaderBarItem'};
 var _user$project$AppCss$HeaderBarAdd = {ctor: 'HeaderBarAdd'};
 var _user$project$AppCss$HeaderBar = {ctor: 'HeaderBar'};
+var _user$project$AppCss$HeaderContainer = {ctor: 'HeaderContainer'};
 var _user$project$AppCss$css = function (_p0) {
 	return _rtfeldman$elm_css$Css$stylesheet(
 		A2(_rtfeldman$elm_css$Css_Namespace$namespace, 'sl', _p0));
@@ -12343,13 +12345,29 @@ var _user$project$AppCss$css = function (_p0) {
 				function (x, y) {
 					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
 				}),
+			_user$project$AppCss$HeaderContainer,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_rtfeldman$elm_css$Css$position(_rtfeldman$elm_css$Css$fixed),
+					_rtfeldman$elm_css$Css$top(_rtfeldman$elm_css$Css$zero),
+					_rtfeldman$elm_css$Css$left(_rtfeldman$elm_css$Css$zero),
+					_rtfeldman$elm_css$Css$width(
+					_rtfeldman$elm_css$Css$pct(100))
+				])),
+			A2(
+			F2(
+				function (x, y) {
+					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
+				}),
 			_user$project$AppCss$HeaderBar,
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_rtfeldman$elm_css$Css$displayFlex,
 					_rtfeldman$elm_css$Css$backgroundColor(_user$project$AppCss$accentColor),
 					_rtfeldman$elm_css$Css$color(
-					_rtfeldman$elm_css$Css$hex('fff'))
+					_rtfeldman$elm_css$Css$hex('fff')),
+					_rtfeldman$elm_css$Css$height(
+					_rtfeldman$elm_css$Css$em(3))
 				])),
 			A2(
 			F2(
@@ -12413,12 +12431,6 @@ var _user$project$AppCss$css = function (_p0) {
 					_rtfeldman$elm_css$Css$fontSize(
 					_rtfeldman$elm_css$Css$em(2)),
 					_rtfeldman$elm_css$Css$border(_rtfeldman$elm_css$Css$zero),
-					_rtfeldman$elm_css$Css$paddingTop(
-					_rtfeldman$elm_css$Css$em(0.25)),
-					_rtfeldman$elm_css$Css$paddingBottom(
-					_rtfeldman$elm_css$Css$em(0.25)),
-					_rtfeldman$elm_css$Css$paddingLeft(
-					_rtfeldman$elm_css$Css$em(0.5)),
 					_rtfeldman$elm_css$Css$paddingRight(
 					_rtfeldman$elm_css$Css$em(0.5)),
 					_rtfeldman$elm_css$Css$cursor(_rtfeldman$elm_css$Css$pointer)
@@ -12504,6 +12516,17 @@ var _user$project$AppCss$css = function (_p0) {
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$none)
+				])),
+			A2(
+			F2(
+				function (x, y) {
+					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
+				}),
+			_user$project$AppCss$ListContainer,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_rtfeldman$elm_css$Css$paddingTop(
+					_rtfeldman$elm_css$Css$em(3))
 				])),
 			A2(
 			F2(
@@ -12792,10 +12815,23 @@ var _user$project$CategorizedList$noItems = A2(
 var _user$project$CategorizedList$categorizedList = function (categorizedItems) {
 	return _elm_lang$core$Native_Utils.eq(
 		_elm_lang$core$List$length(categorizedItems),
-		0) ? _user$project$CategorizedList$noItems : A2(
+		0) ? A2(
 		_elm_lang$html$Html$div,
 		_elm_lang$core$Native_List.fromArray(
-			[]),
+			[
+				_user$project$CategorizedList$class(
+				_elm_lang$core$Native_List.fromArray(
+					[_user$project$AppCss$ListContainer]))
+			]),
+		_elm_lang$core$Native_List.fromArray(
+			[_user$project$CategorizedList$noItems])) : A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_user$project$CategorizedList$class(
+				_elm_lang$core$Native_List.fromArray(
+					[_user$project$AppCss$ListContainer]))
+			]),
 		_elm_lang$core$Native_List.fromArray(
 			[
 				A2(
@@ -12903,18 +12939,6 @@ var _user$project$HeaderBar$headerBar = A2(
 				[_user$project$HeaderBar$addButton]))
 		]));
 
-var _user$project$Main$view = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		_elm_lang$core$Native_List.fromArray(
-			[]),
-		_elm_lang$core$Native_List.fromArray(
-			[
-				_user$project$HeaderBar$headerBar,
-				A2(_user$project$AddPanel$addPanel, model.newItems, model.addPanelVisible),
-				_user$project$CategorizedList$categorizedList(model.categorizedItems)
-			]));
-};
 var _user$project$Main$toggleItemIfId = F2(
 	function (item, id) {
 		return _elm_lang$core$Native_Utils.eq(item.id, id) ? _elm_lang$core$Native_Utils.update(
@@ -13070,6 +13094,33 @@ var _user$project$Main$init = function (model) {
 		return {ctor: '_Tuple2', _0: _user$project$Main$defaultModel, _1: _elm_lang$core$Platform_Cmd$none};
 	}
 };
+var _user$project$Main$_p1 = _rtfeldman$elm_css_helpers$Html_CssHelpers$withNamespace('sl');
+var _user$project$Main$id = _user$project$Main$_p1.id;
+var _user$project$Main$class = _user$project$Main$_p1.$class;
+var _user$project$Main$classList = _user$project$Main$_p1.classList;
+var _user$project$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_user$project$Main$class(
+						_elm_lang$core$Native_List.fromArray(
+							[_user$project$AppCss$HeaderContainer]))
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_user$project$HeaderBar$headerBar,
+						A2(_user$project$AddPanel$addPanel, model.newItems, model.addPanelVisible)
+					])),
+				_user$project$CategorizedList$categorizedList(model.categorizedItems)
+			]));
+};
 var _user$project$Main$setStorage = _elm_lang$core$Native_Platform.outgoingPort(
 	'setStorage',
 	function (v) {
@@ -13109,8 +13160,8 @@ var _user$project$Main$setStorage = _elm_lang$core$Native_Platform.outgoingPort(
 	});
 var _user$project$Main$update = F2(
 	function (msg, model) {
-		var _p1 = msg;
-		switch (_p1.ctor) {
+		var _p2 = msg;
+		switch (_p2.ctor) {
 			case 'ToggleAddPanel':
 				var newModel = _elm_lang$core$Native_Utils.update(
 					model,
@@ -13125,7 +13176,7 @@ var _user$project$Main$update = F2(
 			case 'NewItems':
 				var newModel = _elm_lang$core$Native_Utils.update(
 					model,
-					{newItems: _p1._0});
+					{newItems: _p2._0});
 				return {
 					ctor: '_Tuple2',
 					_0: newModel,
@@ -13149,37 +13200,50 @@ var _user$project$Main$update = F2(
 					_1: _user$project$Main$setStorage(newModel)
 				};
 			case 'ToggleItem':
-				var _p2 = _p1._0;
-				var newModel = _elm_lang$core$Native_Utils.update(
-					model,
-					{
-						addedItems: A2(
-							_elm_lang$core$List$map,
-							function (i) {
-								return A2(_user$project$Main$toggleItemIfId, i, _p2);
-							},
-							model.addedItems),
-						categorizedItems: A2(
-							_elm_lang$core$List$map,
-							function (c) {
-								return _elm_lang$core$Native_Utils.update(
-									c,
-									{
-										items: A2(
-											_elm_lang$core$List$map,
-											function (i) {
-												return A2(_user$project$Main$toggleItemIfId, i, _p2);
-											},
-											c.items)
-									});
-							},
-							model.categorizedItems)
-					});
-				return {
-					ctor: '_Tuple2',
-					_0: newModel,
-					_1: _user$project$Main$setStorage(newModel)
-				};
+				var _p3 = _p2._0;
+				if (model.addPanelVisible) {
+					var newModel = _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							addPanelVisible: _elm_lang$core$Basics$not(model.addPanelVisible)
+						});
+					return {
+						ctor: '_Tuple2',
+						_0: newModel,
+						_1: _user$project$Main$setStorage(newModel)
+					};
+				} else {
+					var newModel = _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							addedItems: A2(
+								_elm_lang$core$List$map,
+								function (i) {
+									return A2(_user$project$Main$toggleItemIfId, i, _p3);
+								},
+								model.addedItems),
+							categorizedItems: A2(
+								_elm_lang$core$List$map,
+								function (c) {
+									return _elm_lang$core$Native_Utils.update(
+										c,
+										{
+											items: A2(
+												_elm_lang$core$List$map,
+												function (i) {
+													return A2(_user$project$Main$toggleItemIfId, i, _p3);
+												},
+												c.items)
+										});
+								},
+								model.categorizedItems)
+						});
+					return {
+						ctor: '_Tuple2',
+						_0: newModel,
+						_1: _user$project$Main$setStorage(newModel)
+					};
+				}
 			default:
 				var newModel = _elm_lang$core$Native_Utils.update(
 					model,

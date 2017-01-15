@@ -31,10 +31,18 @@ h1 {
     font-size: 1em;
 }
 
+.slHeaderContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
 .slHeaderBar {
     display: flex;
     background-color: #F95759;
     color: #fff;
+    height: 3em;
 }
 
 .slHeaderBarItem {
@@ -55,9 +63,6 @@ h1 {
     color: #fff;
     font-size: 2em;
     border: 0;
-    padding-top: 0.25em;
-    padding-bottom: 0.25em;
-    padding-left: 0.5em;
     padding-right: 0.5em;
     cursor: pointer;
 }
@@ -101,6 +106,10 @@ h1 {
 
 .slHide {
     display: none;
+}
+
+.slListContainer {
+    padding-top: 3em;
 }
 
 .slListCategoryHeader {

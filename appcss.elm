@@ -5,7 +5,8 @@ import Css.Elements exposing (body, div, span, h1, button, ul, li)
 import Css.Namespace exposing (namespace)
 
 type CssClasses = 
-  HeaderBar
+  HeaderContainer
+  | HeaderBar
   | HeaderBarAdd
   | HeaderBarItem
   | HeaderBarCenter
@@ -16,6 +17,7 @@ type CssClasses =
   | TextButton
   | Show
   | Hide 
+  | ListContainer
   | ListCategoryHeader
   | ShoppingItem 
   | ShoppingItemCompleted
@@ -44,10 +46,18 @@ css =
   , li [ reset, listStyleType none ]
   , h1 [ reset, fontSize (em 1) ]
 
+  , (.) HeaderContainer
+      [ position fixed
+      , top zero
+      , left zero
+      , width (pct 100)
+      ]
+
   , (.) HeaderBar
       [ displayFlex
       , backgroundColor accentColor
       , color (hex "fff")
+      , height (em 3)
       ]
 
   , (.) HeaderBarItem
@@ -66,9 +76,6 @@ css =
       , color (hex "fff")
       , fontSize (em 2)
       , border zero
-      , paddingTop (em 0.25)
-      , paddingBottom (em 0.25)
-      , paddingLeft (em 0.5)
       , paddingRight (em 0.5)
       , cursor pointer
       ]
@@ -109,6 +116,9 @@ css =
 
   , (.) Hide
       [ display none ]
+
+  , (.) ListContainer
+      [ paddingTop (em 3) ]
 
   , (.) ListCategoryHeader
       [ padding (em 1)
