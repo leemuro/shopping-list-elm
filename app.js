@@ -12605,6 +12605,124 @@ var _user$project$AddPanel$addPanel = function (newItems) {
 			[]));
 };
 
+var _user$project$NavBar$_p0 = _rtfeldman$elm_css_helpers$Html_CssHelpers$withNamespace('sl');
+var _user$project$NavBar$id = _user$project$NavBar$_p0.id;
+var _user$project$NavBar$class = _user$project$NavBar$_p0.$class;
+var _user$project$NavBar$classList = _user$project$NavBar$_p0.classList;
+var _user$project$NavBar$navBar = F3(
+	function (titleText, leftButton, rightButton) {
+		return A2(
+			_elm_lang$html$Html$div,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_user$project$NavBar$class(
+					_elm_lang$core$Native_List.fromArray(
+						[_user$project$AppCss$HeaderBar]))
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[
+					A2(
+					_elm_lang$html$Html$div,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_user$project$NavBar$class(
+							_elm_lang$core$Native_List.fromArray(
+								[_user$project$AppCss$HeaderBarItem]))
+						]),
+					_elm_lang$core$Native_List.fromArray(
+						[leftButton])),
+					A2(
+					_elm_lang$html$Html$div,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_user$project$NavBar$class(
+							_elm_lang$core$Native_List.fromArray(
+								[_user$project$AppCss$HeaderBarItem, _user$project$AppCss$HeaderBarCenter]))
+						]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							A2(
+							_elm_lang$html$Html$span,
+							_elm_lang$core$Native_List.fromArray(
+								[]),
+							_elm_lang$core$Native_List.fromArray(
+								[
+									_elm_lang$html$Html$text(titleText)
+								]))
+						])),
+					A2(
+					_elm_lang$html$Html$div,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_user$project$NavBar$class(
+							_elm_lang$core$Native_List.fromArray(
+								[_user$project$AppCss$HeaderBarItem, _user$project$AppCss$HeaderBarRight]))
+						]),
+					_elm_lang$core$Native_List.fromArray(
+						[rightButton]))
+				]));
+	});
+
+var _user$project$AppNav$_p0 = _rtfeldman$elm_css_helpers$Html_CssHelpers$withNamespace('sl');
+var _user$project$AppNav$id = _user$project$AppNav$_p0.id;
+var _user$project$AppNav$class = _user$project$AppNav$_p0.$class;
+var _user$project$AppNav$classList = _user$project$AppNav$_p0.classList;
+var _user$project$AppNav$addButton = A2(
+	_elm_lang$html$Html$button,
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_user$project$AppNav$class(
+			_elm_lang$core$Native_List.fromArray(
+				[_user$project$AppCss$HeaderBarAdd])),
+			_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$ToggleAddPanel)
+		]),
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_elm_lang$html$Html$text('+')
+		]));
+var _user$project$AppNav$doneButton = A2(
+	_elm_lang$html$Html$button,
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_user$project$AppNav$class(
+			_elm_lang$core$Native_List.fromArray(
+				[_user$project$AppCss$HeaderBarButton])),
+			_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$AddItems)
+		]),
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_elm_lang$html$Html$text('Done')
+		]));
+var _user$project$AppNav$cancelButton = A2(
+	_elm_lang$html$Html$button,
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_user$project$AppNav$class(
+			_elm_lang$core$Native_List.fromArray(
+				[_user$project$AppCss$HeaderBarButton])),
+			_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$CancelAdd)
+		]),
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_elm_lang$html$Html$text('Cancel')
+		]));
+var _user$project$AppNav$clearButton = A2(
+	_elm_lang$html$Html$button,
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_user$project$AppNav$class(
+			_elm_lang$core$Native_List.fromArray(
+				[_user$project$AppCss$HeaderBarButton])),
+			_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$Clear)
+		]),
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_elm_lang$html$Html$text('Clear')
+		]));
+var _user$project$AppNav$appNav = function (isAddMode) {
+	return isAddMode ? A3(_user$project$NavBar$navBar, 'Add Items', _user$project$AppNav$cancelButton, _user$project$AppNav$doneButton) : A3(_user$project$NavBar$navBar, 'Shopping List', _user$project$AppNav$clearButton, _user$project$AppNav$addButton);
+};
+
 var _user$project$Categories$defaultCategories = _elm_lang$core$Native_List.fromArray(
 	[
 		{
@@ -12784,126 +12902,6 @@ var _user$project$CategorizedList$categorizedList = function (categorizedItems) 
 			]));
 };
 
-var _user$project$HeaderBar$_p0 = _rtfeldman$elm_css_helpers$Html_CssHelpers$withNamespace('sl');
-var _user$project$HeaderBar$id = _user$project$HeaderBar$_p0.id;
-var _user$project$HeaderBar$class = _user$project$HeaderBar$_p0.$class;
-var _user$project$HeaderBar$classList = _user$project$HeaderBar$_p0.classList;
-var _user$project$HeaderBar$addButton = A2(
-	_elm_lang$html$Html$button,
-	_elm_lang$core$Native_List.fromArray(
-		[
-			_user$project$HeaderBar$class(
-			_elm_lang$core$Native_List.fromArray(
-				[_user$project$AppCss$HeaderBarAdd])),
-			_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$ToggleAddPanel)
-		]),
-	_elm_lang$core$Native_List.fromArray(
-		[
-			_elm_lang$html$Html$text('+')
-		]));
-var _user$project$HeaderBar$doneButton = A2(
-	_elm_lang$html$Html$button,
-	_elm_lang$core$Native_List.fromArray(
-		[
-			_user$project$HeaderBar$class(
-			_elm_lang$core$Native_List.fromArray(
-				[_user$project$AppCss$HeaderBarButton])),
-			_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$AddItems)
-		]),
-	_elm_lang$core$Native_List.fromArray(
-		[
-			_elm_lang$html$Html$text('Done')
-		]));
-var _user$project$HeaderBar$cancelButton = A2(
-	_elm_lang$html$Html$button,
-	_elm_lang$core$Native_List.fromArray(
-		[
-			_user$project$HeaderBar$class(
-			_elm_lang$core$Native_List.fromArray(
-				[_user$project$AppCss$HeaderBarButton])),
-			_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$CancelAdd)
-		]),
-	_elm_lang$core$Native_List.fromArray(
-		[
-			_elm_lang$html$Html$text('Cancel')
-		]));
-var _user$project$HeaderBar$clearButton = A2(
-	_elm_lang$html$Html$button,
-	_elm_lang$core$Native_List.fromArray(
-		[
-			_user$project$HeaderBar$class(
-			_elm_lang$core$Native_List.fromArray(
-				[_user$project$AppCss$HeaderBarButton])),
-			_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$Clear)
-		]),
-	_elm_lang$core$Native_List.fromArray(
-		[
-			_elm_lang$html$Html$text('Clear')
-		]));
-var _user$project$HeaderBar$headerBar = function (isAddMode) {
-	return A2(
-		_elm_lang$html$Html$div,
-		_elm_lang$core$Native_List.fromArray(
-			[
-				_user$project$HeaderBar$class(
-				_elm_lang$core$Native_List.fromArray(
-					[_user$project$AppCss$HeaderBar]))
-			]),
-		_elm_lang$core$Native_List.fromArray(
-			[
-				A2(
-				_elm_lang$html$Html$div,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_user$project$HeaderBar$class(
-						_elm_lang$core$Native_List.fromArray(
-							[_user$project$AppCss$HeaderBarItem]))
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[
-						isAddMode ? _user$project$HeaderBar$cancelButton : _user$project$HeaderBar$clearButton
-					])),
-				A2(
-				_elm_lang$html$Html$div,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_user$project$HeaderBar$class(
-						_elm_lang$core$Native_List.fromArray(
-							[_user$project$AppCss$HeaderBarItem, _user$project$AppCss$HeaderBarCenter]))
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[
-						A2(
-						_elm_lang$html$Html$span,
-						_elm_lang$core$Native_List.fromArray(
-							[]),
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_elm_lang$html$Html$text('Shopping List')
-							]))
-					])),
-				isAddMode ? A2(
-				_elm_lang$html$Html$div,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_user$project$HeaderBar$class(
-						_elm_lang$core$Native_List.fromArray(
-							[_user$project$AppCss$HeaderBarItem, _user$project$AppCss$HeaderBarRight]))
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[_user$project$HeaderBar$doneButton])) : A2(
-				_elm_lang$html$Html$div,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_user$project$HeaderBar$class(
-						_elm_lang$core$Native_List.fromArray(
-							[_user$project$AppCss$HeaderBarItem, _user$project$AppCss$HeaderBarRight]))
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[_user$project$HeaderBar$addButton]))
-			]));
-};
-
 var _user$project$Main$toggleItemIfId = F2(
 	function (item, id) {
 		return _elm_lang$core$Native_Utils.eq(item.id, id) ? _elm_lang$core$Native_Utils.update(
@@ -13080,7 +13078,7 @@ var _user$project$Main$view = function (model) {
 					[]),
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_user$project$HeaderBar$headerBar(model.addPanelVisible)
+						_user$project$AppNav$appNav(model.addPanelVisible)
 					])),
 				_user$project$AddPanel$addPanel(model.newItems)
 			])) : A2(
@@ -13099,7 +13097,7 @@ var _user$project$Main$view = function (model) {
 					]),
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_user$project$HeaderBar$headerBar(model.addPanelVisible)
+						_user$project$AppNav$appNav(model.addPanelVisible)
 					])),
 				_user$project$CategorizedList$categorizedList(model.categorizedItems)
 			]));

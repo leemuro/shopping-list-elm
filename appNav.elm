@@ -1,25 +1,21 @@
-module HeaderBar exposing (headerBar)
+module AppNav exposing (appNav)
 
 import List
 import Html exposing (Html, div, span, button, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import AppMessages
+import NavBar exposing (navBar)
 
 import AppCss
 import Html.CssHelpers
 { id, class, classList } = Html.CssHelpers.withNamespace "sl"
 
-headerBar isAddMode =
-  div [ class [ AppCss.HeaderBar ] ]
-    [ div [ class [ AppCss.HeaderBarItem ] ] 
-      [ if isAddMode then cancelButton else clearButton ]
-    , div [ class [ AppCss.HeaderBarItem, AppCss.HeaderBarCenter ] ] [ span [] [ text "Shopping List" ] ]
-    , if isAddMode then 
-        div [ class [ AppCss.HeaderBarItem, AppCss.HeaderBarRight ] ] [ doneButton ]
-      else
-        div [ class [ AppCss.HeaderBarItem, AppCss.HeaderBarRight ] ] [ addButton ]
-    ]
+appNav isAddMode =
+  if isAddMode then 
+    navBar "Add Items" cancelButton doneButton
+  else
+    navBar "Shopping List" clearButton addButton
 
 addButton =
   button [ class [ AppCss.HeaderBarAdd ], onClick AppMessages.ToggleAddPanel ] [ text "+" ]

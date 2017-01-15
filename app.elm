@@ -8,7 +8,7 @@ import Regex
 import List
 import Categories exposing (defaultCategories)
 import AppMessages
-import HeaderBar exposing (headerBar)
+import AppNav exposing (appNav)
 import AddPanel exposing (addPanel)
 import CategorizedList exposing (categorizedList)
 
@@ -178,12 +178,12 @@ view : Model -> Html AppMessages.Msg
 view model = 
   if model.addPanelVisible then
     div [ class [ AppCss.AddModeContainer ] ]
-      [ div [] [ headerBar model.addPanelVisible ]
+      [ div [] [ appNav model.addPanelVisible ]
       , addPanel model.newItems
       ]
   else
     div []
-      [ div [ class [ AppCss.FixedHeader ] ] [ headerBar model.addPanelVisible ]
+      [ div [ class [ AppCss.FixedHeader ] ] [ appNav model.addPanelVisible ]
       , categorizedList model.categorizedItems
       ]
 
