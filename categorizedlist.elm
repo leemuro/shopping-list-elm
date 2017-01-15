@@ -15,10 +15,7 @@ categorizedList categorizedItems =
     div [ class [ AppCss.ListContainer ] ] [ noItems ]
   else
     div [ class [ AppCss.ListContainer ] ] 
-      [ ul [] (List.map (\c -> listCategory c) categorizedItems)
-      , div [ ]
-        [ button [ class [ AppCss.TextButton, AppCss.TextButtonRight ], onClick AppMessages.Clear ] [ text "Clear List" ] ]
-      ]
+      [ ul [] (List.map (\c -> listCategory c) categorizedItems) ]
 
 listCategory categoryList = 
   li []

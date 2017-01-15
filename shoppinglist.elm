@@ -178,12 +178,12 @@ view : Model -> Html AppMessages.Msg
 view model = 
   if model.addPanelVisible then
     div [ class [ AppCss.AddModeContainer ] ]
-      [ div [] [ headerBar ]
-      , addPanel model.newItems model.addPanelVisible 
+      [ div [] [ headerBar model.addPanelVisible ]
+      , addPanel model.newItems
       ]
   else
     div []
-      [ div [ class [ AppCss.FixedHeader ] ] [ headerBar ]
+      [ div [ class [ AppCss.FixedHeader ] ] [ headerBar model.addPanelVisible ]
       , categorizedList model.categorizedItems
       ]
 

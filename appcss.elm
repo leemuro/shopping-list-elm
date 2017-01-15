@@ -7,18 +7,14 @@ import Css.Namespace exposing (namespace)
 type CssClasses = 
   FixedHeader
   | HeaderBar
-  | HeaderBarAdd
   | HeaderBarItem
   | HeaderBarCenter
   | HeaderBarRight
+  | HeaderBarButton
+  | HeaderBarAdd
   | AddModeContainer
   | AddPanel
   | AddBox
-  | TextButtonFooter
-  | TextButton
-  | TextButtonRight
-  | Show
-  | Hide 
   | ListContainer
   | ListCategoryHeader
   | ShoppingItem 
@@ -73,12 +69,24 @@ css =
   , (.) HeaderBarRight
       [ children [ button [ marginLeft auto ] ] ]
 
+  , (.) HeaderBarButton
+      [ baseFontFamilies
+      , fontSize (em 1)
+      , fontWeight bold
+      , backgroundColor transparent
+      , color (hex "fff")
+      , border zero
+      , cursor pointer
+      , padding (em 0.75)
+      ]
+
   , (.) HeaderBarAdd
       [ backgroundColor transparent
       , color (hex "fff")
       , fontSize (em 2)
       , border zero
       , paddingRight (em 0.5)
+      , paddingLeft (em 0.5)
       , cursor pointer
       ]
 
@@ -105,32 +113,6 @@ css =
       , border zero
       , flexGrow (int 1)
       ]
-
-  , (.) TextButtonFooter
-      [ borderTopWidth (px 1)
-      , borderTopStyle solid
-      , borderTopColor lightGrayColor
-      ]
-
-  , (.) TextButton
-      [ baseFontFamilies
-      , fontSize (em 1)
-      , fontWeight bold
-      , backgroundColor transparent
-      , color accentColor
-      , border zero
-      , cursor pointer
-      , padding (em 0.75)
-      ]
-
-  , (.) TextButtonRight
-      [ float right ]
-
-  , (.) Show
-      [ display inherit ]
-
-  , (.) Hide
-      [ display none ]
 
   , (.) ListContainer
       [ paddingTop (em 3) ]
