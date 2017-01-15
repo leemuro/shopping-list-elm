@@ -98,13 +98,6 @@ h1 {
     flex-grow: 1;
 }
 
-.slTextButtonContainer {
-    text-align: right;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    padding-right: 1em;
-}
-
 .slTextButton {
     font-family: Droid Sans, Arial, sans-serif;
     font-size: 1em;
@@ -113,7 +106,11 @@ h1 {
     color: #F95759;
     border: 0;
     cursor: pointer;
-    padding-right: 0;
+    padding: 1em;
+}
+
+.slTextButtonRight {
+    float: right;
 }
 
 .slShow {
@@ -142,13 +139,6 @@ h1 {
 .slShoppingItemCompleted {
     text-decoration: line-through;
     color: #ccc;
-}
-
-.slListActions {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
 }
 
 .slNoItems {

@@ -3767,6 +3767,239 @@ var _elm_lang$core$Result$fromMaybe = F2(
 		}
 	});
 
+var _elm_lang$core$Task$onError = _elm_lang$core$Native_Scheduler.onError;
+var _elm_lang$core$Task$andThen = _elm_lang$core$Native_Scheduler.andThen;
+var _elm_lang$core$Task$spawnCmd = F2(
+	function (router, _p0) {
+		var _p1 = _p0;
+		return _elm_lang$core$Native_Scheduler.spawn(
+			A2(
+				_elm_lang$core$Task$andThen,
+				_p1._0,
+				_elm_lang$core$Platform$sendToApp(router)));
+	});
+var _elm_lang$core$Task$fail = _elm_lang$core$Native_Scheduler.fail;
+var _elm_lang$core$Task$mapError = F2(
+	function (f, task) {
+		return A2(
+			_elm_lang$core$Task$onError,
+			task,
+			function (err) {
+				return _elm_lang$core$Task$fail(
+					f(err));
+			});
+	});
+var _elm_lang$core$Task$succeed = _elm_lang$core$Native_Scheduler.succeed;
+var _elm_lang$core$Task$map = F2(
+	function (func, taskA) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			taskA,
+			function (a) {
+				return _elm_lang$core$Task$succeed(
+					func(a));
+			});
+	});
+var _elm_lang$core$Task$map2 = F3(
+	function (func, taskA, taskB) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			taskA,
+			function (a) {
+				return A2(
+					_elm_lang$core$Task$andThen,
+					taskB,
+					function (b) {
+						return _elm_lang$core$Task$succeed(
+							A2(func, a, b));
+					});
+			});
+	});
+var _elm_lang$core$Task$map3 = F4(
+	function (func, taskA, taskB, taskC) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			taskA,
+			function (a) {
+				return A2(
+					_elm_lang$core$Task$andThen,
+					taskB,
+					function (b) {
+						return A2(
+							_elm_lang$core$Task$andThen,
+							taskC,
+							function (c) {
+								return _elm_lang$core$Task$succeed(
+									A3(func, a, b, c));
+							});
+					});
+			});
+	});
+var _elm_lang$core$Task$map4 = F5(
+	function (func, taskA, taskB, taskC, taskD) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			taskA,
+			function (a) {
+				return A2(
+					_elm_lang$core$Task$andThen,
+					taskB,
+					function (b) {
+						return A2(
+							_elm_lang$core$Task$andThen,
+							taskC,
+							function (c) {
+								return A2(
+									_elm_lang$core$Task$andThen,
+									taskD,
+									function (d) {
+										return _elm_lang$core$Task$succeed(
+											A4(func, a, b, c, d));
+									});
+							});
+					});
+			});
+	});
+var _elm_lang$core$Task$map5 = F6(
+	function (func, taskA, taskB, taskC, taskD, taskE) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			taskA,
+			function (a) {
+				return A2(
+					_elm_lang$core$Task$andThen,
+					taskB,
+					function (b) {
+						return A2(
+							_elm_lang$core$Task$andThen,
+							taskC,
+							function (c) {
+								return A2(
+									_elm_lang$core$Task$andThen,
+									taskD,
+									function (d) {
+										return A2(
+											_elm_lang$core$Task$andThen,
+											taskE,
+											function (e) {
+												return _elm_lang$core$Task$succeed(
+													A5(func, a, b, c, d, e));
+											});
+									});
+							});
+					});
+			});
+	});
+var _elm_lang$core$Task$andMap = F2(
+	function (taskFunc, taskValue) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			taskFunc,
+			function (func) {
+				return A2(
+					_elm_lang$core$Task$andThen,
+					taskValue,
+					function (value) {
+						return _elm_lang$core$Task$succeed(
+							func(value));
+					});
+			});
+	});
+var _elm_lang$core$Task$sequence = function (tasks) {
+	var _p2 = tasks;
+	if (_p2.ctor === '[]') {
+		return _elm_lang$core$Task$succeed(
+			_elm_lang$core$Native_List.fromArray(
+				[]));
+	} else {
+		return A3(
+			_elm_lang$core$Task$map2,
+			F2(
+				function (x, y) {
+					return A2(_elm_lang$core$List_ops['::'], x, y);
+				}),
+			_p2._0,
+			_elm_lang$core$Task$sequence(_p2._1));
+	}
+};
+var _elm_lang$core$Task$onEffects = F3(
+	function (router, commands, state) {
+		return A2(
+			_elm_lang$core$Task$map,
+			function (_p3) {
+				return {ctor: '_Tuple0'};
+			},
+			_elm_lang$core$Task$sequence(
+				A2(
+					_elm_lang$core$List$map,
+					_elm_lang$core$Task$spawnCmd(router),
+					commands)));
+	});
+var _elm_lang$core$Task$toMaybe = function (task) {
+	return A2(
+		_elm_lang$core$Task$onError,
+		A2(_elm_lang$core$Task$map, _elm_lang$core$Maybe$Just, task),
+		function (_p4) {
+			return _elm_lang$core$Task$succeed(_elm_lang$core$Maybe$Nothing);
+		});
+};
+var _elm_lang$core$Task$fromMaybe = F2(
+	function ($default, maybe) {
+		var _p5 = maybe;
+		if (_p5.ctor === 'Just') {
+			return _elm_lang$core$Task$succeed(_p5._0);
+		} else {
+			return _elm_lang$core$Task$fail($default);
+		}
+	});
+var _elm_lang$core$Task$toResult = function (task) {
+	return A2(
+		_elm_lang$core$Task$onError,
+		A2(_elm_lang$core$Task$map, _elm_lang$core$Result$Ok, task),
+		function (msg) {
+			return _elm_lang$core$Task$succeed(
+				_elm_lang$core$Result$Err(msg));
+		});
+};
+var _elm_lang$core$Task$fromResult = function (result) {
+	var _p6 = result;
+	if (_p6.ctor === 'Ok') {
+		return _elm_lang$core$Task$succeed(_p6._0);
+	} else {
+		return _elm_lang$core$Task$fail(_p6._0);
+	}
+};
+var _elm_lang$core$Task$init = _elm_lang$core$Task$succeed(
+	{ctor: '_Tuple0'});
+var _elm_lang$core$Task$onSelfMsg = F3(
+	function (_p9, _p8, _p7) {
+		return _elm_lang$core$Task$succeed(
+			{ctor: '_Tuple0'});
+	});
+var _elm_lang$core$Task$command = _elm_lang$core$Native_Platform.leaf('Task');
+var _elm_lang$core$Task$T = function (a) {
+	return {ctor: 'T', _0: a};
+};
+var _elm_lang$core$Task$perform = F3(
+	function (onFail, onSuccess, task) {
+		return _elm_lang$core$Task$command(
+			_elm_lang$core$Task$T(
+				A2(
+					_elm_lang$core$Task$onError,
+					A2(_elm_lang$core$Task$map, onSuccess, task),
+					function (x) {
+						return _elm_lang$core$Task$succeed(
+							onFail(x));
+					})));
+	});
+var _elm_lang$core$Task$cmdMap = F2(
+	function (tagger, _p10) {
+		var _p11 = _p10;
+		return _elm_lang$core$Task$T(
+			A2(_elm_lang$core$Task$map, tagger, _p11._0));
+	});
+_elm_lang$core$Native_Platform.effectManagers['Task'] = {pkg: 'elm-lang/core', init: _elm_lang$core$Task$init, onEffects: _elm_lang$core$Task$onEffects, onSelfMsg: _elm_lang$core$Task$onSelfMsg, tag: 'cmd', cmdMap: _elm_lang$core$Task$cmdMap};
+
 //import Native.Utils //
 
 var _elm_lang$core$Native_Debug = function() {
@@ -5951,6 +6184,187 @@ var _elm_lang$core$Regex$AtMost = function (a) {
 	return {ctor: 'AtMost', _0: a};
 };
 var _elm_lang$core$Regex$All = {ctor: 'All'};
+
+var _elm_lang$dom$Native_Dom = function() {
+
+function on(node)
+{
+	return function(eventName, decoder, toTask)
+	{
+		return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback) {
+
+			function performTask(event)
+			{
+				var result = A2(_elm_lang$core$Json_Decode$decodeValue, decoder, event);
+				if (result.ctor === 'Ok')
+				{
+					_elm_lang$core$Native_Scheduler.rawSpawn(toTask(result._0));
+				}
+			}
+
+			node.addEventListener(eventName, performTask);
+
+			return function()
+			{
+				node.removeEventListener(eventName, performTask);
+			};
+		});
+	};
+}
+
+var rAF = typeof requestAnimationFrame !== 'undefined'
+	? requestAnimationFrame
+	: function(callback) { callback(); };
+
+function withNode(id, doStuff)
+{
+	return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback)
+	{
+		rAF(function()
+		{
+			var node = document.getElementById(id);
+			if (node === null)
+			{
+				callback(_elm_lang$core$Native_Scheduler.fail({ ctor: 'NotFound', _0: id }));
+				return;
+			}
+			callback(_elm_lang$core$Native_Scheduler.succeed(doStuff(node)));
+		});
+	});
+}
+
+
+// FOCUS
+
+function focus(id)
+{
+	return withNode(id, function(node) {
+		node.focus();
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+function blur(id)
+{
+	return withNode(id, function(node) {
+		node.blur();
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+
+// SCROLLING
+
+function getScrollTop(id)
+{
+	return withNode(id, function(node) {
+		return node.scrollTop;
+	});
+}
+
+function setScrollTop(id, desiredScrollTop)
+{
+	return withNode(id, function(node) {
+		node.scrollTop = desiredScrollTop;
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+function toBottom(id)
+{
+	return withNode(id, function(node) {
+		node.scrollTop = node.scrollHeight;
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+function getScrollLeft(id)
+{
+	return withNode(id, function(node) {
+		return node.scrollLeft;
+	});
+}
+
+function setScrollLeft(id, desiredScrollLeft)
+{
+	return withNode(id, function(node) {
+		node.scrollLeft = desiredScrollLeft;
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+function toRight(id)
+{
+	return withNode(id, function(node) {
+		node.scrollLeft = node.scrollWidth;
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+
+// SIZE
+
+function width(options, id)
+{
+	return withNode(id, function(node) {
+		switch (options.ctor)
+		{
+			case 'Content':
+				return node.scrollWidth;
+			case 'VisibleContent':
+				return node.clientWidth;
+			case 'VisibleContentWithBorders':
+				return node.offsetWidth;
+			case 'VisibleContentWithBordersAndMargins':
+				var rect = node.getBoundingClientRect();
+				return rect.right - rect.left;
+		}
+	});
+}
+
+function height(options, id)
+{
+	return withNode(id, function(node) {
+		switch (options.ctor)
+		{
+			case 'Content':
+				return node.scrollHeight;
+			case 'VisibleContent':
+				return node.clientHeight;
+			case 'VisibleContentWithBorders':
+				return node.offsetHeight;
+			case 'VisibleContentWithBordersAndMargins':
+				var rect = node.getBoundingClientRect();
+				return rect.bottom - rect.top;
+		}
+	});
+}
+
+return {
+	onDocument: F3(on(document)),
+	onWindow: F3(on(window)),
+
+	focus: focus,
+	blur: blur,
+
+	getScrollTop: getScrollTop,
+	setScrollTop: F2(setScrollTop),
+	getScrollLeft: getScrollLeft,
+	setScrollLeft: F2(setScrollLeft),
+	toBottom: toBottom,
+	toRight: toRight,
+
+	height: F2(height),
+	width: F2(width)
+};
+
+}();
+
+var _elm_lang$dom$Dom$blur = _elm_lang$dom$Native_Dom.blur;
+var _elm_lang$dom$Dom$focus = _elm_lang$dom$Native_Dom.focus;
+var _elm_lang$dom$Dom$NotFound = function (a) {
+	return {ctor: 'NotFound', _0: a};
+};
 
 //import Native.Json //
 
@@ -12272,6 +12686,7 @@ var _rtfeldman$elm_css_helpers$Html_CssHelpers$Namespace = F4(
 		return {$class: a, classList: b, id: c, name: d};
 	});
 
+var _user$project$AppMessages$NoOp = {ctor: 'NoOp'};
 var _user$project$AppMessages$ToggleItem = function (a) {
 	return {ctor: 'ToggleItem', _0: a};
 };
@@ -12280,6 +12695,7 @@ var _user$project$AppMessages$AddItems = {ctor: 'AddItems'};
 var _user$project$AppMessages$NewItems = function (a) {
 	return {ctor: 'NewItems', _0: a};
 };
+var _user$project$AppMessages$CancelAdd = {ctor: 'CancelAdd'};
 var _user$project$AppMessages$ToggleAddPanel = {ctor: 'ToggleAddPanel'};
 
 var _user$project$AppCss$lightGrayColor = _rtfeldman$elm_css$Css$hex('eee');
@@ -12295,15 +12711,14 @@ var _user$project$AppCss$reset = _rtfeldman$elm_css$Css$mixin(
 			_rtfeldman$elm_css$Css$boxSizing(_rtfeldman$elm_css$Css$borderBox)
 		]));
 var _user$project$AppCss$NoItems = {ctor: 'NoItems'};
-var _user$project$AppCss$ListActions = {ctor: 'ListActions'};
 var _user$project$AppCss$ShoppingItemCompleted = {ctor: 'ShoppingItemCompleted'};
 var _user$project$AppCss$ShoppingItem = {ctor: 'ShoppingItem'};
 var _user$project$AppCss$ListCategoryHeader = {ctor: 'ListCategoryHeader'};
 var _user$project$AppCss$ListContainer = {ctor: 'ListContainer'};
 var _user$project$AppCss$Hide = {ctor: 'Hide'};
 var _user$project$AppCss$Show = {ctor: 'Show'};
+var _user$project$AppCss$TextButtonRight = {ctor: 'TextButtonRight'};
 var _user$project$AppCss$TextButton = {ctor: 'TextButton'};
-var _user$project$AppCss$TextButtonContainer = {ctor: 'TextButtonContainer'};
 var _user$project$AppCss$AddBox = {ctor: 'AddBox'};
 var _user$project$AppCss$AddPanel = {ctor: 'AddPanel'};
 var _user$project$AppCss$AddModeContainer = {ctor: 'AddModeContainer'};
@@ -12501,22 +12916,6 @@ var _user$project$AppCss$css = function (_p0) {
 				function (x, y) {
 					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
 				}),
-			_user$project$AppCss$TextButtonContainer,
-			_elm_lang$core$Native_List.fromArray(
-				[
-					_rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$right),
-					_rtfeldman$elm_css$Css$paddingTop(
-					_rtfeldman$elm_css$Css$em(1)),
-					_rtfeldman$elm_css$Css$paddingBottom(
-					_rtfeldman$elm_css$Css$em(1)),
-					_rtfeldman$elm_css$Css$paddingRight(
-					_rtfeldman$elm_css$Css$em(1))
-				])),
-			A2(
-			F2(
-				function (x, y) {
-					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
-				}),
 			_user$project$AppCss$TextButton,
 			_elm_lang$core$Native_List.fromArray(
 				[
@@ -12528,7 +12927,18 @@ var _user$project$AppCss$css = function (_p0) {
 					_rtfeldman$elm_css$Css$color(_user$project$AppCss$accentColor),
 					_rtfeldman$elm_css$Css$border(_rtfeldman$elm_css$Css$zero),
 					_rtfeldman$elm_css$Css$cursor(_rtfeldman$elm_css$Css$pointer),
-					_rtfeldman$elm_css$Css$paddingRight(_rtfeldman$elm_css$Css$zero)
+					_rtfeldman$elm_css$Css$padding(
+					_rtfeldman$elm_css$Css$em(1))
+				])),
+			A2(
+			F2(
+				function (x, y) {
+					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
+				}),
+			_user$project$AppCss$TextButtonRight,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_rtfeldman$elm_css$Css$float(_rtfeldman$elm_css$Css$right)
 				])),
 			A2(
 			F2(
@@ -12612,23 +13022,6 @@ var _user$project$AppCss$css = function (_p0) {
 				function (x, y) {
 					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
 				}),
-			_user$project$AppCss$ListActions,
-			_elm_lang$core$Native_List.fromArray(
-				[
-					_rtfeldman$elm_css$Css$paddingTop(
-					_rtfeldman$elm_css$Css$em(1)),
-					_rtfeldman$elm_css$Css$paddingBottom(
-					_rtfeldman$elm_css$Css$em(1)),
-					_rtfeldman$elm_css$Css$paddingLeft(
-					_rtfeldman$elm_css$Css$em(0.5)),
-					_rtfeldman$elm_css$Css$paddingRight(
-					_rtfeldman$elm_css$Css$em(0.5))
-				])),
-			A2(
-			F2(
-				function (x, y) {
-					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
-				}),
 			_user$project$AppCss$NoItems,
 			_elm_lang$core$Native_List.fromArray(
 				[
@@ -12645,6 +13038,7 @@ var _user$project$AddPanel$addBox = function (newItems) {
 		_elm_lang$html$Html$textarea,
 		_elm_lang$core$Native_List.fromArray(
 			[
+				_user$project$AddPanel$id('addBox'),
 				_user$project$AddPanel$class(
 				_elm_lang$core$Native_List.fromArray(
 					[_user$project$AppCss$AddBox])),
@@ -12658,11 +13052,7 @@ var _user$project$AddPanel$addBox = function (newItems) {
 var _user$project$AddPanel$panelActions = A2(
 	_elm_lang$html$Html$div,
 	_elm_lang$core$Native_List.fromArray(
-		[
-			_user$project$AddPanel$class(
-			_elm_lang$core$Native_List.fromArray(
-				[_user$project$AppCss$TextButtonContainer]))
-		]),
+		[]),
 	_elm_lang$core$Native_List.fromArray(
 		[
 			A2(
@@ -12672,6 +13062,19 @@ var _user$project$AddPanel$panelActions = A2(
 					_user$project$AddPanel$class(
 					_elm_lang$core$Native_List.fromArray(
 						[_user$project$AppCss$TextButton])),
+					_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$CancelAdd)
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html$text('Cancel')
+				])),
+			A2(
+			_elm_lang$html$Html$button,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_user$project$AddPanel$class(
+					_elm_lang$core$Native_List.fromArray(
+						[_user$project$AppCss$TextButton, _user$project$AppCss$TextButtonRight])),
 					_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$AddItems)
 				]),
 			_elm_lang$core$Native_List.fromArray(
@@ -12880,11 +13283,7 @@ var _user$project$CategorizedList$categorizedList = function (categorizedItems) 
 				A2(
 				_elm_lang$html$Html$div,
 				_elm_lang$core$Native_List.fromArray(
-					[
-						_user$project$CategorizedList$class(
-						_elm_lang$core$Native_List.fromArray(
-							[_user$project$AppCss$ListActions, _user$project$AppCss$TextButtonContainer]))
-					]),
+					[]),
 				_elm_lang$core$Native_List.fromArray(
 					[
 						A2(
@@ -12893,7 +13292,7 @@ var _user$project$CategorizedList$categorizedList = function (categorizedItems) 
 							[
 								_user$project$CategorizedList$class(
 								_elm_lang$core$Native_List.fromArray(
-									[_user$project$AppCss$TextButton])),
+									[_user$project$AppCss$TextButton, _user$project$AppCss$TextButtonRight])),
 								_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$Clear)
 							]),
 						_elm_lang$core$Native_List.fromArray(
@@ -13218,6 +13617,22 @@ var _user$project$Main$update = F2(
 				return {
 					ctor: '_Tuple2',
 					_0: newModel,
+					_1: A3(
+						_elm_lang$core$Task$perform,
+						_elm_lang$core$Basics$always(_user$project$AppMessages$NoOp),
+						_elm_lang$core$Basics$always(_user$project$AppMessages$NoOp),
+						_elm_lang$dom$Dom$focus('addBox'))
+				};
+			case 'CancelAdd':
+				var newModel = _elm_lang$core$Native_Utils.update(
+					model,
+					{
+						addPanelVisible: _elm_lang$core$Basics$not(model.addPanelVisible),
+						newItems: ''
+					});
+				return {
+					ctor: '_Tuple2',
+					_0: newModel,
 					_1: _user$project$Main$setStorage(newModel)
 				};
 			case 'NewItems':
@@ -13291,7 +13706,7 @@ var _user$project$Main$update = F2(
 						_1: _user$project$Main$setStorage(newModel)
 					};
 				}
-			default:
+			case 'Clear':
 				var newModel = _elm_lang$core$Native_Utils.update(
 					model,
 					{
@@ -13304,6 +13719,12 @@ var _user$project$Main$update = F2(
 					ctor: '_Tuple2',
 					_0: newModel,
 					_1: _user$project$Main$setStorage(newModel)
+				};
+			default:
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: _user$project$Main$setStorage(model)
 				};
 		}
 	});

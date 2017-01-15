@@ -17,7 +17,8 @@ addPanel newItems visible =
 
 addBox newItems =
   textarea 
-    [ class [ AppCss.AddBox ]
+    [ id "addBox"
+    , class [ AppCss.AddBox ]
     , onInput AppMessages.NewItems
     , value newItems
     , placeholder "Type to add new items" 
@@ -25,12 +26,17 @@ addBox newItems =
     []
 
 panelActions =
-  div [ class [ AppCss.TextButtonContainer ] ]
+  div []
     [ button 
-      [ class [ AppCss.TextButton ]
-      , onClick AppMessages.AddItems 
-      ] 
-      [ text "Add" ] 
+        [ class [ AppCss.TextButton ]
+        , onClick AppMessages.CancelAdd 
+        ] 
+        [ text "Cancel" ] 
+    , button
+        [ class [ AppCss.TextButton, AppCss.TextButtonRight ]
+        , onClick AppMessages.AddItems 
+        ] 
+        [ text "Add" ] 
     ]
 
 addPanelClass visible =

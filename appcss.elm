@@ -14,15 +14,14 @@ type CssClasses =
   | AddModeContainer
   | AddPanel
   | AddBox
-  | TextButtonContainer
   | TextButton
+  | TextButtonRight
   | Show
   | Hide 
   | ListContainer
   | ListCategoryHeader
   | ShoppingItem 
   | ShoppingItemCompleted
-  | ListActions
   | NoItems
 
 reset = 
@@ -106,13 +105,6 @@ css =
       , flexGrow (int 1)
       ]
 
-  , (.) TextButtonContainer
-      [ textAlign right
-      , paddingTop (em 1)
-      , paddingBottom (em 1)
-      , paddingRight (em 1)
-      ]
-
   , (.) TextButton
       [ baseFontFamilies
       , fontSize (em 1)
@@ -121,8 +113,11 @@ css =
       , color accentColor
       , border zero
       , cursor pointer
-      , paddingRight zero
+      , padding (em 1)
       ]
+
+  , (.) TextButtonRight
+      [ float right ]
 
   , (.) Show
       [ display inherit ]
@@ -147,13 +142,6 @@ css =
   , (.) ShoppingItemCompleted
       [ textDecoration lineThrough
       , color (hex "ccc")
-      ]
-
-  , (.) ListActions
-      [ paddingTop (em 1)
-      , paddingBottom (em 1)
-      , paddingLeft (em 0.5)
-      , paddingRight (em 0.5)
       ]
 
   , (.) NoItems
