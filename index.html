@@ -5,18 +5,22 @@
   <title>Main</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="app.css?01142017174137">
-  <script type="text/javascript" src="app.js?01142017174137"></script>
+  <link rel="stylesheet" href="app.css?01142017221225">
+  <script type="text/javascript" src="app.js?01142017221225"></script>
 </head>
 <body>
   <script type="text/javascript">
-    var model = localStorage.getItem('model')
-    var startingModel = model ? JSON.parse(model) : null
+    var model = localStorage.getItem('model');
 
-    var app = Elm.Main.fullscreen(startingModel)
+    var startingModel = model ? JSON.parse(model) : null;
+    // TODO: make sure entire model is of a valid structure, otherwise either make it valid or throw it out
+    if(!startingModel.categorizedItems)
+      startingModel.categorizedItems = [];
+
+    var app = Elm.Main.fullscreen(startingModel);
 
     app.ports.setStorage.subscribe(function (state) {
-      localStorage.setItem('model', JSON.stringify(state))
+      localStorage.setItem('model', JSON.stringify(state));
     })
   </script>
 </body>

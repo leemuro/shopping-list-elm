@@ -1,8 +1,6 @@
 module CategorizedList exposing (categorizedList)
 
 import List
-import String
-import Regex
 import Html exposing (Html, div, h1, ul, li, p, button, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
@@ -12,21 +10,15 @@ import AppCss
 import Html.CssHelpers
 { id, class, classList } = Html.CssHelpers.withNamespace "sl"
 
-categorizedList categories addedItems = 
-  if List.length addedItems == 0 then
+categorizedList categorizedItems =
+  if List.length categorizedItems == 0 then
     noItems
   else
     div [] 
-      [ ul [] (listCategories categories addedItems)
+      [ ul [] (List.map (\c -> listCategory c) categorizedItems)
       , div [ class [ AppCss.ListActions, AppCss.TextButtonContainer ] ]
           [ button [ class [ AppCss.TextButton ], onClick AppMessages.Clear ] [ text "Clear List" ] ]
       ]
-
-listCategories categories items =
-  let x = 
-    categoryLists categories items
-  in
-    List.map (\c -> listCategory c) x
 
 listCategory categoryList = 
   li []
@@ -37,27 +29,6 @@ listCategory categoryList =
 listItem item =
   li [ itemClass item, onClick (AppMessages.ToggleItem item.id)] [ text item.desc ]
 
-categoryLists categories items = 
-  let x =
-    List.map (\c -> { name = c.name, items = (itemsInCategory items c categories) }) categories
-  in 
-    List.filter (\i -> List.length i.items > 0) x
-
-itemsInCategory items category categories =
-  if List.length category.matchers > 0 then
-    List.filter (\item -> itemMatches item category.matchers category.exclusions) items
-  else
-    itemsInNoCategory items categories
-
-itemMatches item matchers exclusions =
-  List.any (\matcher -> Regex.contains (Regex.regex ("(\\W|^)" ++ (String.toLower matcher) ++ "(\\W|$)")) (String.toLower item.desc)) matchers
-  && not (List.any (\exclusion -> Regex.contains (Regex.regex ("(\\W|^)" ++ (String.toLower exclusion) ++ "(\\W|$)")) (String.toLower item.desc)) exclusions)
-
-itemsInNoCategory items categories =
-  List.filter (\item -> 
-    (not (List.any (\category -> 
-      itemMatches item category.matchers category.exclusions) categories ))) items
-
 itemClass item =
   if item.completed then
     class [ AppCss.ShoppingItem, AppCss.ShoppingItemCompleted ]
@@ -66,3 +37,4 @@ itemClass item =
 
 noItems =
   p [ class [ AppCss.NoItems ] ] [ text "Click + to add some items to the list." ]
+

@@ -12726,87 +12726,6 @@ var _user$project$Categories$defaultCategories = _elm_lang$core$Native_List.from
 	}
 	]);
 
-var _user$project$CategorizedList$itemMatches = F3(
-	function (item, matchers, exclusions) {
-		return A2(
-			_elm_lang$core$List$any,
-			function (matcher) {
-				return A2(
-					_elm_lang$core$Regex$contains,
-					_elm_lang$core$Regex$regex(
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							'(\\W|^)',
-							A2(
-								_elm_lang$core$Basics_ops['++'],
-								_elm_lang$core$String$toLower(matcher),
-								'(\\W|$)'))),
-					_elm_lang$core$String$toLower(item.desc));
-			},
-			matchers) && _elm_lang$core$Basics$not(
-			A2(
-				_elm_lang$core$List$any,
-				function (exclusion) {
-					return A2(
-						_elm_lang$core$Regex$contains,
-						_elm_lang$core$Regex$regex(
-							A2(
-								_elm_lang$core$Basics_ops['++'],
-								'(\\W|^)',
-								A2(
-									_elm_lang$core$Basics_ops['++'],
-									_elm_lang$core$String$toLower(exclusion),
-									'(\\W|$)'))),
-						_elm_lang$core$String$toLower(item.desc));
-				},
-				exclusions));
-	});
-var _user$project$CategorizedList$itemsInNoCategory = F2(
-	function (items, categories) {
-		return A2(
-			_elm_lang$core$List$filter,
-			function (item) {
-				return _elm_lang$core$Basics$not(
-					A2(
-						_elm_lang$core$List$any,
-						function (category) {
-							return A3(_user$project$CategorizedList$itemMatches, item, category.matchers, category.exclusions);
-						},
-						categories));
-			},
-			items);
-	});
-var _user$project$CategorizedList$itemsInCategory = F3(
-	function (items, category, categories) {
-		return (_elm_lang$core$Native_Utils.cmp(
-			_elm_lang$core$List$length(category.matchers),
-			0) > 0) ? A2(
-			_elm_lang$core$List$filter,
-			function (item) {
-				return A3(_user$project$CategorizedList$itemMatches, item, category.matchers, category.exclusions);
-			},
-			items) : A2(_user$project$CategorizedList$itemsInNoCategory, items, categories);
-	});
-var _user$project$CategorizedList$categoryLists = F2(
-	function (categories, items) {
-		var x = A2(
-			_elm_lang$core$List$map,
-			function (c) {
-				return {
-					name: c.name,
-					items: A3(_user$project$CategorizedList$itemsInCategory, items, c, categories)
-				};
-			},
-			categories);
-		return A2(
-			_elm_lang$core$List$filter,
-			function (i) {
-				return _elm_lang$core$Native_Utils.cmp(
-					_elm_lang$core$List$length(i.items),
-					0) > 0;
-			},
-			x);
-	});
 var _user$project$CategorizedList$_p0 = _rtfeldman$elm_css_helpers$Html_CssHelpers$withNamespace('sl');
 var _user$project$CategorizedList$id = _user$project$CategorizedList$_p0.id;
 var _user$project$CategorizedList$class = _user$project$CategorizedList$_p0.$class;
@@ -12858,16 +12777,6 @@ var _user$project$CategorizedList$listCategory = function (categoryList) {
 				A2(_elm_lang$core$List$map, _user$project$CategorizedList$listItem, categoryList.items))
 			]));
 };
-var _user$project$CategorizedList$listCategories = F2(
-	function (categories, items) {
-		var x = A2(_user$project$CategorizedList$categoryLists, categories, items);
-		return A2(
-			_elm_lang$core$List$map,
-			function (c) {
-				return _user$project$CategorizedList$listCategory(c);
-			},
-			x);
-	});
 var _user$project$CategorizedList$noItems = A2(
 	_elm_lang$html$Html$p,
 	_elm_lang$core$Native_List.fromArray(
@@ -12880,47 +12789,51 @@ var _user$project$CategorizedList$noItems = A2(
 		[
 			_elm_lang$html$Html$text('Click + to add some items to the list.')
 		]));
-var _user$project$CategorizedList$categorizedList = F2(
-	function (categories, addedItems) {
-		return _elm_lang$core$Native_Utils.eq(
-			_elm_lang$core$List$length(addedItems),
-			0) ? _user$project$CategorizedList$noItems : A2(
-			_elm_lang$html$Html$div,
-			_elm_lang$core$Native_List.fromArray(
-				[]),
-			_elm_lang$core$Native_List.fromArray(
-				[
-					A2(
-					_elm_lang$html$Html$ul,
-					_elm_lang$core$Native_List.fromArray(
-						[]),
-					A2(_user$project$CategorizedList$listCategories, categories, addedItems)),
-					A2(
-					_elm_lang$html$Html$div,
-					_elm_lang$core$Native_List.fromArray(
-						[
-							_user$project$CategorizedList$class(
-							_elm_lang$core$Native_List.fromArray(
-								[_user$project$AppCss$ListActions, _user$project$AppCss$TextButtonContainer]))
-						]),
-					_elm_lang$core$Native_List.fromArray(
-						[
-							A2(
-							_elm_lang$html$Html$button,
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_user$project$CategorizedList$class(
-									_elm_lang$core$Native_List.fromArray(
-										[_user$project$AppCss$TextButton])),
-									_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$Clear)
-								]),
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_elm_lang$html$Html$text('Clear List')
-								]))
-						]))
-				]));
-	});
+var _user$project$CategorizedList$categorizedList = function (categorizedItems) {
+	return _elm_lang$core$Native_Utils.eq(
+		_elm_lang$core$List$length(categorizedItems),
+		0) ? _user$project$CategorizedList$noItems : A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$ul,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				A2(
+					_elm_lang$core$List$map,
+					function (c) {
+						return _user$project$CategorizedList$listCategory(c);
+					},
+					categorizedItems)),
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_user$project$CategorizedList$class(
+						_elm_lang$core$Native_List.fromArray(
+							[_user$project$AppCss$ListActions, _user$project$AppCss$TextButtonContainer]))
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						A2(
+						_elm_lang$html$Html$button,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$CategorizedList$class(
+								_elm_lang$core$Native_List.fromArray(
+									[_user$project$AppCss$TextButton])),
+								_elm_lang$html$Html_Events$onClick(_user$project$AppMessages$Clear)
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text('Clear List')
+							]))
+					]))
+			]));
+};
 
 var _user$project$HeaderBar$_p0 = _rtfeldman$elm_css_helpers$Html_CssHelpers$withNamespace('sl');
 var _user$project$HeaderBar$id = _user$project$HeaderBar$_p0.id;
@@ -12999,7 +12912,7 @@ var _user$project$Main$view = function (model) {
 			[
 				_user$project$HeaderBar$headerBar,
 				A2(_user$project$AddPanel$addPanel, model.newItems, model.addPanelVisible),
-				A2(_user$project$CategorizedList$categorizedList, model.categories, model.addedItems)
+				_user$project$CategorizedList$categorizedList(model.categorizedItems)
 			]));
 };
 var _user$project$Main$toggleItemIfId = F2(
@@ -13009,6 +12922,87 @@ var _user$project$Main$toggleItemIfId = F2(
 			{
 				completed: _elm_lang$core$Basics$not(item.completed)
 			}) : item;
+	});
+var _user$project$Main$itemMatches = F3(
+	function (item, matchers, exclusions) {
+		return A2(
+			_elm_lang$core$List$any,
+			function (matcher) {
+				return A2(
+					_elm_lang$core$Regex$contains,
+					_elm_lang$core$Regex$regex(
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							'(\\W|^)',
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								_elm_lang$core$String$toLower(matcher),
+								'(\\W|$)'))),
+					_elm_lang$core$String$toLower(item.desc));
+			},
+			matchers) && _elm_lang$core$Basics$not(
+			A2(
+				_elm_lang$core$List$any,
+				function (exclusion) {
+					return A2(
+						_elm_lang$core$Regex$contains,
+						_elm_lang$core$Regex$regex(
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								'(\\W|^)',
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									_elm_lang$core$String$toLower(exclusion),
+									'(\\W|$)'))),
+						_elm_lang$core$String$toLower(item.desc));
+				},
+				exclusions));
+	});
+var _user$project$Main$itemsInNoCategory = F2(
+	function (items, categories) {
+		return A2(
+			_elm_lang$core$List$filter,
+			function (item) {
+				return _elm_lang$core$Basics$not(
+					A2(
+						_elm_lang$core$List$any,
+						function (category) {
+							return A3(_user$project$Main$itemMatches, item, category.matchers, category.exclusions);
+						},
+						categories));
+			},
+			items);
+	});
+var _user$project$Main$itemsInCategory = F3(
+	function (items, category, categories) {
+		return (_elm_lang$core$Native_Utils.cmp(
+			_elm_lang$core$List$length(category.matchers),
+			0) > 0) ? A2(
+			_elm_lang$core$List$filter,
+			function (item) {
+				return A3(_user$project$Main$itemMatches, item, category.matchers, category.exclusions);
+			},
+			items) : A2(_user$project$Main$itemsInNoCategory, items, categories);
+	});
+var _user$project$Main$categorizedItems = F2(
+	function (categories, items) {
+		var x = A2(
+			_elm_lang$core$List$map,
+			function (c) {
+				return {
+					name: c.name,
+					items: A3(_user$project$Main$itemsInCategory, items, c, categories)
+				};
+			},
+			categories);
+		return A2(
+			_elm_lang$core$List$filter,
+			function (i) {
+				return _elm_lang$core$Native_Utils.cmp(
+					_elm_lang$core$List$length(i.items),
+					0) > 0;
+			},
+			x);
 	});
 var _user$project$Main$newItem = F2(
 	function (id, desc) {
@@ -13057,6 +13051,8 @@ var _user$project$Main$defaultModel = {
 	addedItems: _elm_lang$core$Native_List.fromArray(
 		[]),
 	categories: _user$project$Categories$defaultCategories,
+	categorizedItems: _elm_lang$core$Native_List.fromArray(
+		[]),
 	currentItemId: 0,
 	addPanelVisible: false
 };
@@ -13097,6 +13093,16 @@ var _user$project$Main$setStorage = _elm_lang$core$Native_Platform.outgoingPort(
 							})
 					};
 				}),
+			categorizedItems: _elm_lang$core$Native_List.toArray(v.categorizedItems).map(
+				function (v) {
+					return {
+						name: v.name,
+						items: _elm_lang$core$Native_List.toArray(v.items).map(
+							function (v) {
+								return {id: v.id, desc: v.desc, completed: v.completed};
+							})
+					};
+				}),
 			currentItemId: v.currentItemId,
 			addPanelVisible: v.addPanelVisible
 		};
@@ -13126,10 +13132,12 @@ var _user$project$Main$update = F2(
 					_1: _user$project$Main$setStorage(newModel)
 				};
 			case 'AddItems':
+				var newAddedItems = A3(_user$project$Main$appendTextAsNewItems, model.addedItems, model.newItems, model.currentItemId);
 				var newModel = _elm_lang$core$Native_Utils.update(
 					model,
 					{
-						addedItems: A3(_user$project$Main$appendTextAsNewItems, model.addedItems, model.newItems, model.currentItemId),
+						addedItems: newAddedItems,
+						categorizedItems: A2(_user$project$Main$categorizedItems, model.categories, newAddedItems),
 						currentItemId: model.currentItemId + _elm_lang$core$List$length(
 							A2(_elm_lang$core$String$split, '\n', model.newItems)),
 						newItems: '',
@@ -13161,6 +13169,8 @@ var _user$project$Main$update = F2(
 					model,
 					{
 						addedItems: _elm_lang$core$Native_List.fromArray(
+							[]),
+						categorizedItems: _elm_lang$core$Native_List.fromArray(
 							[])
 					});
 				return {
@@ -13240,14 +13250,54 @@ var _user$project$Main$main = {
 									function (categories) {
 										return A2(
 											_elm_lang$core$Json_Decode$andThen,
-											A2(_elm_lang$core$Json_Decode_ops[':='], 'currentItemId', _elm_lang$core$Json_Decode$int),
-											function (currentItemId) {
+											A2(
+												_elm_lang$core$Json_Decode_ops[':='],
+												'categorizedItems',
+												_elm_lang$core$Json_Decode$list(
+													A2(
+														_elm_lang$core$Json_Decode$andThen,
+														A2(
+															_elm_lang$core$Json_Decode_ops[':='],
+															'items',
+															_elm_lang$core$Json_Decode$list(
+																A2(
+																	_elm_lang$core$Json_Decode$andThen,
+																	A2(_elm_lang$core$Json_Decode_ops[':='], 'completed', _elm_lang$core$Json_Decode$bool),
+																	function (completed) {
+																		return A2(
+																			_elm_lang$core$Json_Decode$andThen,
+																			A2(_elm_lang$core$Json_Decode_ops[':='], 'desc', _elm_lang$core$Json_Decode$string),
+																			function (desc) {
+																				return A2(
+																					_elm_lang$core$Json_Decode$andThen,
+																					A2(_elm_lang$core$Json_Decode_ops[':='], 'id', _elm_lang$core$Json_Decode$int),
+																					function (id) {
+																						return _elm_lang$core$Json_Decode$succeed(
+																							{completed: completed, desc: desc, id: id});
+																					});
+																			});
+																	}))),
+														function (items) {
+															return A2(
+																_elm_lang$core$Json_Decode$andThen,
+																A2(_elm_lang$core$Json_Decode_ops[':='], 'name', _elm_lang$core$Json_Decode$string),
+																function (name) {
+																	return _elm_lang$core$Json_Decode$succeed(
+																		{items: items, name: name});
+																});
+														}))),
+											function (categorizedItems) {
 												return A2(
 													_elm_lang$core$Json_Decode$andThen,
-													A2(_elm_lang$core$Json_Decode_ops[':='], 'newItems', _elm_lang$core$Json_Decode$string),
-													function (newItems) {
-														return _elm_lang$core$Json_Decode$succeed(
-															{addPanelVisible: addPanelVisible, addedItems: addedItems, categories: categories, currentItemId: currentItemId, newItems: newItems});
+													A2(_elm_lang$core$Json_Decode_ops[':='], 'currentItemId', _elm_lang$core$Json_Decode$int),
+													function (currentItemId) {
+														return A2(
+															_elm_lang$core$Json_Decode$andThen,
+															A2(_elm_lang$core$Json_Decode_ops[':='], 'newItems', _elm_lang$core$Json_Decode$string),
+															function (newItems) {
+																return _elm_lang$core$Json_Decode$succeed(
+																	{addPanelVisible: addPanelVisible, addedItems: addedItems, categories: categories, categorizedItems: categorizedItems, currentItemId: currentItemId, newItems: newItems});
+															});
 													});
 											});
 									});
@@ -13263,9 +13313,13 @@ var _user$project$Main$Categories = F3(
 	function (a, b, c) {
 		return {name: a, matchers: b, exclusions: c};
 	});
-var _user$project$Main$ShoppingList = F5(
-	function (a, b, c, d, e) {
-		return {newItems: a, addedItems: b, categories: c, currentItemId: d, addPanelVisible: e};
+var _user$project$Main$CategoryOfItems = F2(
+	function (a, b) {
+		return {name: a, items: b};
+	});
+var _user$project$Main$ShoppingList = F6(
+	function (a, b, c, d, e, f) {
+		return {newItems: a, addedItems: b, categories: c, categorizedItems: d, currentItemId: e, addPanelVisible: f};
 	});
 
 var Elm = {};

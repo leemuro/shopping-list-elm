@@ -4,6 +4,7 @@ import Html exposing (Html, div)
 import Html.Attributes exposing (style, name, content)
 import Html.App as App
 import String
+import Regex
 import List
 import Categories exposing (defaultCategories)
 import AppMessages
@@ -23,10 +24,16 @@ type alias Categories =
   , exclusions: List String
   }
 
+type alias CategoryOfItems =
+  { name: String
+  , items: List ShoppingItem
+}
+
 type alias ShoppingList =
   { newItems: String
   , addedItems: List ShoppingItem
   , categories: List Categories
+  , categorizedItems: List CategoryOfItems
   , currentItemId: Int
   , addPanelVisible: Bool
   }
@@ -40,6 +47,7 @@ defaultModel = {
   newItems = ""
   , addedItems = []
   , categories = defaultCategories
+  , categorizedItems = []
   , currentItemId = 0
   , addPanelVisible = False
   }
@@ -81,13 +89,16 @@ update msg model =
         ( newModel, setStorage newModel )
 
     AppMessages.AddItems ->
-      let newModel =
-        { model | 
-          addedItems = appendTextAsNewItems model.addedItems model.newItems model.currentItemId
-          , currentItemId = model.currentItemId + List.length (String.split "\n" model.newItems)
-          , newItems = ""
-          , addPanelVisible = False
-        }
+      let 
+        newAddedItems = appendTextAsNewItems model.addedItems model.newItems model.currentItemId
+        newModel =
+          { model | 
+              addedItems = newAddedItems
+            , categorizedItems = categorizedItems model.categories newAddedItems
+            , currentItemId = model.currentItemId + List.length (String.split "\n" model.newItems)
+            , newItems = ""
+            , addPanelVisible = False
+          }
       in
         ( newModel, setStorage newModel )
 
@@ -99,7 +110,7 @@ update msg model =
 
     AppMessages.Clear ->
       let newModel =
-        { model | addedItems = [] }
+        { model | addedItems = [], categorizedItems = [] }
       in
         ( newModel, setStorage newModel )
 
@@ -116,6 +127,27 @@ textToNewItems text currentItemId =
 newItem id desc =
   { id = id, desc = desc, completed = False }
 
+categorizedItems categories items = 
+  let x =
+    List.map (\c -> { name = c.name, items = (itemsInCategory items c categories) }) categories
+  in 
+    List.filter (\i -> List.length i.items > 0) x
+
+itemsInCategory items category categories =
+  if List.length category.matchers > 0 then
+    List.filter (\item -> itemMatches item category.matchers category.exclusions) items
+  else
+    itemsInNoCategory items categories
+
+itemMatches item matchers exclusions =
+  List.any (\matcher -> Regex.contains (Regex.regex ("(\\W|^)" ++ (String.toLower matcher) ++ "(\\W|$)")) (String.toLower item.desc)) matchers
+  && not (List.any (\exclusion -> Regex.contains (Regex.regex ("(\\W|^)" ++ (String.toLower exclusion) ++ "(\\W|$)")) (String.toLower item.desc)) exclusions)
+
+itemsInNoCategory items categories =
+  List.filter (\item -> 
+    (not (List.any (\category -> 
+      itemMatches item category.matchers category.exclusions) categories ))) items
+
 toggleItemIfId item id =
   if item.id == id then
     { item | completed = not item.completed }
@@ -128,5 +160,5 @@ view model =
   div []
     [ headerBar
     , addPanel model.newItems model.addPanelVisible
-    , categorizedList model.categories model.addedItems
+    , categorizedList model.categorizedItems
     ]
