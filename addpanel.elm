@@ -21,12 +21,12 @@ addBox newItems =
     , class [ AppCss.AddBox ]
     , onInput AppMessages.NewItems
     , value newItems
-    , placeholder "Type to add new items" 
+    , placeholder "Type to add multiple items using one item per line." 
     ] 
     []
 
 panelActions =
-  div []
+  div [ class [ AppCss.TextButtonFooter ] ]
     [ button 
         [ class [ AppCss.TextButton ]
         , onClick AppMessages.CancelAdd 

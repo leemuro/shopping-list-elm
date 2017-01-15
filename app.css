@@ -92,10 +92,16 @@ h1 {
     box-sizing: border-box;
     font-family: Droid Sans, Arial, sans-serif;
     font-size: 1em;
-    padding: 0.5em;
+    padding: 1em;
     width: 100%;
     border: 0;
     flex-grow: 1;
+}
+
+.slTextButtonFooter {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #eee;
 }
 
 .slTextButton {

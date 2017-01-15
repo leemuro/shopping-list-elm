@@ -12304,6 +12304,7 @@ var _user$project$AppCss$Hide = {ctor: 'Hide'};
 var _user$project$AppCss$Show = {ctor: 'Show'};
 var _user$project$AppCss$TextButtonRight = {ctor: 'TextButtonRight'};
 var _user$project$AppCss$TextButton = {ctor: 'TextButton'};
+var _user$project$AppCss$TextButtonFooter = {ctor: 'TextButtonFooter'};
 var _user$project$AppCss$AddBox = {ctor: 'AddBox'};
 var _user$project$AppCss$AddPanel = {ctor: 'AddPanel'};
 var _user$project$AppCss$AddModeContainer = {ctor: 'AddModeContainer'};
@@ -12489,12 +12490,25 @@ var _user$project$AppCss$css = function (_p0) {
 					_rtfeldman$elm_css$Css$fontSize(
 					_rtfeldman$elm_css$Css$em(1)),
 					_rtfeldman$elm_css$Css$padding(
-					_rtfeldman$elm_css$Css$em(0.5)),
+					_rtfeldman$elm_css$Css$em(1)),
 					_rtfeldman$elm_css$Css$width(
 					_rtfeldman$elm_css$Css$pct(100)),
 					_rtfeldman$elm_css$Css$border(_rtfeldman$elm_css$Css$zero),
 					_rtfeldman$elm_css$Css$flexGrow(
 					_rtfeldman$elm_css$Css$int(1))
+				])),
+			A2(
+			F2(
+				function (x, y) {
+					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
+				}),
+			_user$project$AppCss$TextButtonFooter,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_rtfeldman$elm_css$Css$borderTopWidth(
+					_rtfeldman$elm_css$Css$px(1)),
+					_rtfeldman$elm_css$Css$borderTopStyle(_rtfeldman$elm_css$Css$solid),
+					_rtfeldman$elm_css$Css$borderTopColor(_user$project$AppCss$lightGrayColor)
 				])),
 			A2(
 			F2(
@@ -12629,7 +12643,7 @@ var _user$project$AddPanel$addBox = function (newItems) {
 					[_user$project$AppCss$AddBox])),
 				_elm_lang$html$Html_Events$onInput(_user$project$AppMessages$NewItems),
 				_elm_lang$html$Html_Attributes$value(newItems),
-				_elm_lang$html$Html_Attributes$placeholder('Type to add new items')
+				_elm_lang$html$Html_Attributes$placeholder('Type to add multiple items using one item per line.')
 			]),
 		_elm_lang$core$Native_List.fromArray(
 			[]));
@@ -12637,7 +12651,11 @@ var _user$project$AddPanel$addBox = function (newItems) {
 var _user$project$AddPanel$panelActions = A2(
 	_elm_lang$html$Html$div,
 	_elm_lang$core$Native_List.fromArray(
-		[]),
+		[
+			_user$project$AddPanel$class(
+			_elm_lang$core$Native_List.fromArray(
+				[_user$project$AppCss$TextButtonFooter]))
+		]),
 	_elm_lang$core$Native_List.fromArray(
 		[
 			A2(

@@ -14,6 +14,7 @@ type CssClasses =
   | AddModeContainer
   | AddPanel
   | AddBox
+  | TextButtonFooter
   | TextButton
   | TextButtonRight
   | Show
@@ -99,10 +100,16 @@ css =
       [ reset
       , baseFontFamilies
       , fontSize (em 1)
-      , padding (em 0.5)
+      , padding (em 1)
       , width (pct 100)
       , border zero
       , flexGrow (int 1)
+      ]
+
+  , (.) TextButtonFooter
+      [ borderTopWidth (px 1)
+      , borderTopStyle solid
+      , borderTopColor lightGrayColor
       ]
 
   , (.) TextButton
