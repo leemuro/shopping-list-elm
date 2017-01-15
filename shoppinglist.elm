@@ -6,8 +6,6 @@ import Html.App as App
 import String
 import Regex
 import List
-import Dom
-import Task
 import Categories exposing (defaultCategories)
 import AppMessages
 import HeaderBar exposing (headerBar)
@@ -86,7 +84,7 @@ update msg model =
       let newModel =
         { model | addPanelVisible = not model.addPanelVisible }
       in
-        ( newModel, Task.perform (always AppMessages.NoOp) (always AppMessages.NoOp) (Dom.focus "addBox") )
+        ( newModel, setStorage newModel )
 
     AppMessages.CancelAdd ->
       let newModel =
@@ -134,9 +132,6 @@ update msg model =
         { model | addedItems = [], categorizedItems = [] }
       in
         ( newModel, setStorage newModel )
-
-    AppMessages.NoOp ->
-      ( model, setStorage model )
 
 appendTextAsNewItems items text currentItemId =
   List.append items (textToNewItems text currentItemId)
