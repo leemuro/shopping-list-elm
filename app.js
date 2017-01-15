@@ -13149,15 +13149,31 @@ var _user$project$Main$update = F2(
 					_1: _user$project$Main$setStorage(newModel)
 				};
 			case 'ToggleItem':
+				var _p2 = _p1._0;
 				var newModel = _elm_lang$core$Native_Utils.update(
 					model,
 					{
 						addedItems: A2(
 							_elm_lang$core$List$map,
 							function (i) {
-								return A2(_user$project$Main$toggleItemIfId, i, _p1._0);
+								return A2(_user$project$Main$toggleItemIfId, i, _p2);
 							},
-							model.addedItems)
+							model.addedItems),
+						categorizedItems: A2(
+							_elm_lang$core$List$map,
+							function (c) {
+								return _elm_lang$core$Native_Utils.update(
+									c,
+									{
+										items: A2(
+											_elm_lang$core$List$map,
+											function (i) {
+												return A2(_user$project$Main$toggleItemIfId, i, _p2);
+											},
+											c.items)
+									});
+							},
+							model.categorizedItems)
 					});
 				return {
 					ctor: '_Tuple2',

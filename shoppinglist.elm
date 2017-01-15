@@ -104,7 +104,10 @@ update msg model =
 
     AppMessages.ToggleItem itemId ->
       let newModel =
-        { model | addedItems = List.map (\i -> toggleItemIfId i itemId) model.addedItems }
+        { model | 
+          addedItems = List.map (\i -> toggleItemIfId i itemId) model.addedItems 
+        , categorizedItems = List.map (\c -> {c | items = List.map (\i -> toggleItemIfId i itemId) c.items}) model.categorizedItems 
+        }
       in
         ( newModel, setStorage newModel )
 
