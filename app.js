@@ -12306,21 +12306,33 @@ var _user$project$AppCss$TextButton = {ctor: 'TextButton'};
 var _user$project$AppCss$TextButtonContainer = {ctor: 'TextButtonContainer'};
 var _user$project$AppCss$AddBox = {ctor: 'AddBox'};
 var _user$project$AppCss$AddPanel = {ctor: 'AddPanel'};
+var _user$project$AppCss$AddModeContainer = {ctor: 'AddModeContainer'};
 var _user$project$AppCss$HeaderBarRight = {ctor: 'HeaderBarRight'};
 var _user$project$AppCss$HeaderBarCenter = {ctor: 'HeaderBarCenter'};
 var _user$project$AppCss$HeaderBarItem = {ctor: 'HeaderBarItem'};
 var _user$project$AppCss$HeaderBarAdd = {ctor: 'HeaderBarAdd'};
 var _user$project$AppCss$HeaderBar = {ctor: 'HeaderBar'};
-var _user$project$AppCss$HeaderContainer = {ctor: 'HeaderContainer'};
+var _user$project$AppCss$FixedHeader = {ctor: 'FixedHeader'};
 var _user$project$AppCss$css = function (_p0) {
 	return _rtfeldman$elm_css$Css$stylesheet(
 		A2(_rtfeldman$elm_css$Css_Namespace$namespace, 'sl', _p0));
 }(
 	_elm_lang$core$Native_List.fromArray(
 		[
+			_rtfeldman$elm_css$Css_Elements$html(
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_rtfeldman$elm_css$Css$height(
+					_rtfeldman$elm_css$Css$pct(100))
+				])),
 			_rtfeldman$elm_css$Css_Elements$body(
 			_elm_lang$core$Native_List.fromArray(
-				[_user$project$AppCss$reset, _user$project$AppCss$baseFontFamilies])),
+				[
+					_user$project$AppCss$reset,
+					_user$project$AppCss$baseFontFamilies,
+					_rtfeldman$elm_css$Css$height(
+					_rtfeldman$elm_css$Css$pct(100))
+				])),
 			_rtfeldman$elm_css$Css_Elements$div(
 			_elm_lang$core$Native_List.fromArray(
 				[_user$project$AppCss$reset])),
@@ -12345,7 +12357,7 @@ var _user$project$AppCss$css = function (_p0) {
 				function (x, y) {
 					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
 				}),
-			_user$project$AppCss$HeaderContainer,
+			_user$project$AppCss$FixedHeader,
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_rtfeldman$elm_css$Css$position(_rtfeldman$elm_css$Css$fixed),
@@ -12440,12 +12452,29 @@ var _user$project$AppCss$css = function (_p0) {
 				function (x, y) {
 					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
 				}),
+			_user$project$AppCss$AddModeContainer,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_rtfeldman$elm_css$Css$displayFlex,
+					_rtfeldman$elm_css$Css$flexDirection(_rtfeldman$elm_css$Css$column),
+					_rtfeldman$elm_css$Css$height(
+					_rtfeldman$elm_css$Css$pct(100))
+				])),
+			A2(
+			F2(
+				function (x, y) {
+					return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
+				}),
 			_user$project$AppCss$AddPanel,
 			_elm_lang$core$Native_List.fromArray(
 				[
-					_rtfeldman$elm_css$Css$backgroundColor(_user$project$AppCss$lightGrayColor),
-					_rtfeldman$elm_css$Css$padding(
-					_rtfeldman$elm_css$Css$em(0.75))
+					_rtfeldman$elm_css$Css$displayFlex,
+					_rtfeldman$elm_css$Css$flexDirection(_rtfeldman$elm_css$Css$column),
+					_rtfeldman$elm_css$Css$flexGrow(
+					_rtfeldman$elm_css$Css$int(1)),
+					_rtfeldman$elm_css$Css$flexShrink(
+					_rtfeldman$elm_css$Css$int(1)),
+					_rtfeldman$elm_css$Css$flexBasis(_rtfeldman$elm_css$Css$auto)
 				])),
 			A2(
 			F2(
@@ -12463,9 +12492,9 @@ var _user$project$AppCss$css = function (_p0) {
 					_rtfeldman$elm_css$Css$em(0.5)),
 					_rtfeldman$elm_css$Css$width(
 					_rtfeldman$elm_css$Css$pct(100)),
-					_rtfeldman$elm_css$Css$height(
-					_rtfeldman$elm_css$Css$em(10)),
-					_rtfeldman$elm_css$Css$border(_rtfeldman$elm_css$Css$zero)
+					_rtfeldman$elm_css$Css$border(_rtfeldman$elm_css$Css$zero),
+					_rtfeldman$elm_css$Css$flexGrow(
+					_rtfeldman$elm_css$Css$int(1))
 				])),
 			A2(
 			F2(
@@ -12477,7 +12506,11 @@ var _user$project$AppCss$css = function (_p0) {
 				[
 					_rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$right),
 					_rtfeldman$elm_css$Css$paddingTop(
-					_rtfeldman$elm_css$Css$em(0.5))
+					_rtfeldman$elm_css$Css$em(1)),
+					_rtfeldman$elm_css$Css$paddingBottom(
+					_rtfeldman$elm_css$Css$em(1)),
+					_rtfeldman$elm_css$Css$paddingRight(
+					_rtfeldman$elm_css$Css$em(1))
 				])),
 			A2(
 			F2(
@@ -13099,7 +13132,24 @@ var _user$project$Main$id = _user$project$Main$_p1.id;
 var _user$project$Main$class = _user$project$Main$_p1.$class;
 var _user$project$Main$classList = _user$project$Main$_p1.classList;
 var _user$project$Main$view = function (model) {
-	return A2(
+	return model.addPanelVisible ? A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_user$project$Main$class(
+				_elm_lang$core$Native_List.fromArray(
+					[_user$project$AppCss$AddModeContainer]))
+			]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[_user$project$HeaderBar$headerBar])),
+				A2(_user$project$AddPanel$addPanel, model.newItems, model.addPanelVisible)
+			])) : A2(
 		_elm_lang$html$Html$div,
 		_elm_lang$core$Native_List.fromArray(
 			[]),
@@ -13111,13 +13161,10 @@ var _user$project$Main$view = function (model) {
 					[
 						_user$project$Main$class(
 						_elm_lang$core$Native_List.fromArray(
-							[_user$project$AppCss$HeaderContainer]))
+							[_user$project$AppCss$FixedHeader]))
 					]),
 				_elm_lang$core$Native_List.fromArray(
-					[
-						_user$project$HeaderBar$headerBar,
-						A2(_user$project$AddPanel$addPanel, model.newItems, model.addPanelVisible)
-					])),
+					[_user$project$HeaderBar$headerBar])),
 				_user$project$CategorizedList$categorizedList(model.categorizedItems)
 			]));
 };

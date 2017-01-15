@@ -5,12 +5,13 @@ import Css.Elements exposing (body, div, span, h1, button, ul, li)
 import Css.Namespace exposing (namespace)
 
 type CssClasses = 
-  HeaderContainer
+  FixedHeader
   | HeaderBar
   | HeaderBarAdd
   | HeaderBarItem
   | HeaderBarCenter
   | HeaderBarRight
+  | AddModeContainer
   | AddPanel
   | AddBox
   | TextButtonContainer
@@ -40,13 +41,14 @@ lightGrayColor = hex "eee"
 css =
   (stylesheet << namespace "sl")
 
-  [ body [ reset, baseFontFamilies ] 
+  [ Css.Elements.html [ height (pct 100) ]
+  , body [ reset, baseFontFamilies, height (pct 100) ] 
   , div [ reset ]
   , ul [ reset ]
   , li [ reset, listStyleType none ]
   , h1 [ reset, fontSize (em 1) ]
 
-  , (.) HeaderContainer
+  , (.) FixedHeader
       [ position fixed
       , top zero
       , left zero
@@ -80,9 +82,18 @@ css =
       , cursor pointer
       ]
 
+  , (.) AddModeContainer
+      [ displayFlex
+      , flexDirection column
+      , height (pct 100)
+      ]
+
   , (.) AddPanel
-      [ backgroundColor lightGrayColor
-      , padding (em 0.75)
+      [ displayFlex
+      , flexDirection column
+      , flexGrow (int 1)
+      , flexShrink (int 1)
+      , flexBasis auto
       ]
 
   , (.) AddBox
@@ -91,13 +102,15 @@ css =
       , fontSize (em 1)
       , padding (em 0.5)
       , width (pct 100)
-      , height (em 10)
       , border zero
+      , flexGrow (int 1)
       ]
 
   , (.) TextButtonContainer
       [ textAlign right
-      , paddingTop (em 0.5)
+      , paddingTop (em 1)
+      , paddingBottom (em 1)
+      , paddingRight (em 1)
       ]
 
   , (.) TextButton

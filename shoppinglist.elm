@@ -170,8 +170,14 @@ toggleItemIfId item id =
 view : Model -> Html AppMessages.Msg
 
 view model = 
-  div []
-    [ div [ class [ AppCss.HeaderContainer ] ]
-        [ headerBar, addPanel model.newItems model.addPanelVisible ]
-    , categorizedList model.categorizedItems
-    ]
+  if model.addPanelVisible then
+    div [ class [ AppCss.AddModeContainer ] ]
+      [ div [] [ headerBar ]
+      , addPanel model.newItems model.addPanelVisible 
+      ]
+  else
+    div []
+      [ div [ class [ AppCss.FixedHeader ] ] [ headerBar ]
+      , categorizedList model.categorizedItems
+      ]
+
