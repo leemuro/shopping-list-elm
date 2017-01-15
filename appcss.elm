@@ -113,7 +113,7 @@ css =
       , color accentColor
       , border zero
       , cursor pointer
-      , padding (em 1)
+      , padding (em 0.75)
       ]
 
   , (.) TextButtonRight

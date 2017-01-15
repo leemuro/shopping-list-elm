@@ -12513,7 +12513,7 @@ var _user$project$AppCss$css = function (_p0) {
 					_rtfeldman$elm_css$Css$border(_rtfeldman$elm_css$Css$zero),
 					_rtfeldman$elm_css$Css$cursor(_rtfeldman$elm_css$Css$pointer),
 					_rtfeldman$elm_css$Css$padding(
-					_rtfeldman$elm_css$Css$em(1))
+					_rtfeldman$elm_css$Css$em(0.75))
 				])),
 			A2(
 			F2(
