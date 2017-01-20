@@ -1,0 +1,13 @@
+C:\hg\misc\swift-list\server\bin\SwiftList.WebApi.dll.config
+C:\hg\misc\swift-list\server\bin\SwiftList.WebApi.dll
+C:\hg\misc\swift-list\server\bin\SwiftList.WebApi.pdb
+C:\hg\misc\swift-list\server\bin\Newtonsoft.Json.dll
+C:\hg\misc\swift-list\server\bin\System.Net.Http.Formatting.dll
+C:\hg\misc\swift-list\server\bin\System.Web.Http.dll
+C:\hg\misc\swift-list\server\bin\System.Web.Http.WebHost.dll
+C:\hg\misc\swift-list\server\bin\Newtonsoft.Json.xml
+C:\hg\misc\swift-list\server\bin\System.Net.Http.Formatting.xml
+C:\hg\misc\swift-list\server\bin\System.Web.Http.xml
+C:\hg\misc\swift-list\server\bin\System.Web.Http.WebHost.xml
+C:\hg\misc\swift-list\server\obj\Release\SwiftList.WebApi.dll
+C:\hg\misc\swift-list\server\obj\Release\SwiftList.WebApi.pdb
